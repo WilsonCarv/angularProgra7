@@ -1,0 +1,92 @@
+<!-- Menú -->
+<nav class="navbar navbar-expand-lg" id="mainNav">
+  <div class="container">
+    <a
+      class="navbar-brand" style="color: black"
+      [routerLink]="['videojuego']"
+      routerLinkActive="active"
+      >Videojuegos</a
+    >
+    <button
+      class="navbar-toggler navbar-toggler-right"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarResponsive"
+      aria-controls="navbarResponsive"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/']" routerLinkActive="active"
+          style="color: black"
+            >Inicio</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['home/acercade']"
+            routerLinkActive="active"
+            style="color: black"
+            >Acerca de</a
+          >
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            style="color: black"
+
+          >
+            Mantenimientos
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a
+              class="dropdown-item"
+              [routerLink]="['videojuegoM']"
+              routerLinkActive="active"
+              style="color: black"
+              >Videojuegos</a
+            >
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <div class="form-group mb-2">
+          <input
+            class="form-control form-control-sm"
+            type="text"
+            readonly
+            name="nombreUsuario"
+            aria-label="Usuario"
+
+          />
+        </div>
+        <a
+          class="btn btn-dark btn-sm"
+          [routerLink]="['usuario/login']"
+          routerLinkActive="active"
+
+          >Login</a
+        >
+        <a
+          class="btn btn-light btn-sm"
+
+          routerLinkActive="active"
+
+          >Logout</a
+        >
+      </form>
+    </div>
+  </div>
+</nav>
