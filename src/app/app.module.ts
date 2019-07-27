@@ -9,7 +9,13 @@ import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { ShareModule } from './share/share.module';
 import { UserModule } from './user/user.module';
+import { JwtInterceptor } from './share/helpers/jwt.interceptor';
+import { ErrorInterceptor } from './share/helpers/error.interceptor';
+import { fakeBackendProvider } from './share/helpers/fake-backend';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -20,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HomeModule,
     ShareModule,
     UserModule,
