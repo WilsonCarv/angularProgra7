@@ -6,8 +6,28 @@
           <input
             type="text"
             class="form-control"
-            placeholder="Nombre usuario"
+            placeholder="Nombre "
             name="name"
+            ngModel
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Primer apellido"
+            name="primer_apellido"
+            ngModel
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Segundo apellido"
+            name="segundo_apellido"
             ngModel
             required
           />
@@ -35,9 +55,16 @@
           />
         </div>
         <div class="form-group">
+          <label for="roles">Género</label>
+          <select class="form-control" name="sexo" ngModel required>
+            <option>Masculino</option>
+            <option>Femenino</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="roles">Roles</label>
           <select class="form-control" name="role_id" ngModel required>
-            <option *ngFor="let rol of roles?.roles" [value]="rol.id"> {{rol.name}}</option>
+            <option *ngFor="let rol of roles?.roles" [value]="rol.id"> {{rol.nombre}}</option>
           </select>
         </div>
 

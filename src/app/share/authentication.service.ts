@@ -44,7 +44,7 @@ export class AuthenticationService {
 
  }
  createUser(user: UserEntidad): Observable<UserEntidad> {
-  return this.http.post<RolEntidad>(this.ServerUrl + 'expediente/register', 'user', this.httpOptions)
+  return this.http.post<UserEntidad>(this.ServerUrl + 'expediente/register', 'user', this.httpOptions)
   .pipe(catchError(this.handler.handleError.bind(this )));
  }
   loginUser(user: UserEntidad): Observable<UsuarioLogin> {

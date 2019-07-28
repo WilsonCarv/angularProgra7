@@ -2,7 +2,7 @@ export interface RolEntidad {
   msg: string;
   roles: {
     id: number;
-    name: string;
+    nombre: string;
     descripcion: string;
     created_at: Date;
     updated_at: Date;
