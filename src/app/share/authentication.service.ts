@@ -40,7 +40,7 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
   getRoles(): Observable<RolEntidad> {
-    return this.http.get<RolEntidad>(this.ServerUrl + 'expediente/rol').pipe(catchError(this.handler.handleError.bind(this )));
+    return this.http.get<RolEntidad>(this.ServerUrl + 'expediente/role').pipe(catchError(this.handler.handleError.bind(this )));
 
  }
  createUser(user: UserEntidad): Observable<UserEntidad> {
