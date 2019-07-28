@@ -20,7 +20,6 @@ const users: UserEntidad[] = [
     primer_apellido: 'Salas',
     segundo_apellido: 'Martinez',
     email: 'usuario1@gmail.com',
-    email_verified_at: new Date('2019-07-16 02:31:58'),
     password: '123456',
     sexo: 'masculino',
     ubicacion_consultorio: '',

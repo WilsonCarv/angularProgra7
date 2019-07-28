@@ -4,7 +4,6 @@ export interface UserEntidad {
   primer_apellido: string;
   segundo_apellido: string;
   email: string;
-  email_verified_at: Date;
   password: string;
   sexo: string;
   ubicacion_consultorio: string;
