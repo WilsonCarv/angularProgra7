@@ -5,7 +5,7 @@
       class="navbar-brand" style="color: black"
       [routerLink]="['videojuego']"
       routerLinkActive="active"
-      >Expediente</a
+      >Expedientes</a
     >
     <button
       class="navbar-toggler navbar-toggler-right"
@@ -46,18 +46,37 @@
             aria-haspopup="true"
             aria-expanded="false"
             style="color: black"
-
+            *ngIf="currentUser?.user.role_id == 1"
           >
             Mantenimientos
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          </a
+          >
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown"
+          >
             <a
               class="dropdown-item"
               [routerLink]="['videojuegoM']"
               routerLinkActive="active"
               style="color: black"
-              >Videojuegos</a
+              *ngIf="currentUser?.user.role_id == 1"
+              >Enfermedades</a
             >
+            <a
+            class="dropdown-item"
+            [routerLink]="['videojuegoM']"
+            routerLinkActive="active"
+            style="color: black"
+            *ngIf="currentUser?.user.role_id == 1"
+            >Alergias</a
+          >
+          <a
+          class="dropdown-item"
+          [routerLink]="['videojuegoM']"
+          routerLinkActive="active"
+          style="color: black"
+          *ngIf="currentUser?.user.role_id == 1"
+          >Actividades</a
+        >
           </div>
         </li>
       </ul>
