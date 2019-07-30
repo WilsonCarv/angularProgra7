@@ -22,9 +22,12 @@ const users: UserEntidad[] = [
     email: 'usuario1@gmail.com',
     password: '123456',
     sexo: 'masculino',
+    ubicacion_consultorio: '',
+    precio_consulta: 0,
     remember_token: '',
     created_at: new Date('2019-07-16 02:31:58'),
     updated_at: new Date('2019-07-16 02:31:58'),
+    deleted_at: new Date('2019-07-16 02:31:58'),
     role_id: 1,
   }
 ];
