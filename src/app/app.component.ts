@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './share/authentication.service';
-import { UsuarioLogin } from './share/models/usuario-login';
+import { UsuarioLogin } from './share/models/usuarioLogin';
 
 @Component({
   selector: 'app-root',

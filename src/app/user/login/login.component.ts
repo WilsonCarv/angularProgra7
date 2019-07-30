@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserEntidad } from 'src/app/share/models/user-entidad';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { UsuarioLogin } from 'src/app/share/models/usuario-login';
+import { UsuarioLogin } from 'src/app/share/models/usuarioLogin';
 import { AuthenticationService } from 'src/app/share/authentication.service';
 import { NotificacionService } from 'src/app/share/notificacion.service';
 

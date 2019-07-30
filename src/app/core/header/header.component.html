@@ -69,21 +69,21 @@
             readonly
             name="nombreUsuario"
             aria-label="Usuario"
-
+            [(ngModel)]="currentUser?.user.name"
           />
         </div>
         <a
           class="btn btn-dark btn-sm"
           [routerLink]="['usuario/login']"
           routerLinkActive="active"
-
+          *ngIf="currentUser == null"
           >Login</a
         >
         <a
           class="btn btn-light btn-sm"
-
+          (click)="logout()"
           routerLinkActive="active"
-
+          *ngIf="currentUser?.user"
           >Logout</a
         >
       </form>

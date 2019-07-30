@@ -9,7 +9,9 @@ import { retry, catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { UserEntidad } from './models/user-entidad';
 import { RolEntidad } from './models/rol-entidad';
-import { UsuarioLogin } from './models/usuario-Login';
+import { UsuarioLogin } from './models/usuarioLogin';
+import { ErrorEntidad } from './models/error-entidad';
+import { CustomHandlerErrorService } from './custom-handler-error.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,13 +21,13 @@ export class AuthenticationService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   ServerUrl = environment.apiURL;
-  errorData: {};
+  errorData: ErrorEntidad;
   user: null;
   // esas dos variables Obtienen cual es el usuario que esta en el almacenamiento local
   private currentUserSubject: BehaviorSubject<UsuarioLogin>;
   public currentUser: Observable<UsuarioLogin>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private handler: CustomHandlerErrorService) {
     this.currentUserSubject = new BehaviorSubject<UsuarioLogin>(
       JSON.parse(localStorage.getItem('currentUser'))
     );
@@ -36,7 +38,7 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
   // obtener lista roles
-  getRoles(): Observable<RolEntidad>{
+  getRoles(): Observable<RolEntidad> {
     return this.http.get<RolEntidad>(this.ServerUrl + 'expediente/role').pipe(catchError(this.handleError));
   }
 
@@ -91,10 +93,7 @@ export class AuthenticationService {
 
     /// devuelve un observable con un mensaje de error orientado al usuario
 
-    this.errorData = {
-      errorTitle: 'Falló la solicitud',
-      errorDesc: 'Ocurrió un inconveniente. Inténtelo de nuevo más tarde'
-    };
+    
     return throwError(this.errorData);
   }
 }
