@@ -5,6 +5,7 @@
       class="navbar-brand" style="color: black"
       [routerLink]="['videojuego']"
       routerLinkActive="active"
+      *ngIf="currentUser?.user"
       >Expedientes</a
     >
     <button
