@@ -10,9 +10,9 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
+    BannerComponent,
     HeaderComponent,
     FooterComponent,
-    BannerComponent,
     PageNotFoundComponent
   ],
   imports: [CommonModule, FormsModule, AppRoutingModule],
