@@ -37,6 +37,5 @@ export class CreateDoctorComponent implements OnInit {
 
     );
   }
+
 }
-
-

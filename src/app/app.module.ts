@@ -16,6 +16,8 @@ import { fakeBackendProvider } from './share/helpers/fake-backend';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { DoctorModule } from './doctor/doctor.module';
+
 
 @NgModule({
   declarations: [
@@ -30,8 +32,10 @@ import { ToastrModule } from 'ngx-toastr';
     HomeModule,
     ShareModule,
     UserModule,
+    DoctorModule,
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DoctorModule,
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

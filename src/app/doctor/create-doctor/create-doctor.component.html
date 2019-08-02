@@ -55,23 +55,34 @@
             />
           </div>
           <div class="form-group">
+              <input
+                type="textarea"
+                class="form-control"
+                id="ubicacion_consultorio"
+                placeholder="Ubicacion del consultorio"
+                name="ubicacion_consultorio"
+                ngModel
+                required
+              />
+            </div>
+            <div class="form-group">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="precio_consulta"
+                  placeholder="Precio consulta"
+                  name="precio_consulta"
+                  ngModel
+                  required
+                />
+              </div>
+          <div class="form-group">
             <label for="roles">Género</label>
             <select class="form-control" name="sexo" ngModel required>
               <option>Masculino</option>
               <option>Femenino</option>
             </select>
           </div>
-          <div class="form-group">
-              <input
-                type="extarea"
-                class="form-control"
-                id="ubicacion_consultorio"
-                placeholder="Ubicacion del consultorio"
-                name="ubicacion"
-                ngModel
-                required
-              />
-            </div>
           <div class="align-center">
             <button type="submit" class="btn btn-primary" id="registeruser">
               Registrar

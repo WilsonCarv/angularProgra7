@@ -4,6 +4,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { LoginComponent } from './login/login.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 
+
 const routes: Routes = [
   {
     path: 'usuario',
@@ -16,8 +17,10 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent
-      }
-    ]
+      },
+
+    ],
+
   }
 ];
 
