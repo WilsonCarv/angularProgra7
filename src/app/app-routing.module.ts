@@ -9,20 +9,19 @@ const routes: Routes = [
     // loadChildren: () => import("./user/user.module").then(mod => mod.UserModule)
   },
   {
-<<<<<<< HEAD
-    path: 'doctor',
-    loadChildren: './doctor/doctor.module#DoctorModule'
-    // loadChildren: () => import("./user/user.module").then(mod => mod.UserModule)
-=======
     path: "doctor",
-    loadChildren: "./user/user.module#UserModule"
-    //loadChildren: () => import("./user/user.module").then(mod => mod.UserModule)
->>>>>>> 4fb388010e4b35afac285427c7a9e694cae18ee3
+    loadChildren: "./doctor/doctor.module#DoctorModule"
+    // loadChildren: () => import("./user/user.module").then(mod => mod.UserModule)
   },
   {
     path: "home",
     // loadChildren: "./home/home.module#HomeModule"
     loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
+  },
+  {
+    path: "user-update",
+    loadChildren: "./user-update/user-update.module#User-UpdateModule"
+    //loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
   },
 
   { path: "", redirectTo: "", pathMatch: "full" },
