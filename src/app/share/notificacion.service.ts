@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { Injectable } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class NotificacionService {
   constructor(private toastr: ToastrService) {}
@@ -28,11 +28,11 @@ export class NotificacionService {
     });
   }
   msjValidacion(errores: any) {
-    let mensaje: string = '';
+    let mensaje: string = "";
     if (errores != null) {
       if (errores.error.errors) {
         for (const item of errores.error.errors) {
-          mensaje += item.message + ' <br />';
+          mensaje += item.message + " <br />";
         }
       }
       this.msjError(mensaje, errores.error.message);
