@@ -7,11 +7,12 @@ import { ErrorEntidad } from 'src/app/share/models/error-entidad';
 import { NotificacionService } from 'src/app/share/notificacion.service';
 
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css']
+  selector: 'app-create-doctor',
+  templateUrl: './create-doctor.component.html',
+  styleUrls: ['./create-doctor.component.css']
 })
-export class CreateUserComponent implements OnInit {
+export class CreateDoctorComponent implements OnInit {
+
   usuario: UserEntidad;
   datos: UserEntidad;
   roles: RolEntidad;
@@ -25,7 +26,7 @@ export class CreateUserComponent implements OnInit {
   }
     // sucess
     onsubmit(obj: UserEntidad) {
-    obj.role_id = 2;
+    obj.role_id = 3;
     this.autentification.createUser(obj).subscribe((respuesta: UserEntidad) => (this.datos),
     // error
     error => {
@@ -33,8 +34,9 @@ export class CreateUserComponent implements OnInit {
       this.notificacion.msjValidacion(this.error);
     },
     // complete
-    () => {
-      this.router.navigate(['/usuario/login'] );
-    } );
+
+    );
   }
 }
+
+

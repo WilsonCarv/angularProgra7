@@ -47,12 +47,6 @@ export class AuthenticationService {
     return this.http.post<UserEntidad>(this.ServerUrl + 'expediente/register', user , this.httpOptions).pipe(catchError(this.handleError));
   }
 
-  // getRoles(): Observable<RolEntidad[]> {
-
-  // }
-  // createUser(user: UserEntidad): Observable<UserEntidad> {
-
-  // }
   loginUser(user: UserEntidad): Observable<UsuarioLogin> {
     return this.http
       .post<UsuarioLogin>(
@@ -93,7 +87,7 @@ export class AuthenticationService {
 
     /// devuelve un observable con un mensaje de error orientado al usuario
 
-    
+
     return throwError(this.errorData);
   }
 }
