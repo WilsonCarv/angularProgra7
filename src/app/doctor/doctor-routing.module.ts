@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { CreateDoctorComponent } from './create-doctor/create-doctor.component';
-import { MedicoComponent } from './medico/medico.component';
-import { ListaDoctoresComponent } from './lista-doctores/lista-doctores.component';
-=======
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { CreateDoctorComponent } from "./create-doctor/create-doctor.component";
 import { MedicoComponent } from "./medico/medico.component";
->>>>>>> 6a2a3931d745f85151787d078f22f633ce80f8fa
+import { ListaDoctoresComponent } from "./lista-doctores/lista-doctores.component";
 
 const routes: Routes = [
   {
@@ -21,7 +14,7 @@ const routes: Routes = [
         component: CreateDoctorComponent
       },
       {
-        path: 'list',
+        path: "list",
         component: ListaDoctoresComponent
       }
     ]

@@ -6,12 +6,6 @@ const routes: Routes = [
   {
     path: "perfil",
     component: UpdateComponent
-    // children: [
-    //   {
-    //     path: "actualizar",
-    //     component: UpdateComponent
-    //   }
-    // ]
   }
 ];
 

@@ -23,31 +23,7 @@ export class CreateDoctorComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
-<<<<<<< HEAD
 
-    // sucess
-    onsubmit(obj: UserEntidad) {
-    obj.role_id = 3;
-    this.autentification.createUser(obj).subscribe((respuesta: UserEntidad) => (this.datos),
-    // error
-    error => {
-      console.log('Error register', error);
-      this.error = error;
-      this.notificacion.msjValidacion(this.error);
-    },
-    () => {
-
-      this.router.navigate(['/doctor/list']);
-    }
-=======
-  getRoles() {
-    this.autentification
-      .getRoles()
-      .subscribe(
-        (respuesta: RolEntidad) => (this.roles = respuesta),
-        error => (this.error = error)
-      );
-  }
   // sucess
   onsubmit(obj: UserEntidad) {
     obj.role_id = 3;
@@ -55,11 +31,13 @@ export class CreateDoctorComponent implements OnInit {
       (respuesta: UserEntidad) => this.datos,
       // error
       error => {
+        console.log("Error register", error);
         this.error = error;
         this.notificacion.msjValidacion(this.error);
+      },
+      () => {
+        this.router.navigate(["/doctor/list"]);
       }
-      // complete
->>>>>>> 6a2a3931d745f85151787d078f22f633ce80f8fa
     );
   }
 }

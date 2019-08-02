@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { FormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
 import { UserEntidad } from "src/app/share/models/user-entidad";
 import { RolEntidad } from "src/app/share/models/rol-entidad";

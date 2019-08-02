@@ -29,9 +29,9 @@ import { UserUpdateModule } from "./user-update/user-update.module";
     ToastrModule.forRoot(),
     HomeModule,
     ShareModule,
+    UserUpdateModule,
     UserModule,
     DoctorModule,
-    UserUpdateModule,
     CoreModule,
     AppRoutingModule,
     DoctorModule
