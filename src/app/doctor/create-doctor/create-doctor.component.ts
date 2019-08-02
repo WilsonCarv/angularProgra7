@@ -21,20 +21,21 @@ export class CreateDoctorComponent implements OnInit {
   }
 
   ngOnInit() {}
-  getRoles() {
-    this.autentification.getRoles().subscribe((respuesta: RolEntidad) => (this.roles = respuesta), error => (this.error = error));
-  }
+
     // sucess
     onsubmit(obj: UserEntidad) {
     obj.role_id = 3;
     this.autentification.createUser(obj).subscribe((respuesta: UserEntidad) => (this.datos),
     // error
     error => {
+      console.log('Error register', error);
       this.error = error;
       this.notificacion.msjValidacion(this.error);
     },
-    // complete
+    () => {
 
+      this.router.navigate(['/doctor/list']);
+    }
     );
   }
 

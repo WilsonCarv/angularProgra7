@@ -9,10 +9,18 @@
   <div class="row">
     <div class="col-sm-12">
       <ul class="nav nav-tabs nav-pills">
+          <li class="nav-item">
+              <a
+                class="nav-link"
+                [routerLink]="['/doctor/list']"
+                routerLinkActive="active"
+                >Lista de medicos</a
+              >
+            </li>
         <li class="nav-item">
           <a
             class="nav-link"
-            [routerLink]="['/usuario/registrar']"
+            [routerLink]="['/doctor/registrar']"
             routerLinkActive="active"
             >Registrar médico</a
           >

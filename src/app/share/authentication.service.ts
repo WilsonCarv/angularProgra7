@@ -12,6 +12,7 @@ import { RolEntidad } from './models/rol-entidad';
 import { UsuarioLogin } from './models/usuarioLogin';
 import { ErrorEntidad } from './models/error-entidad';
 import { CustomHandlerErrorService } from './custom-handler-error.service';
+import { Doctor } from './models/doctor';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,11 @@ export class AuthenticationService {
   // obtener lista roles
   getRoles(): Observable<RolEntidad> {
     return this.http.get<RolEntidad>(this.ServerUrl + 'expediente/role').pipe(catchError(this.handleError));
+  }
+  getDoctores(): Observable<Doctor> {
+    return this.http
+      .get<Doctor>(this.ServerUrl + 'expediente/listaMedicos')
+      .pipe(catchError(this.handler.handleError.bind(this)));
   }
 
   // Crear usuario
