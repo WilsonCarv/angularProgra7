@@ -26,17 +26,30 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    let params = +this.route.snapshot.paramMap.get('accion');
+    this.route.queryParams.subscribe(params => {
+      if (params.registrado !== undefined && params.registrado === 'true') {
+        this.notificacion.msjSuccess(
+          'Registro de usuario satisfactorio! Por favor especifique las credenciales para ingresar!',
+          'Usuario'
+        );
+      }
+    });
+  }
   onSubmit(obj: UserEntidad) {
 
       this.auntenticationService.loginUser(obj).subscribe(
-        (respuesta: UsuarioLogin) => (this.datos = respuesta),
+        (respuesta: UsuarioLogin) =>
+        {this.datos = respuesta;
+         this.router.navigate(['/']   );
+        },
          error => {
          this.error = error;
          this.notificacion.msjValidacion( this.error );
-         },
-       () => this.router.navigate(['/'], )
+         }
       );
+
     }
 
 }
