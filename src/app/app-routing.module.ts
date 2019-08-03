@@ -35,6 +35,13 @@ const routes: Routes = [
     //loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
   },
 
+  {
+    path: "actividadesFisicas",
+    loadChildren:
+      "./actividades-fisicas/actividades-fisicas.module#ActividadesFisicas"
+    //loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
+  },
+
   { path: "", redirectTo: "", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent }
 ];
