@@ -13,6 +13,7 @@ import { JwtInterceptor } from "./share/helpers/jwt.interceptor";
 import { ErrorInterceptor } from "./share/helpers/error.interceptor";
 import { fakeBackendProvider } from "./share/helpers/fake-backend";
 
+
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { ToastrModule } from "ngx-toastr";

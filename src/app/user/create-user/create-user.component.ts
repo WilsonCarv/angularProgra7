@@ -33,7 +33,7 @@ export class CreateUserComponent implements OnInit {
   }
   // sucess
   onsubmit(obj: UserEntidad) {
-    obj.role_id = 2;
+    obj.role_id = 1;
     this.autentification.createUser(obj).subscribe(
       (respuesta: UserEntidad) => this.datos,
       // error

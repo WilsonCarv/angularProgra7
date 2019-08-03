@@ -47,5 +47,10 @@ export class AlergiafrecService {
       .post<Alergiafrec>(this.ServerUrl + 'expediente/alergiaFrecuente', alg, { headers })
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
+  getAlergiasF(): Observable<Alergiafrec> {
+    return this.http
+      .get<Alergiafrec>(this.ServerUrl + "expediente/alergiaFrecuente ")
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
 }
 

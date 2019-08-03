@@ -4,5 +4,6 @@ export interface AlergiafrecEntidad {
   nombre: string;
   categoria: string;
   imagen: File;
+  Active: boolean;
   user: UserEntidad;
 }

@@ -1,1 +1,23 @@
-<p>listaalergia-frec works!</p>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Categoria</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let alg of datos?.alergiafrecuente">
+          <td>{{ alg.nombre}}</td>
+          <td>{{ alg.categoria }}</td>
+          <td><img [src]="'/assets/img/' + alg.imagen"></td>
+
+
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

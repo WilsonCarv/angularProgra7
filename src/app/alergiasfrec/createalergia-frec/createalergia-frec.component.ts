@@ -5,6 +5,7 @@ import { AlergiafrecService } from 'src/app/share/alergiafrec.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificacionService } from 'src/app/share/notificacion.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 export interface ErrorEntidad {
   errors: { field: string; message: string }[];
 }
@@ -18,6 +19,10 @@ export class CreatealergiaFrecComponent implements OnInit  {
 
   datos: Alergiafrec;
   error: any;
+  selectedFile = null;
+  form: FormGroup;
+
+
   constructor(
     private router: Router,
     private alegFrecService: AlergiafrecService ,
@@ -28,6 +33,7 @@ export class CreatealergiaFrecComponent implements OnInit  {
   ngOnInit() {
   }
   onSubmit(obj: AlergiafrecEntidad) {
+    obj.Active = true;
     return this.alegFrecService.createalergiaFrec(obj).subscribe(
       (respuesta: Alergiafrec) => {
         this.datos = respuesta;
@@ -44,5 +50,12 @@ export class CreatealergiaFrecComponent implements OnInit  {
   onBack() {
     this.router.navigate(['/alergiafrecuente']);
   }
+  onFileSelected(event) {
+    console.log("Imagen", event.target.files[0]);
+    this.selectedFile = event.target.files[0];
+  }
 
-}
+
+  }
+
+
