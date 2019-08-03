@@ -31,8 +31,7 @@
               style="color: black" *ngIf="currentUser?.user.role_id != 2">Lista de Actividades Físicas</a>
             <a class="dropdown-item" [routerLink]="['alergiafrecuente/list']" routerLinkActive="active"
               style="color: black" *ngIf="currentUser?.user.role_id == 1">Alergias</a>
-            <a class="dropdown-item" [routerLink]="['videojuegoM']" routerLinkActive="active" style="color: black"
-              *ngIf="currentUser?.user.role_id == 1">Actividades</a>
+
           </div>
         </li>
         <li class="nav-item">
@@ -41,6 +40,7 @@
         </li>
         <li class="nav-item">
         </li>
+
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <div class="form-group mb-2">
