@@ -52,5 +52,20 @@ export class AlergiafrecService {
       .get<Alergiafrec>(this.ServerUrl + "expediente/alergiaFrecuente ")
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
+  updateAlergiaF(
+    alergiaf: AlergiafrecEntidad,
+    token: string,
+    id: number
+  ): Observable<AlergiafrecEntidad> {
+    let headers = new HttpHeaders();
+    if (id != null) {
+      headers = headers.append("Authorization", "Bearer " + token);
+    }
+    return this.http
+      .patch<Alergiafrec>(this.ServerUrl + "expediente/alergiaFrecuente/" + id, alergiaf, {
+        headers
+      })
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
 }
 

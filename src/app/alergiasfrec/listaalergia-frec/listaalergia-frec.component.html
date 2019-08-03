@@ -12,8 +12,15 @@
         <tr *ngFor="let alg of datos?.alergiafrecuente">
           <td>{{ alg.nombre}}</td>
           <td>{{ alg.categoria }}</td>
-          <td><img [src]="'/assets/img/' + alg.imagen"></td>
-
+          <td><img [src]="'/assets/img/' + alg.imagen" width="100px"></td>
+          <td>
+            <!-- <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a> -->
+            <!--    Es necesario retroceder un nivel
+               Porque esta dentro de un componente que contiene rutas hijas -->
+            <button class="btn btn-info" (click)="linkEditar(alg)">
+              Eliminar
+            </button>
+          </td>
 
 
         </tr>
