@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <form #form="ngForm"(ngSubmit)="onSubmit(form.value)">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Nombre "
+              name="nombre"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="categoria">Categoría</label>
+            <select class="form-control" name="categoria" ngModel required>
+              <option>Alergia al polen</option>
+              <option>Alergia a hongos</option>
+              <option>Alergia a mediacamentos</option>
+              <option>Asma alérgico</option>
+              <option>Anafilaxia</option>
+              <option>Rinitis</option>
+            </select>
+          </div>
+          <div class="form-group">
+              <label for="imagen">Imagen</label>
+              <input
+                type="file"
+                class="form-control"
+                name="imagen"
+                ngModel
+                required
+              />
+            </div>
+          <div class="align-center">
+            <button type="submit" class="btn btn-primary" id="registeruser">
+              Registrar
+            </button>
+          </div>
+        </form>
+        {{form.value | json}}
+      </div>
+    </div>
+  </div>
+
+

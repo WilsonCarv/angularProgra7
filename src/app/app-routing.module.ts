@@ -14,6 +14,11 @@ const routes: Routes = [
     // loadChildren: () => import("./user/user.module").then(mod => mod.UserModule)
   },
   {
+    path: "alergiafrecuente",
+    loadChildren: "./alergiasfrec/alergiasfrec.module#AlergiasfrecModule"
+    // loadChildren: () => import("./user/user.module").then(mod => mod.UserModule)
+  },
+  {
     path: "home",
     // loadChildren: "./home/home.module#HomeModule"
     loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
