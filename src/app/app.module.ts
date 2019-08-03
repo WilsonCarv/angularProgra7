@@ -12,15 +12,13 @@ import { UserModule } from "./user/user.module";
 import { JwtInterceptor } from "./share/helpers/jwt.interceptor";
 import { ErrorInterceptor } from "./share/helpers/error.interceptor";
 import { fakeBackendProvider } from "./share/helpers/fake-backend";
-
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
 import { ToastrModule } from "ngx-toastr";
 import { DoctorModule } from "./doctor/doctor.module";
-import { UserUpdateModule } from "./user-update/user-update.module";
 import { AlergiasfrecModule } from "./alergiasfrec/alergiasfrec.module";
 import { EnfermedadesModule } from "./enfermedades/enfermedades.module";
-import { ActividadesFisicasModule } from "./actividades-fisicas/actividades-fisicas.module";
+import { UserupdateModule } from "./userupdate/userupdate.module";
+import { ActividadfisicafrecModule } from "./actividadfisicafrec/actividadfisicafrec.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,14 +31,15 @@ import { ActividadesFisicasModule } from "./actividades-fisicas/actividades-fisi
     HomeModule,
     ShareModule,
     AlergiasfrecModule,
-    UserUpdateModule,
     EnfermedadesModule,
-    ActividadesFisicasModule,
+    ActividadfisicafrecModule,
+    UserupdateModule,
     UserModule,
     DoctorModule,
     CoreModule,
     AppRoutingModule,
-    DoctorModule
+    DoctorModule,
+    UserupdateModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

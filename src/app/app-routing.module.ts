@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: "userUpdate",
-    loadChildren: "./user-update/user-update.module#User-UpdateModule"
+    loadChildren: "./userupdate/userupdate.module#UserUpdateModule"
     //loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
   },
 
@@ -34,11 +34,10 @@ const routes: Routes = [
     loadChildren: "./enfermedades/enfermedades.module#EnfermedadesModule"
     //loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
   },
-
   {
     path: "actividadesFisicas",
     loadChildren:
-      "./actividades-fisicas/actividades-fisicas.module#ActividadesFisicas"
+      "./actividadesfisicasfrec/actividadesfisicasfrec.module#ActividadesFisicas"
     //loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
   },
 

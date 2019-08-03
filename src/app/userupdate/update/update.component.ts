@@ -18,7 +18,6 @@ export class UpdateComponent implements OnInit {
   roles: RolEntidad;
   error: ErrorEntidad;
   currentUser: UsuarioLogin;
-  selectedFile = null;
   constructor(
     private router: Router,
     private autentification: AuthenticationService,
@@ -29,11 +28,7 @@ export class UpdateComponent implements OnInit {
       x => (this.currentUser = x)
     );
   }
-
-  ngOnInit() {
-    console.log("Current User", this.currentUser.user);
-    console.log("User", this, this.currentUser);
-  }
+  ngOnInit() {}
   onsubmit(obj: UserEntidad) {
     this.autentification
       .updateUser(obj, this.currentUser.access_token, this.currentUser.user.id)
