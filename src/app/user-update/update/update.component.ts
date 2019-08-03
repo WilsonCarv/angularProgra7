@@ -31,7 +31,6 @@ export class UpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-<<<<<<< HEAD
     console.log("Current User", this.currentUser.user);
     console.log("User", this, this.currentUser);
   }
@@ -54,8 +53,5 @@ export class UpdateComponent implements OnInit {
   }
   onFileSelected(event) {
     this.selectedFile = event.target.files[0];
-=======
-    console.log('Current User', this.currentUser.user);
->>>>>>> c94e98440d31235a0875a2baeef0864e02e2c6fe
   }
 }
