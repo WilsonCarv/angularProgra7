@@ -18,7 +18,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ngx-toastr";
 import { DoctorModule } from "./doctor/doctor.module";
 import { UserUpdateModule } from "./user-update/user-update.module";
-import { AlergiasfrecModule } from './alergiasfrec/alergiasfrec.module';
+import { AlergiasfrecModule } from "./alergiasfrec/alergiasfrec.module";
+import { EnfermedadesModule } from "./enfermedades/enfermedades.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,12 +33,12 @@ import { AlergiasfrecModule } from './alergiasfrec/alergiasfrec.module';
     ShareModule,
     AlergiasfrecModule,
     UserUpdateModule,
+    EnfermedadesModule,
     UserModule,
     DoctorModule,
     CoreModule,
     AppRoutingModule,
-    DoctorModule,
-
+    DoctorModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

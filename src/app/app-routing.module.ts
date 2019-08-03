@@ -24,8 +24,14 @@ const routes: Routes = [
     loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
   },
   {
-    path: "user-update",
+    path: "userUpdate",
     loadChildren: "./user-update/user-update.module#User-UpdateModule"
+    //loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
+  },
+
+  {
+    path: "enfermedades",
+    loadChildren: "./enfermedades/enfermedades.module#EnfermedadesModule"
     //loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
   },
 

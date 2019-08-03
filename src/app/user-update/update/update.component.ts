@@ -52,6 +52,7 @@ export class UpdateComponent implements OnInit {
       );
   }
   onFileSelected(event) {
+    console.log("Imagen", event.target.files[0]);
     this.selectedFile = event.target.files[0];
   }
 }

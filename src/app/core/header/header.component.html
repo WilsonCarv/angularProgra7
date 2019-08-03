@@ -64,11 +64,11 @@
         >
             <a
               class="dropdown-item"
-              [routerLink]="['videojuegoM']"
+              [routerLink]="['listaEnfermedades']"
               routerLinkActive="active"
               style="color: black"
-              *ngIf="currentUser?.user.role_id == 1"
-              >Enfermedades</a
+              *ngIf="currentUser.user.role_id != 2"
+              >Lista de Enfermedades</a
             >
             <a
             class="dropdown-item"
@@ -95,6 +95,8 @@
           >Actualizar Perfil</a
           >
         </li>
+        <li class="nav-item">
+                 </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <div class="form-group mb-2">
