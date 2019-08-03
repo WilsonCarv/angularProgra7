@@ -18,7 +18,7 @@ export class UpdateComponent implements OnInit {
   roles: RolEntidad;
   error: ErrorEntidad;
   currentUser: UsuarioLogin;
-
+  selectedFile = null;
   constructor(
     private router: Router,
     private autentification: AuthenticationService,
@@ -32,6 +32,26 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit() {
     console.log("Current User", this.currentUser.user);
+    console.log("User", this, this.currentUser);
   }
-  onsubmit() {}
+  onsubmit(obj: UserEntidad) {
+    this.autentification
+      .updateUser(this.currentUser.user.id, obj, this.currentUser.access_token)
+      .subscribe(
+        (respuesta: UserEntidad) => this.datos,
+        // error
+        error => {
+          console.log("Error Update", error);
+          this.error = error;
+          this.notificacion.msjValidacion(this.error);
+        },
+        () => {
+          this.autentification.logout();
+          this.router.navigate(["/usuario/login"]);
+        }
+      );
+  }
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
+  }
 }

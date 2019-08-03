@@ -85,10 +85,16 @@
             </div>
         <div class="form-group">
           <label for="roles">Género</label>
-          <select class="form-control" name="sexo" required >
+          <select class="form-control" name="sexo" [(ngModel)]="currentUser?.user.sexo" required >
             <option>Masculino</option>
             <option>Femenino</option>
           </select>
+        </div>
+        <div>
+          <img src>
+          <label>Imgen</label>
+          <br>
+          <input type="file" (change)="onFileSelected($event)">
         </div>
         <div class="align-center">
           <button type="submit" class="btn btn-primary" id="registeruser">
