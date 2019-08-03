@@ -28,7 +28,9 @@ export class ListaDoctoresComponent implements OnInit {
     .subscribe(
       (respuesta: Doctor) => (this.datos = respuesta),
       error => (this.error = error)
+
     );
+    console.log('datos', this.datos);
   }
 
 }
