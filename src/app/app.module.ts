@@ -22,6 +22,7 @@ import { AlergiasfrecModule } from "./alergiasfrec/alergiasfrec.module";
 import { EnfermedadesModule } from "./enfermedades/enfermedades.module";
 import { ActividadesFisicasModule } from "./actividades-fisicas/actividades-fisicas.module";
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -32,15 +33,14 @@ import { ActividadesFisicasModule } from "./actividades-fisicas/actividades-fisi
     ToastrModule.forRoot(),
     HomeModule,
     ShareModule,
-    AlergiasfrecModule,
     UserUpdateModule,
+    DoctorModule,
+    UserModule,
+    AlergiasfrecModule,
     EnfermedadesModule,
     ActividadesFisicasModule,
-    UserModule,
-    DoctorModule,
     CoreModule,
     AppRoutingModule,
-    DoctorModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
