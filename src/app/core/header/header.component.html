@@ -56,7 +56,7 @@
           >
           <a
           class="dropdown-item"
-          [routerLink]="['doctor/registrar']"
+          [routerLink]="['doctor/list']"
           routerLinkActive="active"
           style="color: black"
           *ngIf="currentUser?.user.role_id == 1"
@@ -72,7 +72,7 @@
             >
             <a
             class="dropdown-item"
-            [routerLink]="['videojuegoM']"
+            [routerLink]="['alergiafrecuente/list']"
             routerLinkActive="active"
             style="color: black"
             *ngIf="currentUser?.user.role_id == 1"

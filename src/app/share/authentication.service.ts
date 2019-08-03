@@ -44,7 +44,7 @@ export class AuthenticationService {
   }
   getDoctores(): Observable<Doctor> {
     return this.http
-      .get<Doctor>(this.ServerUrl + 'expediente/listaMedicos')
+      .get<Doctor>(this.ServerUrl + 'expediente/listaMedicos ')
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
 
