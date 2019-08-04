@@ -37,7 +37,7 @@ const routes: Routes = [
   {
     path: "actividadesFisicas",
     loadChildren:
-      "./actividadesfisicasfrec/actividadesfisicasfrec.module#ActividadesFisicas"
+      "./actividadesfisicasfrec/actividadesfisicasfrec.module#ActividadfisicafrecModule"
     //loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
   },
 
