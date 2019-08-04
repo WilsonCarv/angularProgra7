@@ -10,7 +10,7 @@
       <tbody>
         <tr *ngFor="let doc of datos?.actividadFrecuente">
           <td>{{ doc.nombre }}</td>
-          <td>{{ doc.imagen }}</td>
+          <td><img [src]="'/assets/img/' + doc.imagen" width="300px" height="150px"></td>
         </tr>
       </tbody>
     </table>
