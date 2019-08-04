@@ -1,10 +1,11 @@
 import { UserEntidad } from "./user-entidad";
-export interface AlergiafrecEntidad {
+export interface AlergiaEntidad {
   id: number;
   nombre: string;
   categoria: string;
-  imagen: File;
-  Active: boolean;
+  reaccion: string;
+  observaciones: string;
+  imagen: string;
   created_at: Date;
   updated_at: Date;
   deleted_at: Date;
