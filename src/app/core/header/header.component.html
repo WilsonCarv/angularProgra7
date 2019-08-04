@@ -1,7 +1,7 @@
 <!-- Menú -->
 <nav class="navbar navbar-expand-lg" id="mainNav">
   <div class="container" style="margin-top: -400px">
-    <a class="navbar-brand" style="color: black" [routerLink]="['videojuego']" routerLinkActive="active"
+    <a class="navbar-brand" style="color: black" [routerLink]="['expediente']" routerLinkActive="active"
       *ngIf="currentUser?.user">Expedientes</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
       data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -34,11 +34,13 @@
 
           </div>
         </li>
+        <!-- <li class="nav-item">
+            <a class="nav-link" [routerLink]="['perfil']" routerLinkActive="active" style="color: black"
+            *ngIf="currentUser?.user">Expediente</a>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['perfil']" routerLinkActive="active" style="color: black"
             *ngIf="currentUser?.user">Actualizar Perfil</a>
-        </li>
-        <li class="nav-item">
         </li>
 
       </ul>

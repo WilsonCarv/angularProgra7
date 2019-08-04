@@ -40,6 +40,11 @@ const routes: Routes = [
       "./actividadfisicafrec/actividadfisicafrec.module#ActividadfisicafrecModule"
     //loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
   },
+  {
+    path: "expediente",
+    loadChildren: "./perfil/perfil.module#PerfilModule"
+    //loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
+  },
 
   { path: "", redirectTo: "", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent }

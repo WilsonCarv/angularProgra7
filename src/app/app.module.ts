@@ -19,6 +19,7 @@ import { AlergiasfrecModule } from "./alergiasfrec/alergiasfrec.module";
 import { EnfermedadesModule } from "./enfermedades/enfermedades.module";
 import { UserupdateModule } from "./userupdate/userupdate.module";
 import { ActividadfisicafrecModule } from "./actividadfisicafrec/actividadfisicafrec.module";
+import { PerfilModule } from "./perfil/perfil.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +35,7 @@ import { ActividadfisicafrecModule } from "./actividadfisicafrec/actividadfisica
     EnfermedadesModule,
     ActividadfisicafrecModule,
     UserupdateModule,
+    PerfilModule,
     UserModule,
     DoctorModule,
     CoreModule,

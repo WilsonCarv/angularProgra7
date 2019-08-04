@@ -1,0 +1,111 @@
+<div class="container">
+    <!-- <hello name="{{ name }}"></hello> -->
+    <div id="stepper1" class="bs-stepper">
+      <div class="bs-stepper-header">
+        <div class="step" data-target="#test-l-1">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">1</span>
+            <span class="bs-stepper-label">Información Personal</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-2">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">2</span>
+            <span class="bs-stepper-label">Consumo Alcohol/Tabaco</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-3">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">3</span>
+            <span class="bs-stepper-label">Validate</span>
+          </button>
+        </div>
+      </div>
+      <div class="bs-stepper-content">
+        <form (ngSubmit)="onSubmit()">
+          <div id="test-l-1" class="content">
+            <div class=row>
+                <div class="form-group col-md-6 form-group">
+                    <label for="Identificación">Identificación</label>
+                    <input type="text" class="form-control" id="Identificación" placeholder="Identificación" />
+                    <label for="Nombre">Nombre</label>
+                    <input type="text" class="form-control" id="Nombre" placeholder="Nombre" />
+                    <label for="PrimerApellido">Primer Apellido</label>
+                    <input type="text" class="form-control" id="PrimerApellido" placeholder="Primer Apellido" />
+                    <label for="SegundoApellido">Segundo Apellido</label>
+                    <input type="text" class="form-control" id="SegundoApellido" placeholder="Segundo Apellido" />
+                    <label for="roles">Género</label>
+                    <select class="form-control" name="sexo" ngModel required>
+                      <option>Masculino</option>
+                      <option>Femenino</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6 form-group">
+                      <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                      <input type="date" class="form-control" id="fechaNacimiento" placeholder="Enter email" />
+                      <label for="roles">Tipo de Sangre</label>
+                      <select class="form-control" name="tipoSangre" ngModel required>
+                      <option>O negativo</option>
+                      <option>O positivo</option>
+                      <option>A negativo</option>
+                      <option>A positivo</option>
+                      <option>B negativo</option>
+                      <option>B positivo</option>
+                      <option>AB negativo</option>
+                      <option>AB positivo</option>
+                    </select>
+                      <label for="numeroTelefono">Número de teléfono<table></table></label>
+                      <input type="text" class="form-control" id="numeroTelefono" placeholder="Número de teléfono" />
+                      <label for="contactoEmergencia">Contacto de Emergencia<table></table></label>
+                      <input type="text" class="form-control" id="contactoEmergencia" placeholder="Contacto de Emergencia" />
+                      <label for="lugarResidencia">Lugar de Residencia</label>
+                      <textarea class="form-control" id="lugarResidencia"></textarea>
+                    </div>
+                  <button (click)="next()" class="btn btn-primary mx-auto mt-4">Siguiente</button>
+                </div>
+            </div>
+
+          <div id="test-l-2" class="content">
+            <div class="form-group custom-control custom-switch" >
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1"
+                      (change)="changeStatusFuma($event)">
+                    <label class="custom-control-label" for="customSwitch1">Fuma</label>
+                    <br>
+                    <label for="historialFumando">Historial de Fumado</label>
+                    <input type="password" class="form-control" id="historialFumando" placeholder="Historial de Fumado" [disabled]="fuma"/>
+                    <label for="cantidaCigarros">Cantidad de cigarros que fuma al día</label>
+                    <input type="text" class="form-control" id="cantidaCigarros" placeholder="Cantidad de cigarros que fuma al día" [disabled]="fuma"/>
+                    <label for="edadComenzoFumar">Edad a la que comenzo a fumar</label>
+                    <input type="text" class="form-control" id="edadComenzoFumar" placeholder="Edad a la que comenzo a fumar" [disabled]="fuma"/>
+                    <label for="observaciones">Observaciones de Fumado</label>
+                    <textarea class="form-control" [disabled]="fuma" id="observaciones"></textarea>
+
+                  </div>
+                  <hr>
+                  <div class="form-group custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="customSwitch2"
+                      (change)="changeStatusAlcohol($event)">
+                    <label class="custom-control-label" for="customSwitch2">Consume alcohol</label>
+                    <br>
+                    <label for="historialFumando">Historial de Alcohol</label>
+                    <input type="text" class="form-control" id="historialFumando" placeholder="Historial de Alcohol" [disabled]="toma"/>
+                    <label for="cantidaCigarros">Cantidad de alcohol que toma al día</label>
+                    <input type="text" class="form-control" id="cantidaCigarros" placeholder="Cantidad de alcohol que toma al día" [disabled]="toma"/>
+                    <label for="edadComenzoFumar">Edad a la que comenzo a tomar</label>
+                    <input type="text" class="form-control" id="edadComenzoFumar" placeholder="Edad a la que comenzo a tomar" [disabled]="toma"/>
+                    <label for="observaciones">Tipo de licor que mas consume</label>
+                    <textarea class="form-control" [disabled]="toma" id="observaciones"></textarea>
+                    <label for="observaciones">Observaciones consumo de licor</label>
+                    <textarea class="form-control" [disabled]="toma" id="observaciones"></textarea>
+            </div>
+            <button (click)="next()" class="btn btn-primary">Next</button>
+          </div>
+          <div id="test-l-3" class="content text-center">
+            <button type="submit" class="btn btn-primary mt-5">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
