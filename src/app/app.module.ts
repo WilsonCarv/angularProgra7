@@ -38,8 +38,7 @@ import { ActividadfisicafrecModule } from "./actividadfisicafrec/actividadfisica
     DoctorModule,
     CoreModule,
     AppRoutingModule,
-    DoctorModule,
-    UserupdateModule
+    DoctorModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

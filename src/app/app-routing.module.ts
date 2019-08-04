@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: "userUpdate",
-    loadChildren: "./userupdate/userupdate.module#UserUpdateModule"
+    loadChildren: "./userupdate/userupdate.module#UserupdateModule"
     //loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
   },
 
@@ -37,7 +37,7 @@ const routes: Routes = [
   {
     path: "actividadesFisicas",
     loadChildren:
-      "./actividadesfisicasfrec/actividadesfisicasfrec.module#ActividadfisicafrecModule"
+      "./actividadfisicafrec/actividadfisicafrec.module#ActividadfisicafrecModule"
     //loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
   },
 
