@@ -12,19 +12,47 @@
         <div class="step" data-target="#test-l-2">
           <button class="step-trigger">
             <span class="bs-stepper-circle">2</span>
-            <span class="bs-stepper-label">Consumo Alcohol/Tabaco</span>
+            <span class="bs-stepper-label">Alcohol/Tabaco</span>
           </button>
         </div>
         <div class="line"></div>
         <div class="step" data-target="#test-l-3">
           <button class="step-trigger">
             <span class="bs-stepper-circle">3</span>
-            <span class="bs-stepper-label">Validate</span>
+            <span class="bs-stepper-label">Actividades</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-4">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">4</span>
+            <span class="bs-stepper-label">Alergias</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-5">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">5</span>
+            <span class="bs-stepper-label">Enfermedades</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-6">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">6</span>
+            <span class="bs-stepper-label">Cirugias</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-7">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">7</span>
+            <span class="bs-stepper-label">Medicamentos</span>
           </button>
         </div>
       </div>
       <div class="bs-stepper-content">
-        <form (ngSubmit)="onSubmit()">
+        <form (ngSubmit)="onSubmit($event)">
           <div id="test-l-1" class="content">
             <div class=row>
                 <div class="form-group col-md-6 form-group">
@@ -80,7 +108,7 @@
                     <label for="edadComenzoFumar">Edad a la que comenzo a fumar</label>
                     <input type="text" class="form-control" id="edadComenzoFumar" placeholder="Edad a la que comenzo a fumar" [disabled]="fuma"/>
                     <label for="observaciones">Observaciones de Fumado</label>
-                    <textarea class="form-control" [disabled]="fuma" id="observaciones"></textarea>
+                    <textarea class="form-control" [disabled]="fuma" id="observacionesFumado"></textarea>
 
                   </div>
                   <hr>
@@ -90,19 +118,42 @@
                     <label class="custom-control-label" for="customSwitch2">Consume alcohol</label>
                     <br>
                     <label for="historialFumando">Historial de Alcohol</label>
-                    <input type="text" class="form-control" id="historialFumando" placeholder="Historial de Alcohol" [disabled]="toma"/>
-                    <label for="cantidaCigarros">Cantidad de alcohol que toma al día</label>
-                    <input type="text" class="form-control" id="cantidaCigarros" placeholder="Cantidad de alcohol que toma al día" [disabled]="toma"/>
-                    <label for="edadComenzoFumar">Edad a la que comenzo a tomar</label>
-                    <input type="text" class="form-control" id="edadComenzoFumar" placeholder="Edad a la que comenzo a tomar" [disabled]="toma"/>
-                    <label for="observaciones">Tipo de licor que mas consume</label>
-                    <textarea class="form-control" [disabled]="toma" id="observaciones"></textarea>
-                    <label for="observaciones">Observaciones consumo de licor</label>
-                    <textarea class="form-control" [disabled]="toma" id="observaciones"></textarea>
+                    <input type="text" class="form-control" id="historialAlcohol" placeholder="Historial de Alcohol" [disabled]="toma"/>
+                    <label for="cantidaToma">Cantidad de alcohol que toma al día</label>
+                    <input type="text" class="form-control" id="cantidaToma" placeholder="Cantidad de alcohol que toma al día" [disabled]="toma"/>
+                    <label for="edadComenzoTomar">Edad a la que comenzo a tomar</label>
+                    <input type="text" class="form-control" id="edadComenzoTomar" placeholder="Edad a la que comenzo a tomar" [disabled]="toma"/>
+                    <label for="tipoAlcohol">Tipo de licor que mas consume</label>
+                    <textarea class="form-control" [disabled]="toma" id="tipoAlcohol"></textarea>
+                    <label for="observacionesAlchohol">Observaciones consumo de licor</label>
+                    <textarea class="form-control" [disabled]="toma" id="observacionesAlchohol"></textarea>
             </div>
             <button (click)="next()" class="btn btn-primary">Next</button>
           </div>
           <div id="test-l-3" class="content text-center">
+                  <label for="arlegias_id">Lista de Actividades</label>
+                  <select multiple [(ngModel)]="selectedActividades" class="form-control" name="actividades_id">
+                    <option *ngFor="let a of actividadesFrecuentes?.actividadFrecuente" [value]="a.id">
+                      {{a.nombre}}</option>
+                  </select>
+          </div>
+          <div id="test-l-4" class="content text-center">
+              <label for="arlegias_id">Lista de Alergias</label>
+                  <select multiple [(ngModel)]="selectedAlergias" class="form-control" name="arlegias_id">
+                    <option *ngFor="let a of alergias?.alergiafrecuente" [value]="a.id">
+                      {{a.nombre}}</option>
+                  </select>
+          </div>
+          <div id="test-l-5" class="content text-center">
+            <button type="submit" class="btn btn-primary mt-5">Submit</button>
+          </div>
+          <div id="test-l-6" class="content text-center">
+            <button type="submit" class="btn btn-primary mt-5">Submit</button>
+          </div>
+          <div id="test-l-7" class="content text-center">
+            <button type="submit" class="btn btn-primary mt-5">Submit</button>
+          </div>
+          <div id="test-l-8" class="content text-center">
             <button type="submit" class="btn btn-primary mt-5">Submit</button>
           </div>
         </form>

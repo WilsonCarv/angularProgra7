@@ -1,5 +1,6 @@
 import { UserEntidad } from "./user-entidad";
 export interface ActividadesFisicasEntidad {
+  id: number;
   nombre: string;
   imagen: File;
   user_id: number;
