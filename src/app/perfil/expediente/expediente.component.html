@@ -56,17 +56,10 @@
         <div id="test-l-1" class="content">
           <div class=row>
               <div class="form-group col-md-6 form-group">
-<<<<<<< HEAD
                   <label for="identificación">Identificación</label>
                   <input type="text" class="form-control" name="identificacion" placeholder="Identificación" />
                   <label for="nombre">Nombre</label>
                   <input type="text" class="form-control" name="nombre" placeholder="Nombre" />
-=======
-                  <label for="Identificación">Identificación</label>
-                  <input type="text" class="form-control" id="Identificacion" placeholder="Identificación" />
-                  <label for="Nombre">Nombre</label>
-                  <input type="text" class="form-control" id="Nombre" placeholder="Nombre" />
->>>>>>> 7eb5f7bdc522cb21e66d927b896ce39bd7184220
                   <label for="PrimerApellido">Primer Apellido</label>
                   <input type="text" class="form-control" name="primer_apellido" ngModel placeholder="Primer Apellido" />
                   <label for="SegundoApellido">Segundo Apellido</label>
@@ -146,13 +139,13 @@
                 <label>Otras</label>
                 <div class="row">
                 <div class ="form-group col-md-5">
-                  <form id="otrasActividades" #otrasForm="ngForm" (ngSubmit)="addArrayActividades($event)" >
+                  <form id="otrasActividadesForm" #otrasActividaesForm="ngForm" (ngSubmit)="addArrayActividades(otrasActividaesForm.value)" >
                   <label for="nombreActividad">Nombre de la actividad</label>
-                  <input type="text" class="form-control" id="nombreActividad" placeholder="Nombre de la Actividad" [disabled]=""/>
+                  <input type="text" class="form-control" name="nombre" ngModel  placeholder="Nombre de la Actividad" [disabled]=""/>
                   <label for="tiempo_al_dia">Cantidad de horas al día que hace la actividad</label>
-                  <input type="text" class="form-control" id="tiempo_al_dia" placeholder="Cantidad de horas al día que hace la actividad"  [disabled]=""/>
+                  <input type="text" class="form-control" name="tiempo_al_dia" ngModel  placeholder="Cantidad de horas al día que hace la actividad"  [disabled]=""/>
                   <label for="veces_por_semana">Cantidad de veces por semana por semana</label>
-                  <input type="text" class="form-control" id="veces_por_semana" placeholder="Cantidad de horas al día que hace la actividad" [disabled]=""/>
+                  <input type="text" class="form-control" name="veces_por_semana" ngModel  placeholder="Cantidad de horas al día que hace la actividad" [disabled]=""/>
                   <button type="submit" class="btn btn-primary mt-3">Agregar</button>
                 </form>
                 </div>
@@ -169,7 +162,7 @@
                       </thead>
                       <tbody>
                         <tr *ngFor="let doc of actividades">
-                          <td>{{ doc.nombre }}</td>
+                          <td>{{ doc.nombre}}</td>
                           <td>{{ doc.tiempo_al_dia }}</td>
                           <td>{{ doc.veces_por_semana }}</td>
                           <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarActividad(doc)">Eliminar</button></td>
@@ -191,20 +184,20 @@
                 <label>Otras</label>
                 <div class="row">
                 <div class ="form-group col-md-5">
-                  <form id="otrasAlerigas" #otrasForm="ngForm" (ngSubmit)="addArrayAlergias($event); otrasForm.reset()" >
+                  <form id="otrasAlerigasForm" #otrasAlergiasForm="ngForm" (ngSubmit)="addArrayAlergias(otrasAlergiasForm.value)" >
                   <label for="nombre">Nombre de la Alergia</label>
-                  <input type="text" class="form-control" id="nombre" placeholder="Nombre de la Alergia" [disabled]=""/>
+                  <input type="text" class="form-control" name="nombre" ngModel placeholder="Nombre de la Alergia" [disabled]=""/>
                   <label for="categoria">Categoría</label>
-                  <select class="form-control" id="categoria"  required>
+                  <select class="form-control" name="categoria" ngModel  required>
                     <option>Alergia Cutánea</option>
                     <option>Respiratorias</option>
                     <option>Alimentos</option>
                     <option>Medicamentos</option>
                   </select>
                   <label for="reaccion">Reacción</label>
-                  <textarea class="form-control" [disabled]="" id="reaccion" placeholder="Reacción"></textarea>
-                  <label for="observacionesAlergia">Observaciones de la Alergia</label>
-                  <textarea class="form-control" [disabled]="" id="observacionesAlergia" placeholder="Observaciones"></textarea>
+                  <textarea class="form-control" [disabled]="" name="reaccion"  ngModel placeholder="Reacción"></textarea>
+                  <label for="observaciones">Observaciones de la Alergia</label>
+                  <textarea class="form-control" [disabled]="" name="observaciones" ngModel placeholder="Observaciones"></textarea>
                   <button type="submit" class="btn btn-primary mt-3">Agregar</button>
                 </form>
                 </div>

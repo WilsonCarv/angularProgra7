@@ -5,7 +5,6 @@ export interface AlergiaEntidad {
   categoria: string;
   reaccion: string;
   observaciones: string;
-  imagen: string;
   created_at: Date;
   updated_at: Date;
   deleted_at: Date;

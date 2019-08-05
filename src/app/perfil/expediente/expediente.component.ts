@@ -8,7 +8,11 @@ import { NotificacionService } from "src/app/share/notificacion.service";
 import { AlergiafrecEntidad } from "src/app/share/models/alergiafrec-entidad";
 import { AlergiafrecService } from "src/app/share/alergiafrec.service";
 import { Alergiafrec } from "src/app/share/models/alergiafrec";
+import { AlergiaEntidad } from "src/app/share/models/alergia-entidad";
+import { Alergia } from "src/app/share/models/alergia";
 import { ActividadesFisicas } from "../../share/models/actividades-fisicas";
+import { Actividadfisica } from "../../share/models/actividadfisica";
+import { ActividadfisicaEntidad } from "../../share/models/actividadfisica-entidad";
 import { ActividadesFisicasService } from "src/app/share/actividades-fisicas.service";
 import { ActividadesFisicasEntidad } from "../../share/models/actividades-fisicas-entidad";
 import { UserEntidad } from "src/app/share/models/user-entidad";
@@ -31,17 +35,8 @@ export class ExpedienteComponent implements OnInit {
   selectedAlergias: Array<number>; //Alergiafrec;
   actividadesFrecuentes: ActividadesFisicas;
   selectedActividades: Array<number>; //ActividadesFisicas;
-  actividades: Array<{
-    nombre: string;
-    tiempo_al_dia: string;
-    veces_por_semana: number;
-  }>;
-  alergias: Array<{
-    nombre: string;
-    categoria: string;
-    reaccion: string;
-    observaciones: string;
-  }>;
+  actividades: Array<ActividadfisicaEntidad>;
+  alergias: Array<AlergiaEntidad>;
   error: any;
   datos: Expediente;
   private stepper: Stepper;
@@ -84,34 +79,20 @@ export class ExpedienteComponent implements OnInit {
   // clickedOption() {
   //   console.log(this.selectedAlergias);
   // }
-  addArrayActividades(event) {
-    console.log("Nombre", event.target.nombreActividad.value);
-    console.log("Veces", event.target.veces_por_semana.value);
-    console.log("Tiempo", event.target.tiempo_al_dia.value);
-    const arr = {
-      nombre: event.target.nombreActividad.value,
-      tiempo_al_dia: event.target.tiempo_al_dia.value,
-      veces_por_semana: event.target.veces_por_semana.value
-    };
-    this.actividades.push(arr);
+  addArrayActividades(obj: ActividadfisicaEntidad) {
+    console.log("Objeto Actividades", obj);
+    this.actividades.push(obj);
+    console.log("Actividades", this.actividades);
     //Codigo para Limpiar el Form
-    (<HTMLFormElement>document.getElementById("otrasActividades")).reset();
+    (<HTMLFormElement>document.getElementById("otrasActividadesForm")).reset();
   }
 
-  addArrayAlergias(event, otrasForm: NgForm) {
-    console.log("Nombre", event.target.nombre.value);
-    console.log("categoria", event.target.categoria.value);
-    console.log("Reaccion", event.target.reaccion.value);
-    console.log("Observaciones", event.target.observacionesAlergia.value);
-    const arr = {
-      nombre: event.target.nombre.value,
-      categoria: event.target.categoria.value,
-      reaccion: event.target.reaccion.value,
-      observaciones: event.target.observacionesAlergia.value
-    };
-    this.alergias.push(arr);
+  addArrayAlergias(obj: AlergiaEntidad) {
+    console.log("Alergias", obj);
+    this.alergias.push(obj);
+    console.log("Actividades", this.alergias);
     //Codigo para Limpiar el Form
-    (<HTMLFormElement>document.getElementById("otrasAlerigas")).reset();
+    (<HTMLFormElement>document.getElementById("otrasAlerigasForm")).reset();
   }
 
   eliminarActividad(doc) {
