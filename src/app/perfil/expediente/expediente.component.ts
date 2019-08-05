@@ -43,12 +43,14 @@ export class ExpedienteComponent implements OnInit {
     observaciones: string;
   }>;
   error: any;
+  datos: Expediente;
   private stepper: Stepper;
   constructor(
     private router: Router,
     private alergiaFrecuenteService: AlergiafrecService,
     private actividadFrecuenteService: ActividadesFisicasService,
-    private notificacion: NotificacionService
+    private notificacion: NotificacionService,
+    private ExpedienteServ: ExpedienteService
   ) {
     this.getAlergias();
     this.getActividades();
