@@ -1,17 +1,21 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import Stepper from "bs-stepper";
 import { Router } from "@angular/router";
-
+import { Expediente } from 'src/app/share/models/expediente';
+import { ExpedienteService } from 'src/app/share/expediente.service';
+import { ExpedienteEntidad } from 'src/app/share/models/expediente-entidad';
 import { NotificacionService } from "src/app/share/notificacion.service";
 import { AlergiafrecEntidad } from "src/app/share/models/alergiafrec-entidad";
 import { AlergiafrecService } from "src/app/share/alergiafrec.service";
 import { Alergiafrec } from "src/app/share/models/alergiafrec";
-
 import { ActividadesFisicas } from "../../share/models/actividades-fisicas";
 import { ActividadesFisicasService } from "src/app/share/actividades-fisicas.service";
 import { ActividadesFisicasEntidad } from "../../share/models/actividades-fisicas-entidad";
 import { UserEntidad } from "src/app/share/models/user-entidad";
 import { NgForm } from "@angular/forms";
+export interface ErrorEntidad {
+  errors: { field: string; message: string }[];
+}
 
 @Component({
   selector: "app-expediente",
@@ -92,14 +96,15 @@ export class ExpedienteComponent implements OnInit {
     }
   }
 
-  onSubmit(event) {
-    console.log("Segundo Apellido", event.target.SegundoApellido.value);
+  onSubmit(obj: ExpedienteEntidad) {
+   /* console.log("Segundo Apellido", event.target.SegundoApellido.value);
     console.log("Sexo", event.target.sexo.value);
     console.log("Fecha", event.target.fechaNacimiento.value);
     console.log("Alergias", event.target.plataformas_id);
     console.log("Actividades Selecionanadas", this.selectedActividades);
     console.log("Alergias Selecionanadas", this.selectedAlergias);
-    return false;
+    return false;*/
+
   }
 
   changeStatusFuma(event) {
