@@ -102,7 +102,7 @@
                   <label class="custom-control-label" for="customSwitch1">Fuma</label>
                   <br>
                   <label for="historialFumando">Historial de Fumado</label>
-                  <input type="password" class="form-control" id="historialFumando" placeholder="Historial de Fumado" [disabled]="fuma"/>
+                  <input type="text" class="form-control" id="historialFumando" placeholder="Historial de Fumado" [disabled]="fuma"/>
                   <label for="cantidaCigarros">Cantidad de cigarros que fuma al día</label>
                   <input type="text" class="form-control" id="cantidaCigarros" placeholder="Cantidad de cigarros que fuma al día" [disabled]="fuma"/>
                   <label for="edadComenzoFumar">Edad a la que comenzo a fumar</label>
@@ -130,7 +130,7 @@
           <button type="button" (click)="next()" class="btn btn-primary mx-auto ">Siguiente</button>
         </div>
         <div id="test-l-3" class="content">
-                <label for="arlegias_id">Lista de Actividades</label>
+                <label for="actividades_id">Lista de Actividades</label>
                 <select multiple [(ngModel)]="selectedActividades" class="form-control" name="actividades_id">
                   <option *ngFor="let a of actividadesFrecuentes?.actividadFrecuente" [value]="a.id">
                     {{a.nombre}}</option>
@@ -185,8 +185,8 @@
                 <div class="row">
                 <div class ="form-group col-md-5">
                   <form id="otrasAlerigas" #otrasForm="ngForm" (ngSubmit)="addArrayAlergias($event); otrasForm.reset()" >
-                  <label for="nombreActividad">Nombre de la Alergia</label>
-                  <input type="text" class="form-control" id="nombre" placeholder="Nombre de la Actividad" [disabled]=""/>
+                  <label for="nombre">Nombre de la Alergia</label>
+                  <input type="text" class="form-control" id="nombre" placeholder="Nombre de la Alergia" [disabled]=""/>
                   <label for="categoria">Categoría</label>
                   <select class="form-control" id="categoria" required>
                     <option>Alergia Cutánea</option>
@@ -224,7 +224,52 @@
               </div>
         </div>
         <div id="test-l-5" class="content text-center">
-          <button type="submit" class="btn btn-primary mt-5">Submit</button>
+          <label for="arlegias_id">Lista de Alergias</label>
+                <select multiple [(ngModel)]="selectedAlergias" class="form-control" name="arlegias_id">
+                  <option *ngFor="let a of alergiasFrec?.alergiafrecuente" [value]="a.id">
+                    {{a.nombre}}</option>
+                </select>
+                <label>Otras</label>
+                <div class="row">
+                <div class ="form-group col-md-5">
+                  <form id="otrasAlerigas" #otrasForm="ngForm" (ngSubmit)="addArrayAlergias($event); otrasForm.reset()" >
+                  <label for="nombre">Nombre de la Alergia</label>
+                  <input type="text" class="form-control" id="nombre" placeholder="Nombre de la Alergia" [disabled]=""/>
+                  <label for="categoria">Categoría</label>
+                  <select class="form-control" id="categoria" required>
+                    <option>Alergia Cutánea</option>
+                    <option>Respiratorias</option>
+                    <option>Alimentos</option>
+                    <option>Medicamentos</option>
+                  </select>
+                  <label for="reaccion">Reacción</label>
+                  <textarea class="form-control" [disabled]="" id="reaccion" placeholder="Reacción"></textarea>
+                  <label for="observacionesAlergia">Observaciones de la Alergia</label>
+                  <textarea class="form-control" [disabled]="" id="observacionesAlergia" placeholder="Observaciones"></textarea>
+                  <button type="submit" class="btn btn-primary mt-3">Agregar</button>
+                </form>
+                </div>
+                <div class="form-group col-md-6" >
+                  <div class="table-responsive">
+                    <table class="table table-hover text-center" *ngIf="alergias?.length">
+                      <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Categoría</th>
+                          <th>Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let doc of alergias">
+                          <td>{{ doc.nombre }}</td>
+                          <td>{{ doc.categoria }}</td>
+                          <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarAlergia(doc)">Eliminar</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
         </div>
         <div id="test-l-6" class="content text-center">
           <button type="submit" class="btn btn-primary mt-5">Submit</button>

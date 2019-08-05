@@ -127,14 +127,15 @@ export class ExpedienteComponent implements OnInit {
     }
   }
 
-  onSubmit(obj: ExpedienteEntidad) {
-    /* console.log("Segundo Apellido", event.target.SegundoApellido.value);
+  onSubmit(event) {
+    console.log("Segundo Apellido", event.target.SegundoApellido.value);
     console.log("Sexo", event.target.sexo.value);
     console.log("Fecha", event.target.fechaNacimiento.value);
     console.log("Alergias", event.target.plataformas_id);
     console.log("Actividades Selecionanadas", this.selectedActividades);
     console.log("Alergias Selecionanadas", this.selectedAlergias);
-    return false;*/
+    console.log("Historial de fumado", event.target.historialFumando.value);
+    return false;
   }
 
   changeStatusFuma(event) {
