@@ -127,8 +127,8 @@ export class ExpedienteComponent implements OnInit {
     return this.ExpedienteServ.createExpediente(obj).subscribe(
       (respuesta: Expediente) => {
         this.datos = respuesta;
-        this.router.navigate(['/'], {
-          queryParams: { create: 'true' }
+        this.router.navigate(["/"], {
+          queryParams: { create: "true" }
         });
       },
       error => {
