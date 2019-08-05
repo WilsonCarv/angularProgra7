@@ -57,7 +57,7 @@
           <div class=row>
               <div class="form-group col-md-6 form-group">
                   <label for="Identificación">Identificación</label>
-                  <input type="text" class="form-control" id="Identificación" placeholder="Identificación" />
+                  <input type="text" class="form-control" id="Identificacion" placeholder="Identificación" />
                   <label for="Nombre">Nombre</label>
                   <input type="text" class="form-control" id="Nombre" placeholder="Nombre" />
                   <label for="PrimerApellido">Primer Apellido</label>
@@ -65,7 +65,7 @@
                   <label for="SegundoApellido">Segundo Apellido</label>
                   <input type="text" class="form-control" id="SegundoApellido" placeholder="Segundo Apellido" />
                   <label for="roles">Género</label>
-                  <select class="form-control" name="sexo" ngModel required>
+                  <select class="form-control" id="sexo" required>
                     <option>Masculino</option>
                     <option>Femenino</option>
                   </select>
@@ -74,7 +74,7 @@
                     <label for="fechaNacimiento">Fecha de Nacimiento</label>
                     <input type="date" class="form-control" id="fechaNacimiento" placeholder="Enter email" />
                     <label for="roles">Tipo de Sangre</label>
-                    <select class="form-control" name="tipoSangre" ngModel required>
+                    <select class="form-control" id="tipoSangre"  required>
                     <option>O negativo</option>
                     <option>O positivo</option>
                     <option>A negativo</option>
@@ -102,7 +102,7 @@
                   <label class="custom-control-label" for="customSwitch1">Fuma</label>
                   <br>
                   <label for="historialFumando">Historial de Fumado</label>
-                  <input type="password" class="form-control" id="historialFumando" placeholder="Historial de Fumado" [disabled]="fuma"/>
+                  <input type="text" class="form-control" id="historialFumando" placeholder="Historial de Fumado" [disabled]="fuma"/>
                   <label for="cantidaCigarros">Cantidad de cigarros que fuma al día</label>
                   <input type="text" class="form-control" id="cantidaCigarros" placeholder="Cantidad de cigarros que fuma al día" [disabled]="fuma"/>
                   <label for="edadComenzoFumar">Edad a la que comenzo a fumar</label>
