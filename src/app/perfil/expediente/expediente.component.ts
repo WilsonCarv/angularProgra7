@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import Stepper from "bs-stepper";
 import { Router } from "@angular/router";
 
@@ -11,6 +11,7 @@ import { ActividadesFisicas } from "../../share/models/actividades-fisicas";
 import { ActividadesFisicasService } from "src/app/share/actividades-fisicas.service";
 import { ActividadesFisicasEntidad } from "../../share/models/actividades-fisicas-entidad";
 import { UserEntidad } from "src/app/share/models/user-entidad";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-expediente",
@@ -25,6 +26,11 @@ export class ExpedienteComponent implements OnInit {
   selectedAlergias: Alergiafrec;
   actividadesFrecuentes: ActividadesFisicas;
   selectedActividades: ActividadesFisicas;
+  actividades: Array<{
+    nombre: string;
+    tiempo_al_dia: string;
+    veces_por_semana: number;
+  }>;
   error: any;
   private stepper: Stepper;
   constructor(
@@ -35,6 +41,7 @@ export class ExpedienteComponent implements OnInit {
   ) {
     this.getAlergias();
     this.getActividades();
+    this.actividades = [];
   }
 
   getAlergias() {
@@ -63,9 +70,30 @@ export class ExpedienteComponent implements OnInit {
   // clickedOption() {
   //   console.log(this.selectedAlergias);
   // }
+  addArray(event, otrasForm: NgForm) {
+    console.log("Nombre", event.target.nombreActividad.value);
+    console.log("Veces", event.target.veces_por_semana.value);
+    console.log("Tiempo", event.target.tiempo_al_dia.value);
+    const arr = {
+      nombre: event.target.nombreActividad.value,
+      tiempo_al_dia: event.target.tiempo_al_dia.value,
+      veces_por_semana: event.target.veces_por_semana.value
+    };
+    this.actividades.push(arr);
+    //Codigo para Limpiar el Form
+    (<HTMLFormElement>document.getElementById("otrasActividades")).reset();
+  }
+
+  eliminarActividad(doc) {
+    console.log("Doc", doc);
+    const index: number = this.actividades.indexOf(doc);
+    if (index !== -1) {
+      this.actividades.splice(index, 1);
+    }
+  }
 
   onSubmit(event) {
-    console.log("Segundo Apellidog", event.target.SegundoApellido.value);
+    console.log("Segundo Apellido", event.target.SegundoApellido.value);
     console.log("Sexo", event.target.sexo.value);
     console.log("Fecha", event.target.fechaNacimiento.value);
     console.log("Alergias", event.target.plataformas_id);
@@ -82,7 +110,7 @@ export class ExpedienteComponent implements OnInit {
       this.fuma = false;
       console.log("Fuma", this.fuma);
     }
-    console.log("CheckBox", event);
+    console.log("CheckBox", event.target.customSwitch1);
   }
   changeStatusAlcohol(event) {
     if (!this.toma) {
