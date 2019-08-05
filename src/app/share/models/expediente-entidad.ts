@@ -38,11 +38,11 @@ export interface ExpedienteEntidad {
   created_at: Date;
   updated_at: Date;
   deleted_at: Date;
-  actividades_fisicas: ActividadfisicaEntidad [];
+  actividades_fisicas: ActividadfisicaEntidad[];
   actividades_fisicas_id: Array<number>;
   actividades_fisicas_frecuentes: ActividadesFisicasEntidad[];
   actividades_fisicas_frecuentes_id: Array<number>;
- /* Doctores: ActividadfisicaEntidad[];
+  /* Doctores: ActividadfisicaEntidad[];
   alergias: AlergiaEntidad[];
   alergiasFrecuentes: AlergiafrecEntidad[];
   cirugias: CirugiaEntidad[];

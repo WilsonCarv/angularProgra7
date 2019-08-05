@@ -26,10 +26,11 @@ export class ExpedienteComponent implements OnInit {
   name = "Angular";
   fuma = true;
   toma = true;
+  expediente: ExpedienteEntidad;
   alergiasFrec: Alergiafrec;
-  selectedAlergias: Alergiafrec;
+  selectedAlergias: Array<number>; //Alergiafrec;
   actividadesFrecuentes: ActividadesFisicas;
-  selectedActividades: ActividadesFisicas;
+  selectedActividades: Array<number>; //ActividadesFisicas;
   actividades: Array<{
     nombre: string;
     tiempo_al_dia: string;
@@ -127,14 +128,25 @@ export class ExpedienteComponent implements OnInit {
     }
   }
 
-  onSubmit(event) {
-    console.log("Segundo Apellido", event.target.SegundoApellido.value);
-    console.log("Sexo", event.target.sexo.value);
-    console.log("Fecha", event.target.fechaNacimiento.value);
-    console.log("Alergias", event.target.plataformas_id);
+  onSubmit(obj: ExpedienteEntidad) {
+    if (this.fuma) {
+      obj.fumado = 0;
+    } else {
+      obj.fumado = 1;
+    }
+
+    if (this.toma) {
+      obj.alcohol = 0;
+    } else {
+      obj.alcohol = 1;
+    }
+    console.log("Segundo Apellido", obj.segundo_apellido);
+    console.log("Sexo", obj.sexo);
+    console.log("Fecha", obj.fecha_nacimiento);
     console.log("Actividades Selecionanadas", this.selectedActividades);
     console.log("Alergias Selecionanadas", this.selectedAlergias);
-    console.log("Historial de fumado", event.target.historialFumando.value);
+    console.log("Historial de fumado", obj.historial_fumado);
+    console.log("expediente", obj);
     return false;
   }
 

@@ -52,18 +52,18 @@
       </div>
     </div>
     <div class="bs-stepper-content">
-      <form (ngSubmit)="onSubmit($event)">
+      <form #form="ngForm" (ngSubmit)="onSubmit(form.value); form.reset()" >
         <div id="test-l-1" class="content">
           <div class=row>
               <div class="form-group col-md-6 form-group">
-                  <label for="Identificación">Identificación</label>
-                  <input type="text" class="form-control" id="Identificación" placeholder="Identificación" />
-                  <label for="Nombre">Nombre</label>
-                  <input type="text" class="form-control" id="Nombre" placeholder="Nombre" />
+                  <label for="identificación">Identificación</label>
+                  <input type="text" class="form-control" name="identificacion" placeholder="Identificación" />
+                  <label for="nombre">Nombre</label>
+                  <input type="text" class="form-control" name="nombre" placeholder="Nombre" />
                   <label for="PrimerApellido">Primer Apellido</label>
-                  <input type="text" class="form-control" id="PrimerApellido" placeholder="Primer Apellido" />
+                  <input type="text" class="form-control" name="primer_apellido" ngModel placeholder="Primer Apellido" />
                   <label for="SegundoApellido">Segundo Apellido</label>
-                  <input type="text" class="form-control" id="SegundoApellido" placeholder="Segundo Apellido" />
+                  <input type="text" class="form-control" name="segundo_apellido" ngModel placeholder="Segundo Apellido" />
                   <label for="roles">Género</label>
                   <select class="form-control" name="sexo" ngModel required>
                     <option>Masculino</option>
@@ -71,10 +71,10 @@
                   </select>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="fechaNacimiento">Fecha de Nacimiento</label>
-                    <input type="date" class="form-control" id="fechaNacimiento" placeholder="Enter email" />
-                    <label for="roles">Tipo de Sangre</label>
-                    <select class="form-control" name="tipoSangre" ngModel required>
+                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" name="fecha_nacimiento" ngModel placeholder="Enter email" />
+                    <label for="tipo_sangre">Tipo de Sangre</label>
+                    <select class="form-control" name="tipo_sangre" ngModel required>
                     <option>O negativo</option>
                     <option>O positivo</option>
                     <option>A negativo</option>
@@ -85,11 +85,11 @@
                     <option>AB positivo</option>
                   </select>
                     <label for="numeroTelefono">Número de teléfono<table></table></label>
-                    <input type="text" class="form-control" id="numeroTelefono" placeholder="Número de teléfono" />
+                    <input type="text" class="form-control" name="numero_telefono" ngModel placeholder="Número de teléfono" />
                     <label for="contactoEmergencia">Contacto de Emergencia<table></table></label>
-                    <input type="text" class="form-control" id="contactoEmergencia" placeholder="Contacto de Emergencia" />
+                    <input type="text" class="form-control" name="contacto_emergencia" ngModel placeholder="Contacto de Emergencia" />
                     <label for="lugarResidencia">Lugar de Residencia</label>
-                    <textarea class="form-control" id="lugarResidencia"></textarea>
+                    <textarea class="form-control" ngModel name="lugar_Residencia"></textarea>
                   </div>
                 <button type="button" (click)="next()" class="btn btn-primary mx-auto mt-4">Siguiente</button>
               </div>
@@ -99,16 +99,16 @@
           <div class="form-group custom-control custom-switch" >
                   <input type="checkbox" class="custom-control-input" id="customSwitch1"
                     (change)="changeStatusFuma($event)">
-                  <label class="custom-control-label" for="customSwitch1">Fuma</label>
+                  <label class="custom-control-label"  for="customSwitch1">Fuma</label>
                   <br>
-                  <label for="historialFumando">Historial de Fumado</label>
-                  <input type="text" class="form-control" id="historialFumando" placeholder="Historial de Fumado" [disabled]="fuma"/>
-                  <label for="cantidaCigarros">Cantidad de cigarros que fuma al día</label>
-                  <input type="text" class="form-control" id="cantidaCigarros" placeholder="Cantidad de cigarros que fuma al día" [disabled]="fuma"/>
-                  <label for="edadComenzoFumar">Edad a la que comenzo a fumar</label>
-                  <input type="text" class="form-control" id="edadComenzoFumar" placeholder="Edad a la que comenzo a fumar" [disabled]="fuma"/>
-                  <label for="observaciones">Observaciones de Fumado</label>
-                  <textarea class="form-control" [disabled]="fuma" id="observacionesFumado"></textarea>
+                  <label for="historial_fumado">Historial de Fumado</label>
+                  <input type="text" class="form-control" ngModel name="historial_fumado" placeholder="Historial de Fumado" [disabled]="fuma"/>
+                  <label for="cantidad_cigarros_dia">Cantidad de cigarros que fuma al día</label>
+                  <input type="text" class="form-control" name="cantidad_cigarros_dia" ngModel placeholder="Cantidad de cigarros que fuma al día" [disabled]="fuma"/>
+                  <label for="edad_comenzo_fumar">Edad a la que comenzo a fumar</label>
+                  <input type="text" class="form-control" name="edad_comenzo_fumar" ngModel placeholder="Edad a la que comenzo a fumar" [disabled]="fuma"/>
+                  <label for="observaciones_fumado">Observaciones de Fumado</label>
+                  <textarea class="form-control" [disabled]="fuma" name="observaciones_fumado" ngModel></textarea>
                 </div>
                 <hr>
                 <div class="form-group custom-control custom-switch">
@@ -116,22 +116,22 @@
                     (change)="changeStatusAlcohol($event)">
                   <label class="custom-control-label" for="customSwitch2">Consume alcohol</label>
                   <br>
-                  <label for="historialFumando">Historial de Alcohol</label>
-                  <input type="text" class="form-control" id="historialAlcohol" placeholder="Historial de Alcohol" [disabled]="toma"/>
-                  <label for="cantidaToma">Cantidad de alcohol que toma al día</label>
-                  <input type="text" class="form-control" id="cantidaToma" placeholder="Cantidad de alcohol que toma al día" [disabled]="toma"/>
-                  <label for="edadComenzoTomar">Edad a la que comenzo a tomar</label>
-                  <input type="text" class="form-control" id="edadComenzoTomar" placeholder="Edad a la que comenzo a tomar" [disabled]="toma"/>
-                  <label for="tipoAlcohol">Tipo de licor que mas consume</label>
-                  <textarea class="form-control" [disabled]="toma" id="tipoAlcohol"></textarea>
-                  <label for="observacionesAlchohol">Observaciones consumo de licor</label>
-                  <textarea class="form-control" [disabled]="toma" id="observacionesAlchohol"></textarea>
+                  <label for="historial_alcohol">Historial de Alcohol</label>
+                  <input type="text" class="form-control" name="historial_alcohol" ngModel placeholder="Historial de Alcohol" [disabled]="toma"/>
+                  <label for="frecuencia_alcohol">Cantidad de alcohol que toma al día</label>
+                  <input type="text" class="form-control" name="frecuencia_alcohol" ngModel placeholder="Cantidad de alcohol que toma al día" [disabled]="toma"/>
+                  <label for="edad_comenzo_tomar">Edad a la que comenzo a tomar</label>
+                  <input type="text" class="form-control" name="edad_comenzo_tomar"  ngModel placeholder="Edad a la que comenzo a tomar" [disabled]="toma"/>
+                  <label for="toma_usualmente">Tipo de licor que mas consume</label>
+                  <textarea class="form-control" [disabled]="toma" name="toma_usualmente" ngModel></textarea>
+                  <label for="observaciones_alcohol">Observaciones consumo de licor</label>
+                  <textarea class="form-control" [disabled]="toma"  name="observaciones_alcohol" ngModel></textarea>
           </div>
           <button type="button" (click)="next()" class="btn btn-primary mx-auto ">Siguiente</button>
         </div>
         <div id="test-l-3" class="content">
                 <label for="actividades_id">Lista de Actividades</label>
-                <select multiple [(ngModel)]="selectedActividades" class="form-control" name="actividades_id">
+                <select multiple [(ngModel)]="selectedActividades" ngModel class="form-control" name="actividades_id">
                   <option *ngFor="let a of actividadesFrecuentes?.actividadFrecuente" [value]="a.id">
                     {{a.nombre}}</option>
                 </select>
@@ -188,7 +188,7 @@
                   <label for="nombre">Nombre de la Alergia</label>
                   <input type="text" class="form-control" id="nombre" placeholder="Nombre de la Alergia" [disabled]=""/>
                   <label for="categoria">Categoría</label>
-                  <select class="form-control" id="categoria" required>
+                  <select class="form-control" id="categoria"  required>
                     <option>Alergia Cutánea</option>
                     <option>Respiratorias</option>
                     <option>Alimentos</option>
