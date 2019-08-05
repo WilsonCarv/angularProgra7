@@ -34,24 +34,9 @@ export class ExpedienteComponent implements OnInit {
   alergiasFrec: Alergiafrec;
   selectedAlergias: Array<number>; // Alergiafrec;
   actividadesFrecuentes: ActividadesFisicas;
-<<<<<<< HEAD
   selectedActividades: Array<number>; //ActividadesFisicas;
   actividades: Array<ActividadfisicaEntidad>;
   alergias: Array<AlergiaEntidad>;
-=======
-  selectedActividades: Array<number>; // ActividadesFisicas;
-  actividades: Array<{
-    nombre: string;
-    tiempo_al_dia: string;
-    veces_por_semana: number;
-  }>;
-  alergias: Array<{
-    nombre: string;
-    categoria: string;
-    reaccion: string;
-    observaciones: string;
-  }>;
->>>>>>> 914bf261ec7d76927a1a1cd58226cd01f9d4e77d
   error: any;
   datos: Expediente;
   private stepper: Stepper;
