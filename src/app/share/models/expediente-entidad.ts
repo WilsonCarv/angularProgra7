@@ -38,8 +38,11 @@ export interface ExpedienteEntidad {
   created_at: Date;
   updated_at: Date;
   deleted_at: Date;
-  actividadesFisicas: ActividadesFisicasEntidad[];
-  Doctores: ActividadfisicaEntidad[];
+  actividades_fisicas: ActividadfisicaEntidad [];
+  actividades_fisicas_id: Array<number>;
+  actividades_fisicas_frecuentes: ActividadesFisicasEntidad[];
+  actividades_fisicas_frecuentes_id: Array<number>;
+ /* Doctores: ActividadfisicaEntidad[];
   alergias: AlergiaEntidad[];
   alergiasFrecuentes: AlergiafrecEntidad[];
   cirugias: CirugiaEntidad[];
@@ -51,5 +54,5 @@ export interface ExpedienteEntidad {
   detalleActividades: DetactividadfrecEntidad[];
   detalleAlergias: DetalergiaEntidad[];
   detalleEnfermedades: DetenfemedadesEntidad[];
-  citas: Citas[];
+  citas: Citas[];*/
 }
