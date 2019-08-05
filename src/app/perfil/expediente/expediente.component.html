@@ -184,7 +184,7 @@
                 <label>Otras</label>
                 <div class="row">
                 <div class ="form-group col-md-5">
-                  <form id="otrasAlerigas" #otrasForm="ngForm" (ngSubmit)=" addArrayAlergias($event); otrasForm.reset()" >
+                  <form id="otrasAlerigas" #otrasForm="ngForm" (ngSubmit)="addArrayAlergias($event); otrasForm.reset()" >
                   <label for="nombreActividad">Nombre de la Alergia</label>
                   <input type="text" class="form-control" id="nombre" placeholder="Nombre de la Actividad" [disabled]=""/>
                   <label for="categoria">Categoría</label>
