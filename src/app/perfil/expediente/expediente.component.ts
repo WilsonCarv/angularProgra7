@@ -32,11 +32,26 @@ export class ExpedienteComponent implements OnInit {
   toma = true;
   expediente: ExpedienteEntidad;
   alergiasFrec: Alergiafrec;
-  selectedAlergias: Array<number>; //Alergiafrec;
+  selectedAlergias: Array<number>; // Alergiafrec;
   actividadesFrecuentes: ActividadesFisicas;
+<<<<<<< HEAD
   selectedActividades: Array<number>; //ActividadesFisicas;
   actividades: Array<ActividadfisicaEntidad>;
   alergias: Array<AlergiaEntidad>;
+=======
+  selectedActividades: Array<number>; // ActividadesFisicas;
+  actividades: Array<{
+    nombre: string;
+    tiempo_al_dia: string;
+    veces_por_semana: number;
+  }>;
+  alergias: Array<{
+    nombre: string;
+    categoria: string;
+    reaccion: string;
+    observaciones: string;
+  }>;
+>>>>>>> 914bf261ec7d76927a1a1cd58226cd01f9d4e77d
   error: any;
   datos: Expediente;
   private stepper: Stepper;
@@ -123,14 +138,19 @@ export class ExpedienteComponent implements OnInit {
     } else {
       obj.alcohol = 1;
     }
-    console.log("Segundo Apellido", obj.segundo_apellido);
-    console.log("Sexo", obj.sexo);
-    console.log("Fecha", obj.fecha_nacimiento);
-    console.log("Actividades Selecionanadas", this.selectedActividades);
-    console.log("Alergias Selecionanadas", this.selectedAlergias);
-    console.log("Historial de fumado", obj.historial_fumado);
     console.log("expediente", obj);
-    return false;
+    return this.ExpedienteServ.createExpediente(obj).subscribe(
+      (respuesta: Expediente) => {
+        this.datos = respuesta;
+        this.router.navigate(['/'], {
+          queryParams: { create: 'true' }
+        });
+      },
+      error => {
+        this.error = error;
+        this.notificacion.msjValidacion(this.error);
+      }
+    );
   }
 
   changeStatusFuma(event) {

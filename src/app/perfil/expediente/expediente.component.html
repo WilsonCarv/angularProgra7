@@ -57,7 +57,7 @@
           <div class=row>
               <div class="form-group col-md-6 form-group">
                   <label for="identificación">Identificación</label>
-                  <input type="text" class="form-control" name="identificacion" placeholder="Identificación" />
+                  <input type="text" class="form-control" name="identificacion" placeholder="Identificación" ngModel/>
                   <label for="nombre">Nombre</label>
                   <input type="text" class="form-control" name="nombre" placeholder="Nombre" />
                   <label for="PrimerApellido">Primer Apellido</label>
@@ -65,7 +65,7 @@
                   <label for="SegundoApellido">Segundo Apellido</label>
                   <input type="text" class="form-control" name="segundo_apellido" ngModel placeholder="Segundo Apellido" />
                   <label for="roles">Género</label>
-                  <select class="form-control" id="sexo" required>
+                  <select class="form-control" name="sexo" ngModel required>
                     <option>Masculino</option>
                     <option>Femenino</option>
                   </select>
@@ -131,7 +131,7 @@
         </div>
         <div id="test-l-3" class="content">
                 <label for="actividades_id">Lista de Actividades</label>
-                <select multiple [(ngModel)]="selectedActividades" ngModel class="form-control" name="actividades_id">
+                <select multiple [(ngModel)]="selectedActividades" ngModel class="form-control" name=" actividades_fisicas_frecuentes_id">
                   <option *ngFor="let a of actividadesFrecuentes?.actividadFrecuente" [value]="a.id">
                     {{a.nombre}}</option>
                 </select>
@@ -280,6 +280,7 @@
         <div id="test-l-8" class="content text-center">
           <button type="submit" class="btn btn-primary mt-5">Submit</button>
         </div>
+        {{ form.value | json }}
       </form>
     </div>
   </div>
