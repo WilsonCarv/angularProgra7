@@ -45,7 +45,7 @@
         </div>
         <div class="line"></div>
         <div class="step" data-target="#test-l-7">
-          <button class="step-trigger">
+          <button class="step-trigger"[disabled]="test">
             <span class="bs-stepper-circle">7</span>
             <span class="bs-stepper-label">Medicamentos</span>
           </button>
@@ -70,7 +70,7 @@
                       <option>Femenino</option>
                     </select>
                   </div>
-                  <div class="form-group col-md-6 form-group">
+                  <div class="form-group col-md-6">
                       <label for="fechaNacimiento">Fecha de Nacimiento</label>
                       <input type="date" class="form-control" id="fechaNacimiento" placeholder="Enter email" />
                       <label for="roles">Tipo de Sangre</label>
@@ -91,7 +91,7 @@
                       <label for="lugarResidencia">Lugar de Residencia</label>
                       <textarea class="form-control" id="lugarResidencia"></textarea>
                     </div>
-                  <button (click)="next()" class="btn btn-primary mx-auto mt-4">Siguiente</button>
+                  <button type="button" (click)="next()" class="btn btn-primary mx-auto mt-4">Siguiente</button>
                 </div>
             </div>
 
@@ -109,7 +109,6 @@
                     <input type="text" class="form-control" id="edadComenzoFumar" placeholder="Edad a la que comenzo a fumar" [disabled]="fuma"/>
                     <label for="observaciones">Observaciones de Fumado</label>
                     <textarea class="form-control" [disabled]="fuma" id="observacionesFumado"></textarea>
-
                   </div>
                   <hr>
                   <div class="form-group custom-control custom-switch">
@@ -128,14 +127,53 @@
                     <label for="observacionesAlchohol">Observaciones consumo de licor</label>
                     <textarea class="form-control" [disabled]="toma" id="observacionesAlchohol"></textarea>
             </div>
-            <button (click)="next()" class="btn btn-primary">Next</button>
+            <button type="button" (click)="next()" class="btn btn-primary mx-auto ">Siguiente</button>
           </div>
-          <div id="test-l-3" class="content text-center">
+          <div id="test-l-3" class="content">
                   <label for="arlegias_id">Lista de Actividades</label>
                   <select multiple [(ngModel)]="selectedActividades" class="form-control" name="actividades_id">
                     <option *ngFor="let a of actividadesFrecuentes?.actividadFrecuente" [value]="a.id">
                       {{a.nombre}}</option>
                   </select>
+                  <hr>
+                  <label>Otras</label>
+                  <div class="row">
+                  <div class ="form-group col-md-5">
+                    <form id="otrasActividades" #otrasForm="ngForm" (ngSubmit)=" addArray($event); otrasForm.reset()" >
+                    <label for="nombreActividad">Nombre de la actividad</label>
+                    <input type="text" class="form-control" id="nombreActividad" placeholder="Nombre de la Actividad" [disabled]=""/>
+                    <label for="tiempo_al_dia">Cantidad de horas al día que hace la actividad</label>
+                    <input type="text" class="form-control" id="tiempo_al_dia" placeholder="Cantidad de horas al día que hace la actividad"  [disabled]=""/>
+                    <label for="veces_por_semana">Cantidad de veces por semana por semana</label>
+                    <input type="text" class="form-control" id="veces_por_semana" placeholder="Cantidad de horas al día que hace la actividad" [disabled]=""/>
+                    <button type="submit" class="btn btn-primary mt-3">Agregar</button>
+                  </form>
+                  </div>
+                  <div class="form-group col-md-6" >
+                    <div class="table-responsive">
+                      <table class="table table-hover text-center" *ngIf="actividades?.length">
+                        <thead>
+                          <tr>
+                            <th>Nombre</th>
+                            <th>Cantidad de horas al día</th>
+                            <th>Cantidad de veces por semana</th>
+                            <th>Opciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let doc of actividades">
+                            <td>{{ doc.nombre }}</td>
+                            <td>{{ doc.tiempo_al_dia }}</td>
+                            <td>{{ doc.veces_por_semana }}</td>
+                            <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarActividad(doc)">Eliminar</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <button type="button" (click)="next()" class="btn btn-primary mx-auto mt-4">Siguiente</button>
           </div>
           <div id="test-l-4" class="content text-center">
               <label for="arlegias_id">Lista de Alergias</label>
