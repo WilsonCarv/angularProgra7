@@ -28,9 +28,9 @@ export class ExpedienteComponent implements OnInit {
   toma = true;
   expediente: ExpedienteEntidad;
   alergiasFrec: Alergiafrec;
-  selectedAlergias: Array<number>; //Alergiafrec;
+  selectedAlergias: Array<number>; // Alergiafrec;
   actividadesFrecuentes: ActividadesFisicas;
-  selectedActividades: Array<number>; //ActividadesFisicas;
+  selectedActividades: Array<number>; // ActividadesFisicas;
   actividades: Array<{
     nombre: string;
     tiempo_al_dia: string;
@@ -94,7 +94,7 @@ export class ExpedienteComponent implements OnInit {
       veces_por_semana: event.target.veces_por_semana.value
     };
     this.actividades.push(arr);
-    //Codigo para Limpiar el Form
+    // Codigo para Limpiar el Form
     (<HTMLFormElement>document.getElementById("otrasActividades")).reset();
   }
 
@@ -110,7 +110,7 @@ export class ExpedienteComponent implements OnInit {
       observaciones: event.target.observacionesAlergia.value
     };
     this.alergias.push(arr);
-    //Codigo para Limpiar el Form
+    // Codigo para Limpiar el Form
     (<HTMLFormElement>document.getElementById("otrasAlerigas")).reset();
   }
 
@@ -142,14 +142,19 @@ export class ExpedienteComponent implements OnInit {
     } else {
       obj.alcohol = 1;
     }
-    console.log("Segundo Apellido", obj.segundo_apellido);
-    console.log("Sexo", obj.sexo);
-    console.log("Fecha", obj.fecha_nacimiento);
-    console.log("Actividades Selecionanadas", this.selectedActividades);
-    console.log("Alergias Selecionanadas", this.selectedAlergias);
-    console.log("Historial de fumado", obj.historial_fumado);
     console.log("expediente", obj);
-    return false;
+    return this.ExpedienteServ.createExpediente(obj).subscribe(
+      (respuesta: Expediente) => {
+        this.datos = respuesta;
+        this.router.navigate(['/'], {
+          queryParams: { create: 'true' }
+        });
+      },
+      error => {
+        this.error = error;
+        this.notificacion.msjValidacion(this.error);
+      }
+    );
   }
 
   changeStatusFuma(event) {
