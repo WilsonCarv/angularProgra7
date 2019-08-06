@@ -11,6 +11,8 @@ import { EnfermedadFrecuenteService } from "src/app/share/enfermedad-frecuente.s
 import { Alergiafrec } from "src/app/share/models/alergiafrec";
 import { Enfermedad } from "src/app/share/models/enfermedad";
 import { EnfermedadEntidad } from "src/app/share/models/enfermedad-entidad";
+import { Enfermedadfamiliar } from "src/app/share/models/enfermedadfamiliar";
+import { EnfermedadfamiliarEntidad } from "src/app/share/models/enfermedadfamiliar-entidad";
 import { EnfermedadesFrecuentes } from "src/app/share/models/enfermedades-frecuentes";
 import { AlergiaEntidad } from "src/app/share/models/alergia-entidad";
 import { Alergia } from "src/app/share/models/alergia";
@@ -21,6 +23,10 @@ import { ActividadesFisicasService } from "src/app/share/actividades-fisicas.ser
 import { ActividadesFisicasEntidad } from "../../share/models/actividades-fisicas-entidad";
 import { UserEntidad } from "src/app/share/models/user-entidad";
 import { NgForm } from "@angular/forms";
+import { Cirugia } from "src/app/share/models/cirugia";
+import { CirugiaEntidad } from "src/app/share/models/cirugia-entidad";
+import { Medicamentos } from "src/app/share/models/medicamentos";
+import { MedicamentosEntidad } from "src/app/share/models/medicamentos-entidad";
 export interface ErrorEntidad {
   errors: { field: string; message: string }[];
 }
@@ -43,7 +49,11 @@ export class ExpedienteComponent implements OnInit {
   actividades: Array<ActividadfisicaEntidad>;
   alergias: Array<AlergiaEntidad>;
   enfermedades: Array<EnfermedadEntidad>;
-  selectedEnfermedades: Array<number>; // Enfermedades;
+  cirugias: Array<CirugiaEntidad>;
+  medicamentos: Array<MedicamentosEntidad>;
+  enfermedadesFamiliares: Array<EnfermedadfamiliarEntidad>;
+  selectedEnfermedades: Array<number>;
+  // Enfermedades;
   error: any;
   datos: Expediente;
   private stepper: Stepper;
@@ -61,6 +71,9 @@ export class ExpedienteComponent implements OnInit {
     this.actividades = [];
     this.alergias = [];
     this.enfermedades = [];
+    this.enfermedadesFamiliares = [];
+    this.cirugias = [];
+    this.medicamentos = [];
   }
 
   getAlergias() {
@@ -112,7 +125,23 @@ export class ExpedienteComponent implements OnInit {
     //Codigo para Limpiar el Form
     (<HTMLFormElement>document.getElementById("otrasEnfermedades")).reset();
   }
-  addArrayEnfermedadesFamiliares() {}
+  addArrayEnfermedadesFamiliares(obj: EnfermedadfamiliarEntidad) {
+    this.enfermedadesFamiliares.push(obj);
+    //Codigo para Limpiar el Form
+    (<HTMLFormElement>(
+      document.getElementById("enfermedadesFamiliares")
+    )).reset();
+  }
+  addArrayCirugias(obj: CirugiaEntidad) {
+    this.cirugias.push(obj);
+    //Codigo para Limpiar el Form
+    (<HTMLFormElement>document.getElementById("cirugiasForm")).reset();
+  }
+  addArrayMedicamentos(obj: MedicamentosEntidad) {
+    this.medicamentos.push(obj);
+    //Codigo para Limpiar el Form
+    (<HTMLFormElement>document.getElementById("medicamentosForm")).reset();
+  }
 
   eliminarActividad(doc) {
     const index: number = this.actividades.indexOf(doc);
@@ -132,6 +161,24 @@ export class ExpedienteComponent implements OnInit {
       this.enfermedades.splice(index, 1);
     }
   }
+  eliminarEnfermedadFamiliar(doc) {
+    const index: number = this.enfermedadesFamiliares.indexOf(doc);
+    if (index !== -1) {
+      this.enfermedadesFamiliares.splice(index, 1);
+    }
+  }
+  eliminarCirugias(doc) {
+    const index: number = this.cirugias.indexOf(doc);
+    if (index !== -1) {
+      this.cirugias.splice(index, 1);
+    }
+  }
+  eliminarMedicamentos(doc) {
+    const index: number = this.medicamentos.indexOf(doc);
+    if (index !== -1) {
+      this.medicamentos.splice(index, 1);
+    }
+  }
 
   onSubmit(obj: ExpedienteEntidad) {
     if (this.fuma) {
@@ -144,6 +191,19 @@ export class ExpedienteComponent implements OnInit {
       obj.alcohol = 0;
     } else {
       obj.alcohol = 1;
+    }
+    //Mae aqui le dejo las validaciones.
+    if (this.alergias.length > 0) {
+    }
+    if (this.actividades.length > 0) {
+    }
+    if (this.enfermedades.length > 0) {
+    }
+    if (this.enfermedadesFamiliares.length > 0) {
+    }
+    if (this.cirugias.length > 0) {
+    }
+    if (this.medicamentos.length > 0) {
     }
     console.log("expediente", obj);
     return this.ExpedienteServ.createExpediente(obj).subscribe(
