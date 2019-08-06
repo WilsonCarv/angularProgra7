@@ -91,36 +91,26 @@ export class ExpedienteComponent implements OnInit {
     this.stepper.next();
   }
 
-  // clickedOption() {
-  //   console.log(this.selectedAlergias);
-  // }
   addArrayActividades(obj: ActividadfisicaEntidad) {
-    console.log("Objeto Actividades", obj);
     this.actividades.push(obj);
-    console.log("Actividades", this.actividades);
     //Codigo para Limpiar el Form
     (<HTMLFormElement>document.getElementById("otrasActividadesForm")).reset();
   }
 
   addArrayAlergias(obj: AlergiaEntidad) {
-    console.log("Alergias", obj);
     this.alergias.push(obj);
-    console.log("Actividades", this.alergias);
     //Codigo para Limpiar el Form
     (<HTMLFormElement>document.getElementById("otrasAlerigasForm")).reset();
   }
 
   eliminarActividad(doc) {
-    console.log("Doc", doc);
     const index: number = this.actividades.indexOf(doc);
     if (index !== -1) {
       this.actividades.splice(index, 1);
     }
   }
   eliminarAlergia(doc) {
-    console.log("Doc", doc);
     const index: number = this.alergias.indexOf(doc);
-    console.log("Index", index);
     if (index !== -1) {
       this.alergias.splice(index, 1);
     }
