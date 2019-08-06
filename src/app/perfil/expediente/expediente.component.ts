@@ -76,6 +76,33 @@ export class ExpedienteComponent implements OnInit {
     this.medicamentos = [];
   }
 
+  ngOnInit() {
+    this.stepper = new Stepper(document.querySelector("#stepper1"), {
+      linear: false,
+      animation: true
+    });
+  }
+  changeStatusFuma(event) {
+    if (!this.fuma) {
+      this.fuma = true;
+      console.log("Fuma", this.fuma);
+    } else {
+      this.fuma = false;
+      console.log("Fuma", this.fuma);
+    }
+    console.log("CheckBox", event.target.customSwitch1);
+  }
+  changeStatusAlcohol(event) {
+    if (!this.toma) {
+      this.toma = true;
+      console.log("Fuma", this.fuma);
+    } else {
+      this.toma = false;
+      console.log("Fuma", this.fuma);
+    }
+    console.log("CheckBox", event);
+  }
+
   getAlergias() {
     return this.alergiaFrecuenteService.getAlergiasF().subscribe(
       (respuesta: Alergiafrec) => (this.alergiasFrec = respuesta),
@@ -181,17 +208,9 @@ export class ExpedienteComponent implements OnInit {
   }
 
   onSubmit(obj: ExpedienteEntidad) {
-    if (this.fuma) {
-      obj.fumado = 0;
-    } else {
-      obj.fumado = 1;
-    }
+    obj.fumado = this.fuma ? 0 : 1;
+    obj.alcohol = this.toma ? 0 : 1;
 
-    if (this.toma) {
-      obj.alcohol = 0;
-    } else {
-      obj.alcohol = 1;
-    }
     //Mae aqui le dejo las validaciones.
     if (this.alergias.length > 0) {
     }
@@ -218,33 +237,5 @@ export class ExpedienteComponent implements OnInit {
         this.notificacion.msjValidacion(this.error);
       }
     );
-  }
-
-  changeStatusFuma(event) {
-    if (!this.fuma) {
-      this.fuma = true;
-      console.log("Fuma", this.fuma);
-    } else {
-      this.fuma = false;
-      console.log("Fuma", this.fuma);
-    }
-    console.log("CheckBox", event.target.customSwitch1);
-  }
-  changeStatusAlcohol(event) {
-    if (!this.toma) {
-      this.toma = true;
-      console.log("Fuma", this.fuma);
-    } else {
-      this.toma = false;
-      console.log("Fuma", this.fuma);
-    }
-    console.log("CheckBox", event);
-  }
-
-  ngOnInit() {
-    this.stepper = new Stepper(document.querySelector("#stepper1"), {
-      linear: false,
-      animation: true
-    });
   }
 }
