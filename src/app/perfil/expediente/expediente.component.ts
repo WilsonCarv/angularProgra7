@@ -9,6 +9,8 @@ import { AlergiafrecEntidad } from "src/app/share/models/alergiafrec-entidad";
 import { AlergiafrecService } from "src/app/share/alergiafrec.service";
 import { EnfermedadFrecuenteService } from "src/app/share/enfermedad-frecuente.service";
 import { Alergiafrec } from "src/app/share/models/alergiafrec";
+import { Enfermedad } from "src/app/share/models/enfermedad";
+import { EnfermedadEntidad } from "src/app/share/models/enfermedad-entidad";
 import { EnfermedadesFrecuentes } from "src/app/share/models/enfermedades-frecuentes";
 import { AlergiaEntidad } from "src/app/share/models/alergia-entidad";
 import { Alergia } from "src/app/share/models/alergia";
@@ -40,6 +42,7 @@ export class ExpedienteComponent implements OnInit {
   selectedActividades: Array<number>; // ActividadesFisicas;
   actividades: Array<ActividadfisicaEntidad>;
   alergias: Array<AlergiaEntidad>;
+  enfermedades: Array<EnfermedadEntidad>;
   selectedEnfermedades: Array<number>; // Enfermedades;
   error: any;
   datos: Expediente;
@@ -57,6 +60,7 @@ export class ExpedienteComponent implements OnInit {
     this.getEnfermedades();
     this.actividades = [];
     this.alergias = [];
+    this.enfermedades = [];
   }
 
   getAlergias() {
@@ -103,6 +107,13 @@ export class ExpedienteComponent implements OnInit {
     (<HTMLFormElement>document.getElementById("otrasAlerigasForm")).reset();
   }
 
+  addArrayEnfermedades(obj: EnfermedadEntidad) {
+    this.enfermedades.push(obj);
+    //Codigo para Limpiar el Form
+    (<HTMLFormElement>document.getElementById("otrasEnfermedades")).reset();
+  }
+  addArrayEnfermedadesFamiliares() {}
+
   eliminarActividad(doc) {
     const index: number = this.actividades.indexOf(doc);
     if (index !== -1) {
@@ -113,6 +124,12 @@ export class ExpedienteComponent implements OnInit {
     const index: number = this.alergias.indexOf(doc);
     if (index !== -1) {
       this.alergias.splice(index, 1);
+    }
+  }
+  eliminarEnfermedad(doc) {
+    const index: number = this.enfermedades.indexOf(doc);
+    if (index !== -1) {
+      this.enfermedades.splice(index, 1);
     }
   }
 
