@@ -7,7 +7,9 @@ import { ExpedienteEntidad } from "src/app/share/models/expediente-entidad";
 import { NotificacionService } from "src/app/share/notificacion.service";
 import { AlergiafrecEntidad } from "src/app/share/models/alergiafrec-entidad";
 import { AlergiafrecService } from "src/app/share/alergiafrec.service";
+import { EnfermedadFrecuenteService } from "src/app/share/enfermedad-frecuente.service";
 import { Alergiafrec } from "src/app/share/models/alergiafrec";
+import { EnfermedadesFrecuentes } from "src/app/share/models/enfermedades-frecuentes";
 import { AlergiaEntidad } from "src/app/share/models/alergia-entidad";
 import { Alergia } from "src/app/share/models/alergia";
 import { ActividadesFisicas } from "../../share/models/actividades-fisicas";
@@ -32,11 +34,13 @@ export class ExpedienteComponent implements OnInit {
   toma = true;
   expediente: ExpedienteEntidad;
   alergiasFrec: Alergiafrec;
+  enfermedadFrec: EnfermedadesFrecuentes;
   selectedAlergias: Array<number>; // Alergiafrec;
   actividadesFrecuentes: ActividadesFisicas;
-  selectedActividades: Array<number>; //ActividadesFisicas;
+  selectedActividades: Array<number>; // ActividadesFisicas;
   actividades: Array<ActividadfisicaEntidad>;
   alergias: Array<AlergiaEntidad>;
+  selectedEnfermedades: Array<number>; // Enfermedades;
   error: any;
   datos: Expediente;
   private stepper: Stepper;
@@ -44,11 +48,13 @@ export class ExpedienteComponent implements OnInit {
     private router: Router,
     private alergiaFrecuenteService: AlergiafrecService,
     private actividadFrecuenteService: ActividadesFisicasService,
+    private enfermedadFrecService: EnfermedadFrecuenteService,
     private notificacion: NotificacionService,
     private ExpedienteServ: ExpedienteService
   ) {
     this.getAlergias();
     this.getActividades();
+    this.getEnfermedades();
     this.actividades = [];
     this.alergias = [];
   }
@@ -69,6 +75,15 @@ export class ExpedienteComponent implements OnInit {
       error => {
         this.error = error;
         this.notificacion.msjError(this.error, "Actividades");
+      }
+    );
+  }
+  getEnfermedades() {
+    return this.enfermedadFrecService.getEnfermedades().subscribe(
+      (respuesta: EnfermedadesFrecuentes) => (this.enfermedadFrec = respuesta),
+      error => {
+        this.error = error;
+        this.notificacion.msjError(this.error, "Enfermedades");
       }
     );
   }
