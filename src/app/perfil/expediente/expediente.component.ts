@@ -225,9 +225,11 @@ export class ExpedienteComponent implements OnInit {
     if (this.medicamentos.length > 0) {
     }
     console.log("expediente", obj);
+
     return this.ExpedienteServ.createExpediente(obj).subscribe(
       (respuesta: Expediente) => {
         this.datos = respuesta;
+        console.log("Datos", this.datos);
         this.router.navigate(["/"], {
           queryParams: { create: "true" }
         });
