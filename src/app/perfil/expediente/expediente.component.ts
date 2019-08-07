@@ -229,7 +229,7 @@ export class ExpedienteComponent implements OnInit {
     return this.ExpedienteServ.createExpediente(obj).subscribe(
       (respuesta: Expediente) => {
         this.datos = respuesta;
-        console.log("Datos", this.datos);
+        console.log("Datos", this.datos.expediente);
         this.router.navigate(["/"], {
           queryParams: { create: "true" }
         });
@@ -237,6 +237,7 @@ export class ExpedienteComponent implements OnInit {
       error => {
         this.error = error;
         this.notificacion.msjValidacion(this.error);
+        console.log("Error", error);
       }
     );
   }
