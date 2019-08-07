@@ -44,11 +44,6 @@ export interface ExpedienteEntidad {
   alergias_frecuentes_id: Array<number>;
   enfermedadesFrecuentes: EnfermedadesFrecuentesEntidad[];
   enfermedades_frecuentes_id: Array<number>;
-
-
-
-
-
   actividades_fisicas: ActividadfisicaEntidad[];
   actividades_fisicas_id: Array<number>;
   /* Doctores: ActividadfisicaEntidad[];

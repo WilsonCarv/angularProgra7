@@ -229,7 +229,7 @@
         </div>
         <div id="test-l-5" class="content">
           <label for="enfermedades_id">Lista de Enfermedades</label>
-                <select multiple [(ngModel)]="selectedAlergias" ngModel class="form-control" name="enfermedades_id">
+                <select multiple [(ngModel)]="selectedAlergias" ngModel class="form-control" name="enfermedades_frecuentes_id">
                   <option *ngFor="let a of enfermedadFrec?.enfermedadFrecuente" [value]="a.id">
                     {{a.nombre}}</option>
                 </select>
