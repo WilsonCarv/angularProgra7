@@ -228,7 +228,7 @@
               <button type="button" (click)="next()" class="btn btn-primary float-md-right mt-4">Siguiente</button>
         </div>
         <div id="test-l-5" class="content">
-          <label for="enfermedades_id">Lista de Enfermedades</label>
+          <label for="enfermedades_frecuentes_id">Lista de Enfermedades</label>
                 <select multiple [(ngModel)]="selectedAlergias" ngModel class="form-control" name="enfermedades_frecuentes_id">
                   <option *ngFor="let a of enfermedadFrec?.enfermedadFrecuente" [value]="a.id">
                     {{a.nombre}}</option>
