@@ -229,9 +229,9 @@
         </div>
         <div id="test-l-5" class="content">
           <label for="enfermedades_frecuentes_id">Lista de Enfermedades</label>
-                <select multiple [(ngModel)]="selectedAlergias" ngModel class="form-control" name="enfermedades_frecuentes_id">
-                  <option *ngFor="let a of enfermedadFrec?.enfermedadFrecuente" [value]="a.id">
-                    {{a.nombre}}</option>
+                <select multiple [(ngModel)]="selectedEnfermedades" ngModel class="form-control" name="enfermedades_frecuentes_id">
+                  <option *ngFor="let b of enfermedadFrec?.enfermedadFrecuente" [value]="b.id">
+                    {{b.nombre}}</option>
                 </select>
                 <hr>
                 <label>Otras</label>

@@ -46,13 +46,13 @@ export class ExpedienteComponent implements OnInit {
   selectedAlergias: Array<number>; // Alergiafrec;
   actividadesFrecuentes: ActividadesFisicas;
   selectedActividades: Array<number>; // ActividadesFisicas;
+  selectedEnfermedades: Array<number>;
   actividades: Array<ActividadfisicaEntidad>;
   alergias: Array<AlergiaEntidad>;
   enfermedades: Array<EnfermedadEntidad>;
   cirugias: Array<CirugiaEntidad>;
   medicamentos: Array<MedicamentosEntidad>;
   enfermedadesFamiliares: Array<EnfermedadfamiliarEntidad>;
-  selectedEnfermedades: Array<number>;
   // Enfermedades;
   error: any;
   datos: Expediente;
