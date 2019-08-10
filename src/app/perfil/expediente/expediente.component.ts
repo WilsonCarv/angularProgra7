@@ -216,7 +216,7 @@ export class ExpedienteComponent implements OnInit {
     obj.fumado = this.fuma ? 0 : 1;
     obj.alcohol = this.toma ? 0 : 1;
 
-    this.ExpedienteServ.createExpediente(obj).subscribe(
+    return this.ExpedienteServ.createExpediente(obj).subscribe(
       (respuesta: Expediente) => {
         this.datosExpediente = respuesta;
         this.idExpediente = this.datosExpediente.expediente["id"];
@@ -256,6 +256,9 @@ export class ExpedienteComponent implements OnInit {
         }
         if (this.medicamentos.length > 0) {
         }
+        //Mae aqui le dejo las validaciones.
+
+        console.log("expediente", obj);
       },
       error => {
         this.error = error;
