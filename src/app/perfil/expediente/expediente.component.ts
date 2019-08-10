@@ -29,10 +29,6 @@ import { CirugiaEntidad } from "src/app/share/models/cirugia-entidad";
 import { Medicamentos } from "src/app/share/models/medicamentos";
 import { MedicamentosEntidad } from "src/app/share/models/medicamentos-entidad";
 
-export interface ErrorEntidad {
-  errors: { field: string; message: string }[];
-}
-
 @Component({
   selector: "app-expediente",
   templateUrl: "./expediente.component.html",
