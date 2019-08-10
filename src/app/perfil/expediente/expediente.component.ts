@@ -20,6 +20,7 @@ import { ActividadesFisicas } from "../../share/models/actividades-fisicas";
 import { Actividadfisica } from "../../share/models/actividadfisica";
 import { ActividadfisicaEntidad } from "../../share/models/actividadfisica-entidad";
 import { ActividadesFisicasService } from "src/app/share/actividades-fisicas.service";
+import { ActividadesService } from "src/app/share/actividades.service";
 import { ActividadesFisicasEntidad } from "../../share/models/actividades-fisicas-entidad";
 import { UserEntidad } from "src/app/share/models/user-entidad";
 import { NgForm } from "@angular/forms";
@@ -27,6 +28,7 @@ import { Cirugia } from "src/app/share/models/cirugia";
 import { CirugiaEntidad } from "src/app/share/models/cirugia-entidad";
 import { Medicamentos } from "src/app/share/models/medicamentos";
 import { MedicamentosEntidad } from "src/app/share/models/medicamentos-entidad";
+
 export interface ErrorEntidad {
   errors: { field: string; message: string }[];
 }
@@ -40,6 +42,7 @@ export class ExpedienteComponent implements OnInit {
   name = "Angular";
   fuma = true;
   toma = true;
+  idExpediente: number;
   expediente: ExpedienteEntidad;
   alergiasFrec: Alergiafrec;
   enfermedadFrec: EnfermedadesFrecuentes;
@@ -55,13 +58,15 @@ export class ExpedienteComponent implements OnInit {
   enfermedadesFamiliares: Array<EnfermedadfamiliarEntidad>;
   // Enfermedades;
   error: any;
-  datos: Expediente;
+  datosExpediente: Expediente;
+  datosActividades: Actividadfisica;
   private stepper: Stepper;
   constructor(
     private router: Router,
     private alergiaFrecuenteService: AlergiafrecService,
     private actividadFrecuenteService: ActividadesFisicasService,
     private enfermedadFrecService: EnfermedadFrecuenteService,
+    private actividadService: ActividadesService,
     private notificacion: NotificacionService,
     private ExpedienteServ: ExpedienteService
   ) {
@@ -211,16 +216,45 @@ export class ExpedienteComponent implements OnInit {
     obj.fumado = this.fuma ? 0 : 1;
     obj.alcohol = this.toma ? 0 : 1;
 
-    //Mae aqui le dejo las validaciones.
-    if (this.alergias.length > 0) {
-    }
-    if (this.enfermedades.length > 0) {
-    }
-    if (this.enfermedadesFamiliares.length > 0) {
-    }
-    if (this.cirugias.length > 0) {
-    }
-    if (this.medicamentos.length > 0) {
+    this.ExpedienteServ.createExpediente(obj).subscribe(
+      (respuesta: Expediente) => {
+        this.datosExpediente = respuesta;
+        this.idExpediente = this.datosExpediente.expediente["id"];
+        console.log("Datos", this.datosExpediente.expediente["id"]);
+        console.log("Id expediente", this.idExpediente);
+        // this.router.navigate(["/"],{queryParams: { create: "true" }}
+        // );
+        if (this.actividades.length > 0) {
+          this.actividades.forEach(element => {
+            element.expedientes_id = [this.datosExpediente.expediente["id"]];
+            console.log(element);
+            this.actividadService.createActividad(element).subscribe(
+              (respuestaActividades: Actividadfisica) => {
+                this.datosActividades = respuestaActividades;
+                console.log(
+                  "Element",
+                  element,
+                  "Datos de repuesta",
+                  this.datosActividades
+                );
+              },
+              error => {
+                this.error = error;
+                this.notificacion.msjValidacion(this.error);
+                console.log("Error", error);
+              }
+            );
+          });
+        }
+        if (this.alergias.length > 0) {
+        }
+        if (this.enfermedades.length > 0) {
+        }
+        if (this.enfermedadesFamiliares.length > 0) {
+        }
+        if (this.cirugias.length > 0) {
+        }
+        if (this.medicamentos.length > 0) {
         }
       },
       error => {
@@ -229,5 +263,11 @@ export class ExpedienteComponent implements OnInit {
         console.log("Error", error);
       }
     );
+
+    //Mae aqui le dejo las validaciones.
+
+    console.log("expediente", obj);
+
+    return;
   }
 }

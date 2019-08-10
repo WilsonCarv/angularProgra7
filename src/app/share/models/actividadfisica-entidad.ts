@@ -8,4 +8,5 @@ export interface ActividadfisicaEntidad {
   updated_at: Date;
   deleted_at: Date;
   user: UserEntidad;
+  expedientes_id: Array<number>;
 }
