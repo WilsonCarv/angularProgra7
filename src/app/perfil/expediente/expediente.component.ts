@@ -219,7 +219,7 @@ export class ExpedienteComponent implements OnInit {
     return this.ExpedienteServ.createExpediente(obj).subscribe(
       (respuesta: Expediente) => {
         this.datosExpediente = respuesta;
-        this.idExpediente = this.datosExpediente.expediente["id"];
+        //this.idExpediente = this.datosExpediente.expediente["id"];
         console.log("Datos", this.datosExpediente.expediente["id"]);
         console.log("Id expediente", this.idExpediente);
         // this.router.navigate(["/"],{queryParams: { create: "true" }}
