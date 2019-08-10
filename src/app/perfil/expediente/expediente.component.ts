@@ -20,7 +20,12 @@ import { ActividadesFisicas } from "../../share/models/actividades-fisicas";
 import { Actividadfisica } from "../../share/models/actividadfisica";
 import { ActividadfisicaEntidad } from "../../share/models/actividadfisica-entidad";
 import { ActividadesFisicasService } from "src/app/share/actividades-fisicas.service";
+import { EnfermedadfamiliarService } from "src/app/share/enfermedadfamiliar.service";
+import { EnfermedadService } from "src/app/share/enfermedad.service";
+import { AlergiaService } from "src/app/share/alergia.service";
 import { ActividadesService } from "src/app/share/actividades.service";
+import { CirugiasService } from "src/app/share/cirugias.service";
+import { MedicamentosService } from "src/app/share/medicamentos.service";
 import { ActividadesFisicasEntidad } from "../../share/models/actividades-fisicas-entidad";
 import { UserEntidad } from "src/app/share/models/user-entidad";
 import { NgForm } from "@angular/forms";
@@ -56,13 +61,23 @@ export class ExpedienteComponent implements OnInit {
   error: any;
   datosExpediente: Expediente;
   datosActividades: Actividadfisica;
+  datosAlergias: Alergia;
+  datosEnfermedad: Enfermedad;
+  datosEnfermedadFamiliar: Enfermedadfamiliar;
+  datosCirugia: Cirugia;
+  datosMedicamentos: Medicamentos;
   private stepper: Stepper;
   constructor(
     private router: Router,
     private alergiaFrecuenteService: AlergiafrecService,
     private actividadFrecuenteService: ActividadesFisicasService,
     private enfermedadFrecService: EnfermedadFrecuenteService,
+    private enfemedadSerive: EnfermedadService,
+    private enfermedadFamiliarService: EnfermedadfamiliarService,
     private actividadService: ActividadesService,
+    private alergiaService: AlergiaService,
+    private medicamentoService: MedicamentosService,
+    private cirugiaSerive: CirugiasService,
     private notificacion: NotificacionService,
     private ExpedienteServ: ExpedienteService
   ) {
@@ -243,14 +258,116 @@ export class ExpedienteComponent implements OnInit {
           });
         }
         if (this.alergias.length > 0) {
+          this.alergias.forEach(element => {
+            element.expedientes_id = [this.datosExpediente.expediente["id"]];
+            console.log(element);
+            this.alergiaService.createAlergia(element).subscribe(
+              (respuestaAlergias: Alergia) => {
+                this.datosAlergias = respuestaAlergias;
+                console.log(
+                  "Element",
+                  element,
+                  "Datos de repuesta",
+                  this.datosAlergias
+                );
+              },
+              error => {
+                this.error = error;
+                this.notificacion.msjValidacion(this.error);
+                console.log("Error", error);
+              }
+            );
+          });
         }
         if (this.enfermedades.length > 0) {
+          this.enfermedades.forEach(element => {
+            element.expedientes_id = [this.datosExpediente.expediente["id"]];
+            console.log(element);
+            this.enfemedadSerive.createEnfermedad(element).subscribe(
+              (respuestaEnfermedad: Enfermedad) => {
+                this.datosEnfermedad = respuestaEnfermedad;
+                console.log(
+                  "Element",
+                  element,
+                  "Datos de repuesta",
+                  this.datosEnfermedad
+                );
+              },
+              error => {
+                this.error = error;
+                this.notificacion.msjValidacion(this.error);
+                console.log("Error", error);
+              }
+            );
+          });
         }
         if (this.enfermedadesFamiliares.length > 0) {
+          this.enfermedadesFamiliares.forEach(element => {
+            element.expedientes_id = [this.datosExpediente.expediente["id"]];
+            console.log(element);
+            this.enfermedadFamiliarService
+              .createEnfermedadFamiliar(element)
+              .subscribe(
+                (respuestaEnfermedadFamiliar: Enfermedadfamiliar) => {
+                  this.datosEnfermedadFamiliar = respuestaEnfermedadFamiliar;
+                  console.log(
+                    "Element",
+                    element,
+                    "Datos de repuesta",
+                    this.datosEnfermedadFamiliar
+                  );
+                },
+                error => {
+                  this.error = error;
+                  this.notificacion.msjValidacion(this.error);
+                  console.log("Error", error);
+                }
+              );
+          });
         }
         if (this.cirugias.length > 0) {
+          this.cirugias.forEach(element => {
+            element.expedientes_id = [this.datosExpediente.expediente["id"]];
+            console.log(element);
+            this.cirugiaSerive.createCirugia(element).subscribe(
+              (respuestaCirugia: Cirugia) => {
+                this.datosCirugia = respuestaCirugia;
+                console.log(
+                  "Element",
+                  element,
+                  "Datos de repuesta",
+                  this.datosCirugia
+                );
+              },
+              error => {
+                this.error = error;
+                this.notificacion.msjValidacion(this.error);
+                console.log("Error", error);
+              }
+            );
+          });
         }
         if (this.medicamentos.length > 0) {
+          this.medicamentos.forEach(element => {
+            element.expedientes_id = [this.datosExpediente.expediente["id"]];
+            console.log(element);
+            this.medicamentoService.createMedicamento(element).subscribe(
+              (respuestaMedicamento: Medicamentos) => {
+                this.datosMedicamentos = respuestaMedicamento;
+                console.log(
+                  "Element",
+                  element,
+                  "Datos de repuesta",
+                  this.datosMedicamentos
+                );
+              },
+              error => {
+                this.error = error;
+                this.notificacion.msjValidacion(this.error);
+                console.log("Error", error);
+              }
+            );
+          });
         }
         //Mae aqui le dejo las validaciones.
 
