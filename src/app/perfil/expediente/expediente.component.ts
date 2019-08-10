@@ -263,11 +263,5 @@ export class ExpedienteComponent implements OnInit {
         console.log("Error", error);
       }
     );
-
-    //Mae aqui le dejo las validaciones.
-
-    console.log("expediente", obj);
-
-    return;
   }
 }
