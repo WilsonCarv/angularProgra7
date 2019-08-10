@@ -214,8 +214,6 @@ export class ExpedienteComponent implements OnInit {
     //Mae aqui le dejo las validaciones.
     if (this.alergias.length > 0) {
     }
-    if (this.actividades.length > 0) {
-    }
     if (this.enfermedades.length > 0) {
     }
     if (this.enfermedadesFamiliares.length > 0) {
@@ -223,16 +221,7 @@ export class ExpedienteComponent implements OnInit {
     if (this.cirugias.length > 0) {
     }
     if (this.medicamentos.length > 0) {
-    }
-    console.log("expediente", obj);
-
-    return this.ExpedienteServ.createExpediente(obj).subscribe(
-      (respuesta: Expediente) => {
-        this.datos = respuesta;
-        console.log("Datos", this.datos.expediente);
-        this.router.navigate(["/"], {
-          queryParams: { create: "true" }
-        });
+        }
       },
       error => {
         this.error = error;
