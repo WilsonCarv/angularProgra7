@@ -126,6 +126,11 @@
                   <textarea class="form-control" [disabled]="toma" name="toma_usualmente" ngModel></textarea>
                   <label for="observaciones_alcohol">Observaciones consumo de licor</label>
                   <textarea class="form-control" [disabled]="toma"  name="observaciones_alcohol" ngModel></textarea>
+                  <div class="form-group mb-2">
+                    <input class="form-control form-control-sm" [hidden]="true" type="text" readonly name="user" aria-label="Usuario"
+                      [(ngModel)]="currentUser?.user.id" />
+                  </div>
+
           </div>
           <hr>
           <button type="button" (click)="next()" class="btn btn-primary float-md-right mt-4 ">Siguiente</button>

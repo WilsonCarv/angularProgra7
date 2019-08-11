@@ -33,6 +33,8 @@ import { Cirugia } from "src/app/share/models/cirugia";
 import { CirugiaEntidad } from "src/app/share/models/cirugia-entidad";
 import { Medicamentos } from "src/app/share/models/medicamentos";
 import { MedicamentosEntidad } from "src/app/share/models/medicamentos-entidad";
+import { UsuarioLogin } from 'src/app/share/models/usuarioLogin';
+import { AuthenticationService } from 'src/app/share/authentication.service';
 
 @Component({
   selector: "app-expediente",
@@ -43,6 +45,7 @@ export class ExpedienteComponent implements OnInit {
   name = "Angular";
   fuma = true;
   toma = true;
+  currentUser: UsuarioLogin;
   idExpediente: number;
   expediente: ExpedienteEntidad;
   alergiasFrec: Alergiafrec;
@@ -79,8 +82,12 @@ export class ExpedienteComponent implements OnInit {
     private medicamentoService: MedicamentosService,
     private cirugiaSerive: CirugiasService,
     private notificacion: NotificacionService,
-    private ExpedienteServ: ExpedienteService
+    private ExpedienteServ: ExpedienteService,
+    private authenticationService: AuthenticationService
   ) {
+    this.authenticationService.currentUser.subscribe(
+      x => (this.currentUser = x)
+    );
     this.getAlergias();
     this.getActividades();
     this.getEnfermedades();
