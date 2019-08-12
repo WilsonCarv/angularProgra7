@@ -5,6 +5,7 @@ import { PerfilRoutingModule } from "./perfil-routing.module";
 import { ExpedienteComponent } from "./expediente/expediente.component";
 import { FormsModule } from "@angular/forms";
 
+
 @NgModule({
   declarations: [ExpedienteComponent],
   imports: [CommonModule, PerfilRoutingModule, FormsModule]

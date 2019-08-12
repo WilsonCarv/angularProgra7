@@ -20,6 +20,7 @@ import { EnfermedadesModule } from "./enfermedades/enfermedades.module";
 import { UserupdateModule } from "./userupdate/userupdate.module";
 import { ActividadfisicafrecModule } from "./actividadfisicafrec/actividadfisicafrec.module";
 import { PerfilModule } from "./perfil/perfil.module";
+import { ExpedienteasociadoModule } from './expedienteasociado/expedienteasociado.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,11 +37,13 @@ import { PerfilModule } from "./perfil/perfil.module";
     ActividadfisicafrecModule,
     UserupdateModule,
     PerfilModule,
+    ExpedienteasociadoModule,
     UserModule,
     DoctorModule,
     CoreModule,
     AppRoutingModule,
-    DoctorModule
+    DoctorModule,
+
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

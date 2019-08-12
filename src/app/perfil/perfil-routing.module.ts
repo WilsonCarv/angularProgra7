@@ -2,10 +2,12 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ExpedienteComponent } from "./expediente/expediente.component";
 
+
 const routes: Routes = [
   {
     path: "expediente",
-    component: ExpedienteComponent
+    component: ExpedienteComponent,
+
   }
 ];
 

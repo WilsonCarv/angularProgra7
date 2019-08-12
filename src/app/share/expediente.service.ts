@@ -52,4 +52,10 @@ export class ExpedienteService {
       .post<Expediente>(this.ServerUrl + 'expediente/expedienteUsuario', exp, { headers })
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
+  getExpedientes(): Observable<Expediente> {
+      return this.http
+    .get<Expediente>(this.ServerUrl + 'expediente/expedienteUsuario')
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
 }
+

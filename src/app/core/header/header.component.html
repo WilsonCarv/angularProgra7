@@ -1,8 +1,6 @@
 <!-- Menú -->
 <nav class="navbar navbar-expand-lg" id="mainNav">
   <div class="container" style="margin-top: -400px">
-    <a class="navbar-brand" style="color: black" [routerLink]="['expediente']" routerLinkActive="active"
-      *ngIf="currentUser?.user">Expedientes</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
       data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
       aria-label="Toggle navigation">
@@ -32,6 +30,18 @@
             <a class="dropdown-item" [routerLink]="['alergiafrecuente/list']" routerLinkActive="active"
               style="color: black" *ngIf="currentUser?.user.role_id == 1">Alergias</a>
 
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="color: black" *ngIf="currentUser?.user.role_id == 1">
+            Expedientes
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['expediente']" routerLinkActive="active" style="color: black"
+              *ngIf="currentUser?.user">Crear expediente</a>
+            <a class="dropdown-item" [routerLink]="['expasociado']" routerLinkActive="active" style="color: black"
+              *ngIf="currentUser?.user">Mis expedientes</a>
           </div>
         </li>
         <!-- <li class="nav-item">

@@ -1,0 +1,35 @@
+<div class="tituloBanner">
+  <div class="col-lg-12 mx-auto">
+    <div class="site-heading">
+
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="nav nav-tabs nav-pills">
+          <li class="nav-item">
+              <a
+                class="nav-link"
+                [routerLink]="['/expasociado/list']"
+                routerLinkActive="active"
+                >Lista de mis expedientes</a
+              >
+            </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/expasociado/asignar']"
+            routerLinkActive="active"
+            >Compartir expediente</a
+          >
+        </li>
+      </ul>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+
+
