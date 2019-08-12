@@ -10,48 +10,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of datos?.user">
-          <td >{{ user.Nombre}}</td>
-          <td>
-            <span
-              class="badge badge-info"
-              *ngFor="let exp of user?.Expedientes"
-            >
-              {{ exp.Identificacion }}
-            </span>
-          </td>
-          <td>
-            <span
-              class="badge badge-info"
-              *ngFor="let exp of user?.Expedientes"
-            >
-              {{ exp.Identificacion }}
-            </span>
-          </td>
-          <td>
-            <span
-              class="badge badge-info"
-              *ngFor="let exp of user?.Expedientes"
-            >
-              {{ exp.nombre }}
-            </span>
-          </td>
-          <td>
-            <span
-              class="badge badge-info"
-              *ngFor="let exp of user?.Expedientes"
-            >
-              {{ exp.primer_apellido }}
-            </span>
-          </td>
-          <td>
-            <span
-              class="badge badge-info"
-              *ngFor="let exp of user?.Expedientes"
-            >
-              {{ exp.segundo_apellido }}
-            </span>
-          </td>
+        <tr *ngFor="let user of datos?.user.expediente">
+          <td >{{ user.identificacion}}</td>
+         
           <td>
             <!-- <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a> -->
             <!--    Es necesario retroceder un nivel
