@@ -123,4 +123,10 @@ export class AuthenticationService {
 
     return throwError(this.errorData);
   }
+  getUser(id: any): Observable<UsuarioLogin> {
+    return this.http.get<UsuarioLogin>(this.ServerUrl + 'expediente/buscar/' + id).pipe(
+      retry(1),
+      catchError(this.handler.handleError.bind(this))
+    );
+  }
 }

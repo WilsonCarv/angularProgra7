@@ -13,7 +13,7 @@ import { AuthenticationService } from "src/app/share/authentication.service"
   styleUrls: ['./listaexpediente.component.css']
 })
 export class ListaexpedienteComponent implements OnInit {
-  datos: Expediente;
+  datos: UsuarioLogin;
   Expedientes: ExpedienteEntidad[];
   error: {};
   currentUser: UsuarioLogin;
@@ -31,15 +31,15 @@ export class ListaexpedienteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.expdienteSev
-    .getExpedientes()
+    this.authenticationService
+    .getUser(this.currentUser.user.id)
     .subscribe(
-      (respuesta: Expediente) => (
+      (respuesta: UsuarioLogin) => (
 
         this.datos = respuesta),
       error => (this.error = error)
     );
-  console.log("datos", this.datos.expediente.values);
+  console.log("datos", this.datos);
   }
 
 }
