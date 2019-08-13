@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="table-responsive">
+  <!-- <div class="table-responsive">
     <table class="table table-hover">
       <thead>
         <tr>
@@ -10,22 +10,38 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of datos?.user.expediente">
-          <td >{{ user.identificacion}}</td>
-         
+        <tr *ngFor="let user of expedientes">
+          <td>{{ user.identificacion}}</td>
+          <td>{{ user.nombre}}</td>
+          <td>{{ user.primer_apellido}}</td>
+          <td>{{ user.segundo_apellido}}</td>
           <td>
-            <!-- <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a> -->
-            <!--    Es necesario retroceder un nivel
-               Porque esta dentro de un componente que contiene rutas hijas -->
             <button class="btn btn-info">
               Editar
             </button>
           </td>
-
-
         </tr>
       </tbody>
-    </table>
+    </table> -->
+  <!-- </div> -->
+    <div class="row">
+          <div class="card mb-1 col-sm-4  d-flex align-items-stretch" *ngFor="let user of expedientes">
+                <div class="card-body">
+                  <img src="../../../assets/img/registro.png" class="card-img" alt="..." style="width: 100px; height: 100px;">
+                  <h5 class="card-title">Cedula {{ user.identificacion}}</h5>
+                  <p class="card-text">
+                   <label class="font-weight-bold">Nombre:</label>
+                   {{ user.nombre}} {{ user.primer_apellido}} {{ user.segundo_apellido}}
+                   <br>
+                   <label class="font-weight-bold">Género:</label>
+                   {{user.sexo}}
+                   <br>
+                   <label class="font-weight-bold">Tipo de Sangre:</label>
+                   {{user.tipo_sangre}}
+                  <div class="card-footer">
+                      <a href="#" class="btn btn-primary">Editar</a>
+                  </div>
+                </div>
+            </div>
+    </div>
   </div>
-</div>
-

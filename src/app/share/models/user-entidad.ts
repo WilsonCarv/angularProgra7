@@ -14,5 +14,5 @@ export interface UserEntidad {
   updated_at: Date;
   deleted_at: Date;
   role_id: number;
-  expediente: ExpedienteEntidad[];
+  expedientes: Array<ExpedienteEntidad>;
 }
