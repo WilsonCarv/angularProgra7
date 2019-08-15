@@ -58,4 +58,3 @@ export class ExpedienteService {
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
 }
-
