@@ -1,30 +1,29 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import {
   HttpClient,
   HttpErrorResponse,
   HttpHeaders
-} from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
-import { Expediente } from './models/expediente';
-import { ExpedienteEntidad } from './models/expediente-entidad';
-import { environment } from 'src/environments/environment';
-import { UsuarioLogin } from './models/usuarioLogin';
-import { AuthenticationService } from './authentication.service';
-import { Router } from '@angular/router';
-import { CustomHandlerErrorService } from './custom-handler-error.service';
+} from "@angular/common/http";
+import { Observable, throwError } from "rxjs";
+import { retry, catchError } from "rxjs/operators";
+import { Expediente } from "./models/expediente";
+import { ExpedienteEntidad } from "./models/expediente-entidad";
+import { environment } from "src/environments/environment";
+import { UsuarioLogin } from "./models/usuarioLogin";
+import { AuthenticationService } from "./authentication.service";
+import { Router } from "@angular/router";
+import { CustomHandlerErrorService } from "./custom-handler-error.service";
 
-import {} from './models/actividades-fisicas';
-import {} from './models/actividadfisica';
-
+import {} from "./models/actividades-fisicas";
+import {} from "./models/actividadfisica";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ExpedienteService {
   currentUser: UsuarioLogin;
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ "Content-Type": "application/json" })
   };
   ServerUrl = environment.apiURL;
   errorData: {};
@@ -39,22 +38,30 @@ export class ExpedienteService {
       x => (this.currentUser = x)
     );
   }
-   // HttpClient API post() method => Create vj
-   createExpediente(exp: ExpedienteEntidad): Observable<Expediente> {
+  // HttpClient API post() method => Create vj
+  createExpediente(exp: ExpedienteEntidad): Observable<Expediente> {
     let headers = new HttpHeaders();
     if (this.currentUser) {
       headers = headers.append(
-        'Authorization',
-        'Bearer ' + this.currentUser.access_token
+        "Authorization",
+        "Bearer " + this.currentUser.access_token
       );
     }
     return this.http
-      .post<Expediente>(this.ServerUrl + 'expediente/expedienteUsuario', exp, { headers })
+      .post<Expediente>(this.ServerUrl + "expediente/expedienteUsuario", exp, {
+        headers
+      })
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
   getExpedientes(): Observable<Expediente> {
-      return this.http
-    .get<Expediente>(this.ServerUrl + 'expediente/expedienteUsuario')
+    return this.http
+      .get<Expediente>(this.ServerUrl + "expediente/expedienteUsuario")
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+
+  getExpedienteById(id: any): Observable<Expediente> {
+    return this.http
+      .get<Expediente>(this.ServerUrl + "expediente/expedienteUsuario/" + id)
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
 }

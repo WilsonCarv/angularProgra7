@@ -1,0 +1,394 @@
+<div class="container">
+  <div id="stepper1" class="bs-stepper">
+    <div class="bs-stepper-header">
+      <div class="step" data-target="#test-l-1">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">1</span>
+          <span class="bs-stepper-label">Información Personal</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-2">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">2</span>
+          <span class="bs-stepper-label">Alcohol/Tabaco</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-3">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">3</span>
+          <span class="bs-stepper-label">Actividades</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-4">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">4</span>
+          <span class="bs-stepper-label">Alergias</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-5">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">5</span>
+          <span class="bs-stepper-label">Enfermedades</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-6">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">6</span>
+          <span class="bs-stepper-label">Cirugias</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-7">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">7</span>
+          <span class="bs-stepper-label">Medicamentos</span>
+        </button>
+      </div>
+    </div>
+    <div class="bs-stepper-content">
+      <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" >
+        <div id="test-l-1" class="content">
+          <div class=row>
+              <div class="form-group col-md-6 form-group">
+                  <label for="identificacion">Identificación</label>
+                  <input type="text" class="form-control" name="identificacion" placeholder="Identificación" ngModel  [(ngModel)]="currentExpediente?.expediente[0]['identificacion']"/>
+                  <label for="nombre">Nombre</label>
+                  <input type="text" class="form-control" name="nombre" placeholder="Nombre" ngModel [(ngModel)]="currentExpediente?.expediente[0]['nombre']" />
+                  <label for="PrimerApellido">Primer Apellido</label>
+                  <input type="text" class="form-control" name="primer_apellido" ngModel  [(ngModel)]="currentExpediente?.expediente[0]['primer_apellido']" placeholder="Primer Apellido" />
+                  <label for="SegundoApellido">Segundo Apellido</label>
+                  <input type="text" class="form-control" name="segundo_apellido" ngModel [(ngModel)]="currentExpediente?.expediente[0]['segundo_apellido']" placeholder="Segundo Apellido" />
+                  <label for="roles">Género</label>
+                  <select class="form-control" name="sexo" ngModel required>
+                    <option>Masculino</option>
+                    <option>Femenino</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" name="fecha_nacimiento" ngModel placeholder="Enter email" />
+                    <label for="tipo_sangre">Tipo de Sangre</label>
+                    <select class="form-control" name="tipo_sangre" ngModel required>
+                    <option>O negativo</option>
+                    <option>O positivo</option>
+                    <option>A negativo</option>
+                    <option>A positivo</option>
+                    <option>B negativo</option>
+                    <option>B positivo</option>
+                    <option>AB negativo</option>
+                    <option>AB positivo</option>
+                  </select>
+                    <label for="numeroTelefono">Número de teléfono<table></table></label>
+                    <input type="text" class="form-control" name="numero_telefono" ngModel placeholder="Número de teléfono" />
+                    <label for="contactoEmergencia">Contacto de Emergencia<table></table></label>
+                    <input type="text" class="form-control" name="contacto_emergencia" ngModel placeholder="Contacto de Emergencia" />
+                    <label for="lugarResidencia">Lugar de Residencia</label>
+                    <textarea class="form-control" ngModel name="lugar_Residencia"></textarea>
+                  </div>
+              </div>
+              <button type="button" (click)="next()" class="btn btn-primary mt-4 float-md-right">Siguiente</button>
+          </div>
+
+        <div id="test-l-2" class="content">
+          <div class="form-group custom-control custom-switch" >
+                  <input type="checkbox" class="custom-control-input" id="customSwitch1"
+                    (change)="changeStatusFuma($event)">
+                  <label class="custom-control-label"  for="customSwitch1">Fuma</label>
+                  <br>
+                  <label for="historial_fumado">Historial de Fumado</label>
+                  <input type="text" class="form-control" ngModel name="historial_fumado" placeholder="Historial de Fumado" [disabled]="fuma"/>
+                  <label for="cantidad_cigarros_dia">Cantidad de cigarros que fuma al día</label>
+                  <input type="text" class="form-control" name="cantidad_cigarros_dia" ngModel placeholder="Cantidad de cigarros que fuma al día" [disabled]="fuma"/>
+                  <label for="edad_comenzo_fumar">Edad a la que comenzo a fumar</label>
+                  <input type="text" class="form-control" name="edad_comenzo_fumar" ngModel placeholder="Edad a la que comenzo a fumar" [disabled]="fuma"/>
+                  <label for="observaciones_fumado">Observaciones de Fumado</label>
+                  <textarea class="form-control" [disabled]="fuma" name="observaciones_fumado" ngModel></textarea>
+                </div>
+                <hr>
+                <div class="form-group custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitch2"
+                    (change)="changeStatusAlcohol($event)">
+                  <label class="custom-control-label" for="customSwitch2">Consume alcohol</label>
+                  <br>
+                  <label for="historial_alcohol">Historial de Alcohol</label>
+                  <input type="text" class="form-control" name="historial_alcohol" ngModel placeholder="Historial de Alcohol" [disabled]="toma"/>
+                  <label for="frecuencia_alcohol">Cantidad de alcohol que toma al día</label>
+                  <input type="text" class="form-control" name="frecuencia_alcohol" ngModel placeholder="Cantidad de alcohol que toma al día" [disabled]="toma"/>
+                  <label for="edad_comenzo_tomar">Edad a la que comenzo a tomar</label>
+                  <input type="text" class="form-control" name="edad_comenzo_tomar"  ngModel placeholder="Edad a la que comenzo a tomar" [disabled]="toma"/>
+                  <label for="toma_usualmente">Tipo de licor que mas consume</label>
+                  <textarea class="form-control" [disabled]="toma" name="toma_usualmente" ngModel></textarea>
+                  <label for="observaciones_alcohol">Observaciones consumo de licor</label>
+                  <textarea class="form-control" [disabled]="toma"  name="observaciones_alcohol" ngModel></textarea>
+                  <div class="form-group mb-2">
+                    <input class="form-control form-control-sm" [hidden]="true" type="text" readonly name="user" aria-label="Usuario"
+                      [(ngModel)]="currentUser?.user.id" />
+                  </div>
+
+          </div>
+          <hr>
+          <button type="button" (click)="next()" class="btn btn-primary float-md-right mt-4 ">Siguiente</button>
+        </div>
+        <div id="test-l-3" class="content">
+                <label for="actividades_id">Lista de Actividades</label>
+                <select multiple [(ngModel)]="selectedActividades" ngModel class="form-control" name="actividades_fisicas_frecuentes_id">
+                  <option *ngFor="let a of actividadesFrecuentes?.actividadFrecuente" [value]="a.id">
+                    {{a.nombre}}</option>
+                </select>
+                <hr>
+                <label>Otras</label>
+                <div class="row">
+                <div class ="form-group col-md-5">
+                  <form id="otrasActividadesForm" #otrasActividaesForm="ngForm" (ngSubmit)="addArrayActividades(otrasActividaesForm.value)" >
+                  <label for="nombreActividad">Nombre de la actividad</label>
+                  <input type="text" class="form-control" name="nombre" ngModel  placeholder="Nombre de la Actividad" [disabled]=""/>
+                  <label for="tiempo_al_dia">Cantidad de horas al día que hace la actividad</label>
+                  <input type="text" class="form-control" name="tiempo_al_dia" ngModel  placeholder="Cantidad de horas al día que hace la actividad"  [disabled]=""/>
+                  <label for="veces_por_semana">Cantidad de veces por semana por semana</label>
+                  <input type="text" class="form-control" name="veces_por_semana" ngModel  placeholder="Cantidad de horas al día que hace la actividad" [disabled]=""/>
+                  <button type="submit" class="btn btn-primary mt-3">Agregar</button>
+                </form>
+                </div>
+                <div class="form-group col-md-6" >
+                  <div class="table-responsive">
+                    <table class="table table-hover text-center" *ngIf="actividades?.length">
+                      <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Cantidad de horas al día</th>
+                          <th>Cantidad de veces por semana</th>
+                          <th>Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let doc of actividades">
+                          <td>{{ doc.nombre}}</td>
+                          <td>{{ doc.tiempo_al_dia }}</td>
+                          <td>{{ doc.veces_por_semana }}</td>
+                          <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarActividad(doc)">Eliminar</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <button type="button" (click)="next()" class="btn btn-primary mt-4 float-md-right">Siguiente</button>
+        </div>
+        <div id="test-l-4" class="content">
+            <label for="alergias_frecuentes_id">Lista de Alergias</label>
+                <select multiple [(ngModel)]="selectedAlergias" class="form-control" name="alergias_frecuentes_id">
+                  <option *ngFor="let a of alergiasFrec?.alergiafrecuente" [value]="a.id">
+                    {{a.nombre}}</option>
+                </select>
+                <hr>
+                <label>Otras</label>
+                <div class="row">
+                <div class ="form-group col-md-5">
+                  <form id="otrasAlerigasForm" #otrasAlergiasForm="ngForm" (ngSubmit)="addArrayAlergias(otrasAlergiasForm.value)" >
+                  <label for="nombre">Nombre de la Alergia</label>
+                  <input type="text" class="form-control" name="nombre" ngModel placeholder="Nombre de la Alergia" [disabled]=""/>
+                  <label for="categoria">Categoría</label>
+                  <select class="form-control" name="categoria" ngModel  required>
+                    <option>Alergia Cutánea</option>
+                    <option>Respiratorias</option>
+                    <option>Alimentos</option>
+                    <option>Medicamentos</option>
+                  </select>
+                  <label for="reaccion">Reacción</label>
+                  <textarea class="form-control" [disabled]="" name="reaccion"  ngModel placeholder="Reacción"></textarea>
+                  <label for="observaciones">Observaciones de la Alergia</label>
+                  <textarea class="form-control" [disabled]="" name="observaciones" ngModel placeholder="Observaciones"></textarea>
+                  <button type="submit" class="btn btn-primary mt-3">Agregar</button>
+                </form>
+                </div>
+                <div class="form-group col-md-6" >
+                  <div class="table-responsive">
+                    <table class="table table-hover text-center" *ngIf="alergias?.length">
+                      <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Categoría</th>
+                          <th>Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let doc of alergias">
+                          <td>{{ doc.nombre }}</td>
+                          <td>{{ doc.categoria }}</td>
+                          <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarAlergia(doc)">Eliminar</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <button type="button" (click)="next()" class="btn btn-primary float-md-right mt-4">Siguiente</button>
+        </div>
+        <div id="test-l-5" class="content">
+          <label for="enfermedades_frecuentes_id">Lista de Enfermedades</label>
+                <select multiple [(ngModel)]="selectedEnfermedades" ngModel class="form-control" name="enfermedades_frecuentes_id">
+                  <option *ngFor="let b of enfermedadFrec?.enfermedadFrecuente" [value]="b.id">
+                    {{b.nombre}}</option>
+                </select>
+                <hr>
+                <label>Otras</label>
+                <div class="row">
+                <div class ="form-group col-md-5">
+                  <form id="otrasEnfermedades" #otrasEnfermedadesForm="ngForm" (ngSubmit)="addArrayEnfermedades(otrasEnfermedadesForm.value)" >
+                  <label for="nombre">Nombre de la Alergia</label>
+                  <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Enfermdad" ngModel [disabled]=""/>
+                  <label for="observacionesAlergia">Observaciones de la Enfermdad</label>
+                  <textarea class="form-control" [disabled]="" ngModel name="observaciones" placeholder="Observaciones"></textarea>
+                  <button type="submit" class="btn btn-primary mt-3">Agregar</button>
+                </form>
+                </div>
+                <div class="form-group col-md-6" >
+                  <div class="table-responsive">
+                    <table class="table table-hover text-center" *ngIf="enfermedades?.length">
+                      <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Observaciones</th>
+                          <th>Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let doc of enfermedades">
+                          <td>{{ doc.nombre }}</td>
+                          <td>{{ doc.observaciones }}</td>
+                          <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarEnfermedad(doc)">Eliminar</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <label>Enferemdades Familiares</label>
+              <div class="row">
+                  <div class ="form-group col-md-5">
+                    <form id="enfermedadesFamiliares" #enfermedadesFamiliaresForm="ngForm" (ngSubmit)="addArrayEnfermedadesFamiliares(enfermedadesFamiliaresForm.value)" >
+                    <label for="nombre">Nombre de la Alergia</label>
+                    <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Enfermdad" ngModel [disabled]=""/>
+                    <label for="nombre">Persona que la padece</label>
+                    <textarea class="form-control" [disabled]="" ngModel name="quien_padece" placeholder="Personas que la padecen"></textarea>
+                    <label for="observacionesAlergia">Observaciones de la Enfermdad</label>
+                    <textarea class="form-control" [disabled]="" ngModel name="observaciones" placeholder="Observaciones"></textarea>
+                    <button type="submit" class="btn btn-primary mt-3">Agregar</button>
+                  </form>
+                  </div>
+                  <div class="form-group col-md-6" >
+                    <div class="table-responsive">
+                      <table class="table table-hover text-center" *ngIf="enfermedadesFamiliares?.length">
+                        <thead>
+                          <tr>
+                            <th>Nombre</th>
+                            <th>Personas que la padecen</th>
+                            <th>Observaciones</th>
+                            <th>Opciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let doc of enfermedadesFamiliares">
+                            <td>{{ doc.nombre }}</td>
+                            <td>{{ doc.quien_padece }}</td>
+                            <td>{{ doc.observaciones }}</td>
+                            <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarEnfermedadFamiliar(doc)">Eliminar</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+              <button type="button" (click)="next()" class="btn btn-primary float-md-right mt-4">Siguiente</button>
+        </div>
+        <div id="test-l-6" class="content">
+          <div class="row">
+          <div class ="form-group col-md-5">
+                <form id="cirugiasForm" #cirugiasFom="ngForm" (ngSubmit)="addArrayCirugias(cirugiasFom.value)" >
+                <label for="nombre">Nombre de la Cirugía</label>
+                <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Cirugía" ngModel [disabled]=""/>
+                <label for="nombre">Cuando se realizo la Cirugía</label>
+                <input type="text" class="form-control" name="cuando" placeholder="Cuando se realizo la Cirugía" ngModel [disabled]=""/>
+                <label for="nombre">Donde se realizo la Cirugía</label>
+                <input type="text" class="form-control" name="donde" placeholder="Donde se realizo la Cirugía" ngModel [disabled]=""/>
+                <label for="observacionesAlergia">Descripción de la Cirugía</label>
+                <textarea class="form-control" [disabled]="" ngModel name="descripcion" placeholder="Descripción de la Cirugía"></textarea>
+                <button type="submit" class="btn btn-primary mt-3">Agregar</button>
+              </form>
+              </div>
+              <div class="form-group col-md-6" >
+                  <div class="table-responsive">
+                    <table class="table table-hover text-center" *ngIf="cirugias?.length">
+                      <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Cuando</th>
+                          <th>Donde</th>
+                          <th>Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let doc of cirugias">
+                          <td>{{ doc.nombre }}</td>
+                          <td>{{ doc.cuando }}</td>
+                          <td>{{ doc.donde }}</td>
+                          <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarCirugias(doc)">Eliminar</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <button type="button" (click)="next()" class="btn btn-primary float-md-right mt-4">Siguiente</button>
+        </div>
+        <div id="test-l-7" class="content">
+            <div class="row">
+                <div class ="form-group col-md-5">
+                      <form id="medicamentosForm" #medicamentosFom="ngForm" (ngSubmit)="addArrayMedicamentos(medicamentosFom.value)" >
+                      <label for="nombre">Nombre del Medicamento</label>
+                      <input type="text" class="form-control" name="nombre" placeholder="Nombre del Medicamento" ngModel [disabled]=""/>
+                      <label for="nombre">Descripción del Medicamento</label>
+                      <textarea class="form-control" [disabled]="" ngModel name="descripcion" placeholder="Descripción del Medicamento"></textarea>
+                      <button type="submit" class="btn btn-primary mt-3">Agregar</button>
+                    </form>
+                    </div>
+                    <div class="form-group col-md-6" >
+                        <div class="table-responsive">
+                          <table class="table table-hover text-center" *ngIf="medicamentos?.length">
+                            <thead>
+                              <tr>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Opciones</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let med of medicamentos">
+                                <td>{{ med.nombre }}</td>
+                                <td>{{ med.descripcion }}</td>
+                                <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarMedicamentos(med)">Eliminar</button></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  <hr>
+            <button type="submit" class="btn btn-primary float-md-right">Submit</button>
+        </div>
+        {{ form.value | json }}
+      </form>
+    </div>
+  </div>
+</div>
+

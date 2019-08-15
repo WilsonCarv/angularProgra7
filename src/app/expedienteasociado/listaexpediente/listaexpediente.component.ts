@@ -47,4 +47,8 @@ export class ListaexpedienteComponent implements OnInit {
         error => (this.error = error)
       );
   }
+  linkEditar(id: any) {
+    console.log("Obj", id);
+    this.router.navigate(["updateExpedinte/" + id]);
+  }
 }

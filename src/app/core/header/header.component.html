@@ -40,7 +40,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" [routerLink]="['expediente']" routerLinkActive="active" style="color: black"
               *ngIf="currentUser?.user">Crear expediente</a>
-            <a class="dropdown-item" [routerLink]="['expasociado']" routerLinkActive="active" style="color: black"
+            <a class="dropdown-item" [routerLink]="['expasociado/list']" routerLinkActive="active" style="color: black"
               *ngIf="currentUser?.user">Mis expedientes</a>
           </div>
         </li>

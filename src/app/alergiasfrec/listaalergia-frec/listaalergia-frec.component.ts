@@ -44,6 +44,10 @@ export class ListaalergiaFrecComponent implements OnInit {
     if (notifM) {
       this.notificacion.msjSuccess("Alergia desactivada", "Actualizar alergia");
     }
+    this.getAlergias();
+  }
+
+  getAlergias() {
     this.alergiaServ
       .getAlergiasF()
       .subscribe(
@@ -66,7 +70,7 @@ export class ListaalergiaFrecComponent implements OnInit {
           this.notificacion.msjValidacion(this.error);
         },
         () => {
-          window.location.reload();
+          this.getAlergias();
         }
       );
   }

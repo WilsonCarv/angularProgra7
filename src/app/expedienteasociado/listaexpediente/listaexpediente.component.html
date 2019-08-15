@@ -1,34 +1,11 @@
 <div class="container">
-  <!-- <div class="table-responsive">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Identificación</th>
-          <th>Nombre</th>
-          <th>Primer apellido</th>
-          <th>Segundo apellido</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of expedientes">
-          <td>{{ user.identificacion}}</td>
-          <td>{{ user.nombre}}</td>
-          <td>{{ user.primer_apellido}}</td>
-          <td>{{ user.segundo_apellido}}</td>
-          <td>
-            <button class="btn btn-info">
-              Editar
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table> -->
-  <!-- </div> -->
     <div class="row">
           <div class="card mb-1 col-sm-4  d-flex align-items-stretch" *ngFor="let user of expedientes">
                 <div class="card-body">
-                  <img src="../../../assets/img/registro.png" class="card-img" alt="..." style="width: 100px; height: 100px;">
-                  <h5 class="card-title">Cedula {{ user.identificacion}}</h5>
+                  <div class="card-header text-center">
+                    <img src="../../../assets/img/registro.png" class="card-img" alt="..." style="width: 100px; height: 100px;">
+                    <h5 class="card-title">Cédula: {{user.identificacion}}</h5>
+                  </div>
                   <p class="card-text">
                    <label class="font-weight-bold">Nombre:</label>
                    {{ user.nombre}} {{ user.primer_apellido}} {{ user.segundo_apellido}}
@@ -38,8 +15,8 @@
                    <br>
                    <label class="font-weight-bold">Tipo de Sangre:</label>
                    {{user.tipo_sangre}}
-                  <div class="card-footer">
-                      <a href="#" class="btn btn-primary">Editar</a>
+                  <div class="card-footer text-center">
+                      <button href="#" class="btn btn-primary" (click)="linkEditar(user.id)">Editar</button>
                   </div>
                 </div>
             </div>
