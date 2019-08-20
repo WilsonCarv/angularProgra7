@@ -42,7 +42,8 @@ const routes: Routes = [
   },
   {
     path: "expasociado",
-    loadChildren: "./expedienteasociado/expedienteasociado.module#ExpedienteasociadoModule"
+    loadChildren:
+      "./expedienteasociado/expedienteasociado.module#ExpedienteasociadoModule"
   },
   {
     path: "expediente",
