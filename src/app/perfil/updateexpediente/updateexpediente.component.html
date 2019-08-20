@@ -64,16 +64,16 @@
                   <label for="SegundoApellido">Segundo Apellido</label>
                   <input type="text" class="form-control" name="segundo_apellido" ngModel [(ngModel)]="currentExpediente?.expediente[0]['segundo_apellido']" placeholder="Segundo Apellido" />
                   <label for="roles">Género</label>
-                  <select class="form-control" name="sexo" ngModel required>
+                  <select class="form-control" name="sexo" ngModel [(ngModel)]="currentExpediente?.expediente[0]['sexo']" required>
                     <option>Masculino</option>
                     <option>Femenino</option>
                   </select>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                    <input type="date" class="form-control" name="fecha_nacimiento" ngModel placeholder="Enter email" />
+                    <input type="date" class="form-control" name="fecha_nacimiento" ngModel  [(ngModel)]="currentExpediente?.expediente[0]['fecha_nacimiento']"/>
                     <label for="tipo_sangre">Tipo de Sangre</label>
-                    <select class="form-control" name="tipo_sangre" ngModel required>
+                    <select class="form-control" name="tipo_sangre" ngModel [(ngModel)]="currentExpediente?.expediente[0]['tipo_sangre']" required>
                     <option>O negativo</option>
                     <option>O positivo</option>
                     <option>A negativo</option>
@@ -84,11 +84,11 @@
                     <option>AB positivo</option>
                   </select>
                     <label for="numeroTelefono">Número de teléfono<table></table></label>
-                    <input type="text" class="form-control" name="numero_telefono" ngModel placeholder="Número de teléfono" />
+                    <input type="text" class="form-control" name="numero_telefono" ngModel [(ngModel)]="currentExpediente?.expediente[0]['numero_telefono']" placeholder="Número de teléfono" />
                     <label for="contactoEmergencia">Contacto de Emergencia<table></table></label>
-                    <input type="text" class="form-control" name="contacto_emergencia" ngModel placeholder="Contacto de Emergencia" />
+                    <input type="text" class="form-control" name="contacto_emergencia" ngModel  [(ngModel)]="currentExpediente?.expediente[0]['contacto_emergencia']" placeholder="Contacto de Emergencia" />
                     <label for="lugarResidencia">Lugar de Residencia</label>
-                    <textarea class="form-control" ngModel name="lugar_Residencia"></textarea>
+                    <textarea class="form-control" ngModel [(ngModel)]="currentExpediente?.expediente[0]['lugar_Residencia']" name="lugar_Residencia"></textarea>
                   </div>
               </div>
               <button type="button" (click)="next()" class="btn btn-primary mt-4 float-md-right">Siguiente</button>
@@ -97,34 +97,34 @@
         <div id="test-l-2" class="content">
           <div class="form-group custom-control custom-switch" >
                   <input type="checkbox" class="custom-control-input" id="customSwitch1"
-                    (change)="changeStatusFuma($event)">
+                    (change)="changeStatusFuma($event)" [checked]="currentExpediente?.expediente[0]['fumado']==1?true:false">
                   <label class="custom-control-label"  for="customSwitch1">Fuma</label>
                   <br>
                   <label for="historial_fumado">Historial de Fumado</label>
-                  <input type="text" class="form-control" ngModel name="historial_fumado" placeholder="Historial de Fumado" [disabled]="fuma"/>
+                  <input type="text" class="form-control" [(ngModel)]="currentExpediente?.expediente[0]['historial_fumado']" ngModel name="historial_fumado" placeholder="Historial de Fumado" [disabled]="fuma"/>
                   <label for="cantidad_cigarros_dia">Cantidad de cigarros que fuma al día</label>
-                  <input type="text" class="form-control" name="cantidad_cigarros_dia" ngModel placeholder="Cantidad de cigarros que fuma al día" [disabled]="fuma"/>
+                  <input type="number" class="form-control" name="cantidad_cigarros_dia" ngModel [(ngModel)]="currentExpediente?.expediente[0]['cantidad_cigarros_dia']" placeholder="Cantidad de cigarros que fuma al día" [disabled]="fuma"/>
                   <label for="edad_comenzo_fumar">Edad a la que comenzo a fumar</label>
-                  <input type="text" class="form-control" name="edad_comenzo_fumar" ngModel placeholder="Edad a la que comenzo a fumar" [disabled]="fuma"/>
+                  <input type="number" class="form-control" name="edad_comenzo_fumar" ngModel [(ngModel)]="currentExpediente?.expediente[0]['edad_comenzo_fumar']" placeholder="Edad a la que comenzo a fumar" [disabled]="fuma"/>
                   <label for="observaciones_fumado">Observaciones de Fumado</label>
-                  <textarea class="form-control" [disabled]="fuma" name="observaciones_fumado" ngModel></textarea>
+                  <textarea class="form-control" [disabled]="fuma" name="observaciones_fumado" ngModel [(ngModel)]="currentExpediente?.expediente[0]['observaciones_fumado']"></textarea>
                 </div>
                 <hr>
                 <div class="form-group custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="customSwitch2"
-                    (change)="changeStatusAlcohol($event)">
+                    (change)="changeStatusAlcohol($event)" [checked]="currentExpediente?.expediente[0]['alcohol']==1?true:false">
                   <label class="custom-control-label" for="customSwitch2">Consume alcohol</label>
                   <br>
                   <label for="historial_alcohol">Historial de Alcohol</label>
-                  <input type="text" class="form-control" name="historial_alcohol" ngModel placeholder="Historial de Alcohol" [disabled]="toma"/>
+                  <input type="text" class="form-control" name="historial_alcohol" ngModel [(ngModel)]="currentExpediente?.expediente[0]['historial_alcohol']" placeholder="Historial de Alcohol" [disabled]="toma"/>
                   <label for="frecuencia_alcohol">Cantidad de alcohol que toma al día</label>
-                  <input type="text" class="form-control" name="frecuencia_alcohol" ngModel placeholder="Cantidad de alcohol que toma al día" [disabled]="toma"/>
+                  <input type="text" class="form-control" name="frecuencia_alcohol" ngModel [(ngModel)]="currentExpediente?.expediente[0]['frecuencia_alcohol']"placeholder="Cantidad de alcohol que toma al día" [disabled]="toma"/>
                   <label for="edad_comenzo_tomar">Edad a la que comenzo a tomar</label>
-                  <input type="text" class="form-control" name="edad_comenzo_tomar"  ngModel placeholder="Edad a la que comenzo a tomar" [disabled]="toma"/>
+                  <input type="number" class="form-control" name="edad_comenzo_tomar"  ngModel [(ngModel)]="currentExpediente?.expediente[0]['edad_comenzo_tomar']"placeholder="Edad a la que comenzo a tomar" [disabled]="toma"/>
                   <label for="toma_usualmente">Tipo de licor que mas consume</label>
-                  <textarea class="form-control" [disabled]="toma" name="toma_usualmente" ngModel></textarea>
+                  <textarea class="form-control" [disabled]="toma" name="toma_usualmente" ngModel [(ngModel)]="currentExpediente?.expediente[0]['toma_usualmente']"></textarea>
                   <label for="observaciones_alcohol">Observaciones consumo de licor</label>
-                  <textarea class="form-control" [disabled]="toma"  name="observaciones_alcohol" ngModel></textarea>
+                  <textarea class="form-control" [disabled]="toma"  name="observaciones_alcohol" ngModel [(ngModel)]="currentExpediente?.expediente[0]['observaciones_alcohol']"></textarea>
                   <div class="form-group mb-2">
                     <input class="form-control form-control-sm" [hidden]="true" type="text" readonly name="user" aria-label="Usuario"
                       [(ngModel)]="currentUser?.user.id" />

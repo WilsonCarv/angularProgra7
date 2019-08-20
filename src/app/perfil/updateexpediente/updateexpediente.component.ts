@@ -100,6 +100,7 @@ export class UpdateexpedienteComponent implements OnInit {
     this.enfermedadesFamiliares = [];
     this.cirugias = [];
     this.medicamentos = [];
+    this.selectedActividades = [];
   }
 
   ngOnInit() {
@@ -114,14 +115,73 @@ export class UpdateexpedienteComponent implements OnInit {
     let params = +this.route.snapshot.paramMap.get("id");
     console.log("Parametros", params);
     this.ExpedienteServ.getExpedienteById(params).subscribe(
-      (respuesta: Expediente) => (
-        (this.currentExpediente = respuesta),
-        (this.currentExpedienteEntidad = respuesta.expediente[0])
-        // console.log(
-        //   "Current Expediente",
-        //   this.currentExpedienteEntidad.identificacion
-        // )
-      ),
+      (respuesta: Expediente) => {
+        this.currentExpediente = respuesta;
+        console.log(this.currentExpediente.expediente[0]);
+        if (this.currentExpediente.expediente[0]["fumado"] == 1) {
+          this.fuma = false;
+        }
+        if (this.currentExpediente.expediente[0]["alcohol"] == 1) {
+          this.toma = false;
+        }
+
+        this.currentExpediente.expediente[0][
+          "actividades_fisicas_frecuentes"
+        ].forEach(element => {
+          this.selectedActividades.push(element.id);
+          console.log("Array actividades", this.selectedActividades);
+          // this.selectedActividades.push(element.id);
+        });
+
+        this.currentExpediente.expediente[0]["actividades_fisicas"].forEach(
+          element => {
+            this.actividades.push(element);
+            console.log("Array actividades", this.actividades);
+            // this.selectedActividades.push(element.id);
+          }
+        );
+
+        this.currentExpediente.expediente[0]["alergias"].forEach(element => {
+          this.alergias.push(element);
+          console.log("Alergias", this.alergias);
+          // this.selectedActividades.push(element.id);
+        });
+
+        this.currentExpediente.expediente[0]["cirugias"].forEach(element => {
+          this.cirugias.push(element);
+          console.log("Cirugias", this.cirugias);
+          // this.selectedActividades.push(element.id);
+        });
+
+        this.currentExpediente.expediente[0]["enfermedades"].forEach(
+          element => {
+            this.enfermedades.push(element);
+            console.log("Enfermedades", this.enfermedades);
+            // this.selectedActividades.push(element.id);
+          }
+        );
+
+        this.currentExpediente.expediente[0]["enfermedades_familiares"].forEach(
+          element => {
+            this.enfermedadesFamiliares.push(element);
+            console.log("Enfermedades Familiares", this.enfermedadesFamiliares);
+            // this.selectedActividades.push(element.id);
+          }
+        );
+
+        this.currentExpediente.expediente[0]["medicamentos"].forEach(
+          element => {
+            this.medicamentos.push(element);
+            console.log("Medicamentos", this.medicamentos);
+            // this.selectedActividades.push(element.id);
+          }
+        );
+      },
+
+      // console.log(
+      //   "Current Expediente",
+      //   this.currentExpedienteEntidad.identificacion
+      // )
       error => {
         this.error = error;
         this.notificacion.msjError(this.error, "Alergias");
