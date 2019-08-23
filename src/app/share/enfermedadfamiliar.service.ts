@@ -58,4 +58,25 @@ export class EnfermedadfamiliarService {
       )
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
+
+  updateEnfermedadFamiliar(
+    enf: EnfermedadfamiliarEntidad
+  ): Observable<Enfermedadfamiliar> {
+    let headers = new HttpHeaders();
+    if (enf.id != null) {
+      headers = headers.append(
+        "Authorization",
+        "Bearer " + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .patch<Enfermedadfamiliar>(
+        this.ServerUrl + "expediente/enfermedadFamiliar/" + enf.id,
+        enf,
+        {
+          headers
+        }
+      )
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
 }

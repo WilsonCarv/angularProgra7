@@ -33,8 +33,8 @@ import { Cirugia } from "src/app/share/models/cirugia";
 import { CirugiaEntidad } from "src/app/share/models/cirugia-entidad";
 import { Medicamentos } from "src/app/share/models/medicamentos";
 import { MedicamentosEntidad } from "src/app/share/models/medicamentos-entidad";
-import { UsuarioLogin } from 'src/app/share/models/usuarioLogin';
-import { AuthenticationService } from 'src/app/share/authentication.service';
+import { UsuarioLogin } from "src/app/share/models/usuarioLogin";
+import { AuthenticationService } from "src/app/share/authentication.service";
 
 @Component({
   selector: "app-expediente",
@@ -379,6 +379,7 @@ export class ExpedienteComponent implements OnInit {
         //Mae aqui le dejo las validaciones.
 
         console.log("expediente", obj);
+        this.router.navigate(["expasociado/list"]);
       },
       error => {
         this.error = error;

@@ -35,6 +35,7 @@ import { Medicamentos } from "src/app/share/models/medicamentos";
 import { MedicamentosEntidad } from "src/app/share/models/medicamentos-entidad";
 import { UsuarioLogin } from "src/app/share/models/usuarioLogin";
 import { AuthenticationService } from "src/app/share/authentication.service";
+import { element } from "protractor";
 
 @Component({
   selector: "app-updateexpediente",
@@ -98,10 +99,12 @@ export class UpdateexpedienteComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(
       x => (this.currentUser = x)
     );
+    this.getExpedienteData();
     this.createEntities();
     this.getAlergias();
     this.getActividades();
     this.getEnfermedades();
+
     this.actividades = [];
     this.alergias = [];
     this.enfermedades = [];
@@ -109,6 +112,8 @@ export class UpdateexpedienteComponent implements OnInit {
     this.cirugias = [];
     this.medicamentos = [];
     this.selectedActividades = [];
+    this.selectedAlergias = [];
+    this.selectedEnfermedades = [];
   }
 
   ngOnInit() {
@@ -116,7 +121,6 @@ export class UpdateexpedienteComponent implements OnInit {
       linear: false,
       animation: true
     });
-    this.getExpedienteData();
   }
 
   createEntities() {
@@ -209,6 +213,18 @@ export class UpdateexpedienteComponent implements OnInit {
           this.selectedActividades.push(element.id);
         });
 
+        this.currentExpediente.expediente[0]["alergias_frecuentes"].forEach(
+          element => {
+            this.selectedAlergias.push(element.id);
+          }
+        );
+
+        this.currentExpediente.expediente[0]["enfermedades_frecuentes"].forEach(
+          element => {
+            this.selectedEnfermedades.push(element.id);
+          }
+        );
+
         this.currentExpediente.expediente[0]["actividades_fisicas"].forEach(
           element => {
             this.actividades.push(element);
@@ -247,6 +263,7 @@ export class UpdateexpedienteComponent implements OnInit {
       }
     );
   }
+
   changeStatusFuma(event) {
     if (!this.fuma) {
       this.fuma = true;
@@ -271,6 +288,9 @@ export class UpdateexpedienteComponent implements OnInit {
   getAlergias() {
     return this.alergiaFrecuenteService.getAlergiasF().subscribe(
       (respuesta: Alergiafrec) => (this.alergiasFrec = respuesta),
+      // this.alergiasFrec.alergiafrecuente.filter(
+      //   element => !this.selectedActividades.includes(element.id)
+      // )
       error => {
         this.error = error;
         this.notificacion.msjError(this.error, "Alergias");
@@ -281,6 +301,9 @@ export class UpdateexpedienteComponent implements OnInit {
     return this.actividadFrecuenteService.getActividades().subscribe(
       (respuesta: ActividadesFisicas) =>
         (this.actividadesFrecuentes = respuesta),
+      // this.actividadesFrecuentes.actividadFrecuente.filter(
+      //   element => !this.selectedActividades.includes(element.id)
+      // ),
       error => {
         this.error = error;
         this.notificacion.msjError(this.error, "Actividades");
@@ -299,6 +322,7 @@ export class UpdateexpedienteComponent implements OnInit {
   next() {
     this.stepper.next();
   }
+
   addArrayActividades(obj: ActividadfisicaEntidad) {
     if (this.actividades.includes(this.otraActividad)) {
       const index = this.actividades.indexOf(this.otraActividad);
@@ -421,13 +445,13 @@ export class UpdateexpedienteComponent implements OnInit {
   addArrayMedicamentos(obj: MedicamentosEntidad) {
     if (this.medicamentos.includes(this.medicamento)) {
       const index = this.medicamentos.indexOf(this.medicamento);
-      if (this.cirugia.id != null) {
+      if (this.medicamento.id != null) {
         this.medicamentos.map(element => {
           if (element.id == this.medicamento.id) {
             element.nombre = obj.nombre;
             element.descripcion = obj.descripcion;
           }
-        }, console.log("New array", this.alergias));
+        }, console.log("New array", this.medicamentos));
       } else {
         this.medicamentos[index] = obj;
         console.log("Modifica nuevo", this.medicamentos);
@@ -574,99 +598,181 @@ export class UpdateexpedienteComponent implements OnInit {
             }
           });
         }
-        // if (this.enfermedades.length > 0) {
-        //   this.enfermedades.forEach(element => {
-        //     element.expedientes_id = [this.datosExpediente.expediente["id"]];
-        //     console.log(element);
-        //     this.enfemedadSerive.createEnfermedad(element).subscribe(
-        //       (respuestaEnfermedad: Enfermedad) => {
-        //         this.datosEnfermedad = respuestaEnfermedad;
-        //         console.log(
-        //           "Element",
-        //           element,
-        //           "Datos de repuesta",
-        //           this.datosEnfermedad
-        //         );
-        //       },
-        //       error => {
-        //         this.error = error;
-        //         this.notificacion.msjValidacion(this.error);
-        //         console.log("Error", error);
-        //       }
-        //     );
-        //   });
-        // }
-        // if (this.enfermedadesFamiliares.length > 0) {
-        //   this.enfermedadesFamiliares.forEach(element => {
-        //     element.expedientes_id = [this.datosExpediente.expediente["id"]];
-        //     console.log(element);
-        //     this.enfermedadFamiliarService
-        //       .createEnfermedadFamiliar(element)
-        //       .subscribe(
-        //         (respuestaEnfermedadFamiliar: Enfermedadfamiliar) => {
-        //           this.datosEnfermedadFamiliar = respuestaEnfermedadFamiliar;
-        //           console.log(
-        //             "Element",
-        //             element,
-        //             "Datos de repuesta",
-        //             this.datosEnfermedadFamiliar
-        //           );
-        //         },
-        //         error => {
-        //           this.error = error;
-        //           this.notificacion.msjValidacion(this.error);
-        //           console.log("Error", error);
-        //         }
-        //       );
-        //   });
-        // }
-        // if (this.cirugias.length > 0) {
-        //   this.cirugias.forEach(element => {
-        //     element.expedientes_id = [this.datosExpediente.expediente["id"]];
-        //     console.log(element);
-        //     this.cirugiaSerive.createCirugia(element).subscribe(
-        //       (respuestaCirugia: Cirugia) => {
-        //         this.datosCirugia = respuestaCirugia;
-        //         console.log(
-        //           "Element",
-        //           element,
-        //           "Datos de repuesta",
-        //           this.datosCirugia
-        //         );
-        //       },
-        //       error => {
-        //         this.error = error;
-        //         this.notificacion.msjValidacion(this.error);
-        //         console.log("Error", error);
-        //       }
-        //     );
-        //   });
-        // }
-        // if (this.medicamentos.length > 0) {
-        //   this.medicamentos.forEach(element => {
-        //     element.expedientes_id = [this.datosExpediente.expediente["id"]];
-        //     console.log(element);
-        //     this.medicamentoService.createMedicamento(element).subscribe(
-        //       (respuestaMedicamento: Medicamentos) => {
-        //         this.datosMedicamentos = respuestaMedicamento;
-        //         console.log(
-        //           "Element",
-        //           element,
-        //           "Datos de repuesta",
-        //           this.datosMedicamentos
-        //         );
-        //       },
-        //       error => {
-        //         this.error = error;
-        //         this.notificacion.msjValidacion(this.error);
-        //         console.log("Error", error);
-        //       }
-        //     );
-        //   });
-        // }
+        if (this.enfermedades.length > 0) {
+          this.enfermedades.forEach(element => {
+            element.expedientes_id = [this.datosExpediente.expediente["id"]];
+            console.log(element);
+            if (element.id != null) {
+              this.enfemedadSerive.updateEnfermedad(element).subscribe(
+                (respuestaEnfermedad: Enfermedad) => {
+                  this.datosEnfermedad = respuestaEnfermedad;
+                  console.log(
+                    "Element",
+                    element,
+                    "Datos de repuesta",
+                    this.datosEnfermedad
+                  );
+                },
+                error => {
+                  this.error = error;
+                  this.notificacion.msjValidacion(this.error);
+                  console.log("Error", error);
+                }
+              );
+            } else {
+              this.enfemedadSerive.createEnfermedad(element).subscribe(
+                (respuestaEnfermedad: Enfermedad) => {
+                  this.datosEnfermedad = respuestaEnfermedad;
+                  console.log(
+                    "Element",
+                    element,
+                    "Datos de repuesta",
+                    this.datosEnfermedad
+                  );
+                },
+                error => {
+                  this.error = error;
+                  this.notificacion.msjValidacion(this.error);
+                  console.log("Error", error);
+                }
+              );
+            }
+          });
+        }
+        if (this.enfermedadesFamiliares.length > 0) {
+          this.enfermedadesFamiliares.forEach(element => {
+            element.expedientes_id = [this.datosExpediente.expediente["id"]];
+            console.log(element);
+
+            if (element.id != null) {
+              this.enfermedadFamiliarService
+                .updateEnfermedadFamiliar(element)
+                .subscribe(
+                  (respuestaEnfermedadFamiliar: Enfermedadfamiliar) => {
+                    this.datosEnfermedadFamiliar = respuestaEnfermedadFamiliar;
+                    console.log(
+                      "Element",
+                      element,
+                      "Datos de repuesta",
+                      this.datosEnfermedadFamiliar
+                    );
+                  },
+                  error => {
+                    this.error = error;
+                    this.notificacion.msjValidacion(this.error);
+                    console.log("Error", error);
+                  }
+                );
+            } else {
+              this.enfermedadFamiliarService
+                .createEnfermedadFamiliar(element)
+                .subscribe(
+                  (respuestaEnfermedadFamiliar: Enfermedadfamiliar) => {
+                    this.datosEnfermedadFamiliar = respuestaEnfermedadFamiliar;
+                    console.log(
+                      "Element",
+                      element,
+                      "Datos de repuesta",
+                      this.datosEnfermedadFamiliar
+                    );
+                  },
+                  error => {
+                    this.error = error;
+                    this.notificacion.msjValidacion(this.error);
+                    console.log("Error", error);
+                  }
+                );
+            }
+          });
+        }
+        if (this.cirugias.length > 0) {
+          this.cirugias.forEach(element => {
+            element.expedientes_id = [this.datosExpediente.expediente["id"]];
+            console.log(element);
+
+            if (element.id != null) {
+              this.cirugiaSerive.updateCirugia(element).subscribe(
+                (respuestaCirugia: Cirugia) => {
+                  this.datosCirugia = respuestaCirugia;
+                  console.log(
+                    "Element",
+                    element,
+                    "Datos de repuesta",
+                    this.datosCirugia
+                  );
+                },
+                error => {
+                  this.error = error;
+                  this.notificacion.msjValidacion(this.error);
+                  console.log("Error", error);
+                }
+              );
+            } else {
+              this.cirugiaSerive.createCirugia(element).subscribe(
+                (respuestaCirugia: Cirugia) => {
+                  this.datosCirugia = respuestaCirugia;
+                  console.log(
+                    "Element",
+                    element,
+                    "Datos de repuesta",
+                    this.datosCirugia
+                  );
+                },
+                error => {
+                  this.error = error;
+                  this.notificacion.msjValidacion(this.error);
+                  console.log("Error", error);
+                }
+              );
+            }
+          });
+        }
+        if (this.medicamentos.length > 0) {
+          this.medicamentos.forEach(element => {
+            element.expedientes_id = [this.datosExpediente.expediente["id"]];
+            console.log(element);
+
+            if (element.id != null) {
+              this.medicamentoService.updateMedicamento(element).subscribe(
+                (respuestaMedicamento: Medicamentos) => {
+                  this.datosMedicamentos = respuestaMedicamento;
+                  console.log(
+                    "Element",
+                    element,
+                    "Datos de repuesta",
+                    this.datosMedicamentos
+                  );
+                },
+                error => {
+                  this.error = error;
+                  this.notificacion.msjValidacion(this.error);
+                  console.log("Error", error);
+                }
+              );
+            } else {
+              this.medicamentoService.createMedicamento(element).subscribe(
+                (respuestaMedicamento: Medicamentos) => {
+                  this.datosMedicamentos = respuestaMedicamento;
+                  console.log(
+                    "Element",
+                    element,
+                    "Datos de repuesta",
+                    this.datosMedicamentos
+                  );
+                },
+                error => {
+                  this.error = error;
+                  this.notificacion.msjValidacion(this.error);
+                  console.log("Error", error);
+                }
+              );
+            }
+          });
+        }
         //Mae aqui le dejo las validaciones.
 
         console.log("expediente", obj);
+        this.router.navigate(["expasociado/list"]);
       },
       error => {
         this.error = error;

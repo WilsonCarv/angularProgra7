@@ -50,4 +50,19 @@ export class CirugiasService {
       })
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
+
+  updateCirugia(cir: CirugiaEntidad): Observable<Cirugia> {
+    let headers = new HttpHeaders();
+    if (cir.id != null) {
+      headers = headers.append(
+        "Authorization",
+        "Bearer " + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .patch<Cirugia>(this.ServerUrl + "expediente/cirugia/" + cir.id, cir, {
+        headers
+      })
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
 }

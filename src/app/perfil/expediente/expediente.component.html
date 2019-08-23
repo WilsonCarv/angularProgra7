@@ -104,9 +104,9 @@
                   <label for="historial_fumado">Historial de Fumado</label>
                   <input type="text" class="form-control" ngModel name="historial_fumado" placeholder="Historial de Fumado" [disabled]="fuma"/>
                   <label for="cantidad_cigarros_dia">Cantidad de cigarros que fuma al día</label>
-                  <input type="text" class="form-control" name="cantidad_cigarros_dia" ngModel placeholder="Cantidad de cigarros que fuma al día" [disabled]="fuma"/>
+                  <input type="number" class="form-control" name="cantidad_cigarros_dia" ngModel placeholder="Cantidad de cigarros que fuma al día" [disabled]="fuma"/>
                   <label for="edad_comenzo_fumar">Edad a la que comenzo a fumar</label>
-                  <input type="text" class="form-control" name="edad_comenzo_fumar" ngModel placeholder="Edad a la que comenzo a fumar" [disabled]="fuma"/>
+                  <input type="number" class="form-control" name="edad_comenzo_fumar" ngModel placeholder="Edad a la que comenzo a fumar" [disabled]="fuma"/>
                   <label for="observaciones_fumado">Observaciones de Fumado</label>
                   <textarea class="form-control" [disabled]="fuma" name="observaciones_fumado" ngModel></textarea>
                 </div>
@@ -121,7 +121,7 @@
                   <label for="frecuencia_alcohol">Cantidad de alcohol que toma al día</label>
                   <input type="text" class="form-control" name="frecuencia_alcohol" ngModel placeholder="Cantidad de alcohol que toma al día" [disabled]="toma"/>
                   <label for="edad_comenzo_tomar">Edad a la que comenzo a tomar</label>
-                  <input type="text" class="form-control" name="edad_comenzo_tomar"  ngModel placeholder="Edad a la que comenzo a tomar" [disabled]="toma"/>
+                  <input type="number" class="form-control" name="edad_comenzo_tomar"  ngModel placeholder="Edad a la que comenzo a tomar" [disabled]="toma"/>
                   <label for="toma_usualmente">Tipo de licor que mas consume</label>
                   <textarea class="form-control" [disabled]="toma" name="toma_usualmente" ngModel></textarea>
                   <label for="observaciones_alcohol">Observaciones consumo de licor</label>
@@ -151,7 +151,7 @@
                   <label for="tiempo_al_dia">Cantidad de horas al día que hace la actividad</label>
                   <input type="text" class="form-control" name="tiempo_al_dia" ngModel  placeholder="Cantidad de horas al día que hace la actividad"  [disabled]=""/>
                   <label for="veces_por_semana">Cantidad de veces por semana por semana</label>
-                  <input type="text" class="form-control" name="veces_por_semana" ngModel  placeholder="Cantidad de horas al día que hace la actividad" [disabled]=""/>
+                  <input type="number" class="form-control" name="veces_por_semana" ngModel  placeholder="Cantidad de horas al día que hace la actividad" [disabled]=""/>
                   <button type="submit" class="btn btn-primary mt-3">Agregar</button>
                 </form>
                 </div>

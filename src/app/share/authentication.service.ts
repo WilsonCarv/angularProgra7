@@ -14,6 +14,7 @@ import { ErrorEntidad } from "./models/error-entidad";
 import { CustomHandlerErrorService } from "./custom-handler-error.service";
 import { Doctor } from "./models/doctor";
 import { tokenName } from "@angular/compiler";
+import { Users } from "./models/users";
 
 @Injectable({
   providedIn: "root"
@@ -50,7 +51,12 @@ export class AuthenticationService {
   }
   getDoctores(): Observable<Doctor> {
     return this.http
-      .get<Doctor>(this.ServerUrl + "expediente/listaMedicos ")
+      .get<Doctor>(this.ServerUrl + "expediente/listaMedicos")
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+  getUsers(): Observable<Users> {
+    return this.http
+      .get<Users>(this.ServerUrl + "expediente/listaUsuarios")
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
 

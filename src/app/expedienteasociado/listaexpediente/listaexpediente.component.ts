@@ -51,4 +51,8 @@ export class ListaexpedienteComponent implements OnInit {
     console.log("Obj", id);
     this.router.navigate(["updateExpedinte/" + id]);
   }
+  linkCompartir(id: any) {
+    console.log("Obj", id);
+    this.router.navigate(["compartirExpediente/" + id]);
+  }
 }

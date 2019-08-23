@@ -1,4 +1,5 @@
 import { ExpedienteEntidad } from "./expediente-entidad";
+import { RolEntidad } from "./rol-entidad";
 export interface UserEntidad {
   id: number;
   name: string;
@@ -14,5 +15,6 @@ export interface UserEntidad {
   updated_at: Date;
   deleted_at: Date;
   role_id: number;
+  role: RolEntidad;
   expedientes: Array<ExpedienteEntidad>;
 }

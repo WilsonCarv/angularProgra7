@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { PerfilModule } from "./perfil.module";
 import { ExpedienteComponent } from "./expediente/expediente.component";
 import { UpdateexpedienteComponent } from "./updateexpediente/updateexpediente.component";
+import { CompartirexpedienteComponent } from "./compartirexpediente/compartirexpediente.component";
 const routes: Routes = [
   {
     path: "expediente",
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: "updateExpedinte/:id",
     component: UpdateexpedienteComponent
+  },
+  {
+    path: "compartirExpediente/:id",
+    component: CompartirexpedienteComponent
   }
 ];
 

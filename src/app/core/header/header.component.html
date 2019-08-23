@@ -10,34 +10,34 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" style="color: black">Inicio</a>
+          <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" style="color:  white">Inicio</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false" style="color: black" *ngIf="currentUser?.user.role_id == 1">
+            aria-haspopup="true" aria-expanded="false" style="color:  white" *ngIf="currentUser?.user.role_id == 1">
             Mantenimientos
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" [routerLink]="['doctor/list']" routerLinkActive="active" style="color: black"
               *ngIf="currentUser?.user.role_id== 1">Registro de medicos</a>
-            <a class="dropdown-item" [routerLink]="['listaEnfermedades']" routerLinkActive="active" style="color: black"
+            <a class="dropdown-item" [routerLink]="['listaEnfermedades']" routerLinkActive="active" style="color:  black"
               *ngIf="currentUser?.user.role_id != 2">Lista de Enfermedades</a>
             <a class="dropdown-item" [routerLink]="['listaActividadesFisicas']" routerLinkActive="active"
-              style="color: black" *ngIf="currentUser?.user.role_id != 2">Lista de Actividades Físicas</a>
+              style="color:  black" *ngIf="currentUser?.user.role_id != 2">Lista de Actividades Físicas</a>
             <a class="dropdown-item" [routerLink]="['alergiafrecuente/list']" routerLinkActive="active"
-              style="color: black" *ngIf="currentUser?.user.role_id == 1">Alergias</a>
+              style="color:  black" *ngIf="currentUser?.user.role_id == 1">Alergias</a>
 
           </div>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false" style="color: black" *ngIf="currentUser?.user.role_id == 1">
+            aria-haspopup="true" aria-expanded="false" style="color:  white" *ngIf="currentUser?.user.role_id == 1">
             Expedientes
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" [routerLink]="['expediente']" routerLinkActive="active" style="color: black"
+            <a class="dropdown-item" [routerLink]="['expediente']" routerLinkActive="active" style="color:  black"
               *ngIf="currentUser?.user">Crear expediente</a>
-            <a class="dropdown-item" [routerLink]="['expasociado/list']" routerLinkActive="active" style="color: black"
+            <a class="dropdown-item" [routerLink]="['expasociado/list']" routerLinkActive="active" style="color:  black"
               *ngIf="currentUser?.user">Mis expedientes</a>
           </div>
         </li>
@@ -46,8 +46,11 @@
             *ngIf="currentUser?.user">Expediente</a>
         </li> -->
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['perfil']" routerLinkActive="active" style="color: black"
+          <a class="nav-link" [routerLink]="['perfil']" routerLinkActive="active" style="color:  white"
             *ngIf="currentUser?.user">Actualizar Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['home/acercade']" routerLinkActive="active" style="color: white">Acerca de</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">

@@ -51,4 +51,22 @@ export class MedicamentosService {
       })
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
+  updateMedicamento(med: MedicamentosEntidad): Observable<Medicamentos> {
+    let headers = new HttpHeaders();
+    if (med.id != null) {
+      headers = headers.append(
+        "Authorization",
+        "Bearer " + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .patch<Medicamentos>(
+        this.ServerUrl + "expediente/medicamento/" + med.id,
+        med,
+        {
+          headers
+        }
+      )
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
 }
