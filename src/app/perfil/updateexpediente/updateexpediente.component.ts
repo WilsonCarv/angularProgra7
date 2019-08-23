@@ -129,51 +129,37 @@ export class UpdateexpedienteComponent implements OnInit {
           "actividades_fisicas_frecuentes"
         ].forEach(element => {
           this.selectedActividades.push(element.id);
-          console.log("Array actividades", this.selectedActividades);
-          // this.selectedActividades.push(element.id);
         });
 
         this.currentExpediente.expediente[0]["actividades_fisicas"].forEach(
           element => {
             this.actividades.push(element);
-            console.log("Array actividades", this.actividades);
-            // this.selectedActividades.push(element.id);
           }
         );
 
         this.currentExpediente.expediente[0]["alergias"].forEach(element => {
           this.alergias.push(element);
-          console.log("Alergias", this.alergias);
-          // this.selectedActividades.push(element.id);
         });
 
         this.currentExpediente.expediente[0]["cirugias"].forEach(element => {
           this.cirugias.push(element);
-          console.log("Cirugias", this.cirugias);
-          // this.selectedActividades.push(element.id);
         });
 
         this.currentExpediente.expediente[0]["enfermedades"].forEach(
           element => {
             this.enfermedades.push(element);
-            console.log("Enfermedades", this.enfermedades);
-            // this.selectedActividades.push(element.id);
           }
         );
 
         this.currentExpediente.expediente[0]["enfermedades_familiares"].forEach(
           element => {
             this.enfermedadesFamiliares.push(element);
-            console.log("Enfermedades Familiares", this.enfermedadesFamiliares);
-            // this.selectedActividades.push(element.id);
           }
         );
 
         this.currentExpediente.expediente[0]["medicamentos"].forEach(
           element => {
             this.medicamentos.push(element);
-            console.log("Medicamentos", this.medicamentos);
-            // this.selectedActividades.push(element.id);
           }
         );
       },
@@ -240,8 +226,23 @@ export class UpdateexpedienteComponent implements OnInit {
   next() {
     this.stepper.next();
   }
-
   addArrayActividades(obj: ActividadfisicaEntidad) {
+    if (this.actividades.includes(this.otraActividad)) {
+      const index = this.actividades.indexOf(this.otraActividad);
+      if (this.otraActividad.id != null) {
+        this.actividades.map(element => {
+          if (element.id == this.otraActividad.id) {
+            element.veces_por_semana = obj.veces_por_semana;
+            element.tiempo_al_dia = obj.tiempo_al_dia;
+            element.nombre = obj.nombre;
+          }
+        }, console.log("New array", this.actividades));
+      } else {
+        this.actividades[index] = obj;
+        console.log("Modifica nuevo", this.actividades);
+      }
+      this.createEntities();
+    } else {
     this.actividades.push(obj);
     //Codigo para Limpiar el Form
     (<HTMLFormElement>document.getElementById("otrasActividadesForm")).reset();
@@ -368,27 +369,7 @@ export class UpdateexpedienteComponent implements OnInit {
               }
             );
           });
-        }
-        if (this.enfermedades.length > 0) {
-          this.enfermedades.forEach(element => {
-            element.expedientes_id = [this.datosExpediente.expediente["id"]];
-            console.log(element);
-            this.enfemedadSerive.createEnfermedad(element).subscribe(
-              (respuestaEnfermedad: Enfermedad) => {
-                this.datosEnfermedad = respuestaEnfermedad;
-                console.log(
-                  "Element",
-                  element,
-                  "Datos de repuesta",
-                  this.datosEnfermedad
-                );
-              },
-              error => {
-                this.error = error;
-                this.notificacion.msjValidacion(this.error);
-                console.log("Error", error);
-              }
-            );
+            }
           });
         }
         if (this.enfermedadesFamiliares.length > 0) {
@@ -426,37 +407,16 @@ export class UpdateexpedienteComponent implements OnInit {
                   "Element",
                   element,
                   "Datos de repuesta",
-                  this.datosCirugia
-                );
-              },
-              error => {
-                this.error = error;
-                this.notificacion.msjValidacion(this.error);
-                console.log("Error", error);
-              }
-            );
-          });
-        }
-        if (this.medicamentos.length > 0) {
-          this.medicamentos.forEach(element => {
-            element.expedientes_id = [this.datosExpediente.expediente["id"]];
-            console.log(element);
-            this.medicamentoService.createMedicamento(element).subscribe(
-              (respuestaMedicamento: Medicamentos) => {
-                this.datosMedicamentos = respuestaMedicamento;
-                console.log(
-                  "Element",
-                  element,
-                  "Datos de repuesta",
-                  this.datosMedicamentos
-                );
-              },
-              error => {
-                this.error = error;
-                this.notificacion.msjValidacion(this.error);
-                console.log("Error", error);
-              }
-            );
+                    this.datosAlergias
+                  );
+                },
+                error => {
+                  this.error = error;
+                  this.notificacion.msjValidacion(this.error);
+                  console.log("Error", error);
+                }
+              );
+            }
           });
         }
         //Mae aqui le dejo las validaciones.
