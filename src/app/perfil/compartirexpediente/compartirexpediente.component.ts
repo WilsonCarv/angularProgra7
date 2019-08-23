@@ -38,8 +38,7 @@ export class CompartirexpedienteComponent implements OnInit {
       .getUsers()
       .subscribe(
         (respuesta: Users) => (
-          (this.datos = respuesta),
-          console.log("Users", this.datos.usuarios[0]["role"]["nombre"])
+          (this.datos = respuesta), console.log("Users", this.datos.usuarios[0])
         ),
         error => (this.error = error)
       );

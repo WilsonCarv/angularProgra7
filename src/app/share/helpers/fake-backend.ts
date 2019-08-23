@@ -29,7 +29,7 @@ const users: UserEntidad[] = [
     updated_at: new Date("2019-07-16 02:31:58"),
     deleted_at: new Date("2019-07-16 02:31:58"),
     role_id: 1,
-    role : null,
+    role: null,
     expedientes: []
   }
 ];
