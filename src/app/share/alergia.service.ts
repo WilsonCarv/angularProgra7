@@ -50,4 +50,18 @@ export class AlergiaService {
       })
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
+  updateAlergia(ale: AlergiaEntidad): Observable<Alergia> {
+    let headers = new HttpHeaders();
+    if (ale.id != null) {
+      headers = headers.append(
+        "Authorization",
+        "Bearer " + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .patch<Alergia>(this.ServerUrl + "expediente/alergia/" + ale.id, ale, {
+        headers
+      })
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
 }

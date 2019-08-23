@@ -145,11 +145,12 @@
                 <div class ="form-group col-md-5">
                   <form id="otrasActividadesForm" #otrasActividaesForm="ngForm" (ngSubmit)="addArrayActividades(otrasActividaesForm.value)" >
                   <label for="nombreActividad">Nombre de la actividad</label>
-                  <input type="text" class="form-control" name="nombre" ngModel  placeholder="Nombre de la Actividad" [disabled]=""/>
+                  <input type="text" class="form-control" name="nombre" ngModel [(ngModel)]='otraActividad.nombre'
+                  placeholder="Nombre de la Actividad" [disabled]="" />
                   <label for="tiempo_al_dia">Cantidad de horas al día que hace la actividad</label>
-                  <input type="text" class="form-control" name="tiempo_al_dia" ngModel  placeholder="Cantidad de horas al día que hace la actividad"  [disabled]=""/>
+                  <input type="text" class="form-control" name="tiempo_al_dia" ngModel [(ngModel)]='otraActividad.tiempo_al_dia' placeholder="Cantidad de horas al día que hace la actividad"  [disabled]=""/>
                   <label for="veces_por_semana">Cantidad de veces por semana por semana</label>
-                  <input type="text" class="form-control" name="veces_por_semana" ngModel  placeholder="Cantidad de horas al día que hace la actividad" [disabled]=""/>
+                  <input type="text" class="form-control" name="veces_por_semana" ngModel [(ngModel)] ='otraActividad.veces_por_semana'placeholder="Cantidad de horas al día que hace la actividad" [disabled]=""/>
                   <button type="submit" class="btn btn-primary mt-3">Agregar</button>
                 </form>
                 </div>
@@ -169,7 +170,7 @@
                           <td>{{ doc.nombre}}</td>
                           <td>{{ doc.tiempo_al_dia }}</td>
                           <td>{{ doc.veces_por_semana }}</td>
-                          <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarActividad(doc)">Eliminar</button></td>
+                          <td><button class="btn-xs btn btn-primary" type="button" (click)="modificiarActividad(doc)">Modificar</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -191,18 +192,18 @@
                 <div class ="form-group col-md-5">
                   <form id="otrasAlerigasForm" #otrasAlergiasForm="ngForm" (ngSubmit)="addArrayAlergias(otrasAlergiasForm.value)" >
                   <label for="nombre">Nombre de la Alergia</label>
-                  <input type="text" class="form-control" name="nombre" ngModel placeholder="Nombre de la Alergia" [disabled]=""/>
+                  <input type="text" class="form-control" name="nombre" ngModel placeholder="Nombre de la Alergia" [(ngModel)]='otraAlergia.nombre' [disabled]=""/>
                   <label for="categoria">Categoría</label>
-                  <select class="form-control" name="categoria" ngModel  required>
+                  <select class="form-control" [(ngModel)]='otraAlergia.categoria' name="categoria" ngModel  required>
                     <option>Alergia Cutánea</option>
                     <option>Respiratorias</option>
                     <option>Alimentos</option>
                     <option>Medicamentos</option>
                   </select>
                   <label for="reaccion">Reacción</label>
-                  <textarea class="form-control" [disabled]="" name="reaccion"  ngModel placeholder="Reacción"></textarea>
+                  <textarea class="form-control" [(ngModel)]='otraAlergia.reaccion' [disabled]="" name="reaccion"  ngModel placeholder="Reacción"></textarea>
                   <label for="observaciones">Observaciones de la Alergia</label>
-                  <textarea class="form-control" [disabled]="" name="observaciones" ngModel placeholder="Observaciones"></textarea>
+                  <textarea class="form-control" [(ngModel)]='otraAlergia.observaciones' [disabled]="" name="observaciones" ngModel placeholder="Observaciones"></textarea>
                   <button type="submit" class="btn btn-primary mt-3">Agregar</button>
                 </form>
                 </div>
@@ -220,7 +221,7 @@
                         <tr *ngFor="let doc of alergias">
                           <td>{{ doc.nombre }}</td>
                           <td>{{ doc.categoria }}</td>
-                          <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarAlergia(doc)">Eliminar</button></td>
+                          <td><button class="btn-xs btn btn-primary" type="button" (click)="modificarAlergia(doc)">Modificar</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -242,9 +243,9 @@
                 <div class ="form-group col-md-5">
                   <form id="otrasEnfermedades" #otrasEnfermedadesForm="ngForm" (ngSubmit)="addArrayEnfermedades(otrasEnfermedadesForm.value)" >
                   <label for="nombre">Nombre de la Alergia</label>
-                  <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Enfermdad" ngModel [disabled]=""/>
+                  <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Enfermdad" ngModel [(ngModel)]='otraEnfermedad.nombre' [disabled]=""/>
                   <label for="observacionesAlergia">Observaciones de la Enfermdad</label>
-                  <textarea class="form-control" [disabled]="" ngModel name="observaciones" placeholder="Observaciones"></textarea>
+                  <textarea class="form-control" [(ngModel)]='otraEnfermedad.observaciones' [disabled]="" ngModel name="observaciones" placeholder="Observaciones"></textarea>
                   <button type="submit" class="btn btn-primary mt-3">Agregar</button>
                 </form>
                 </div>
@@ -262,7 +263,7 @@
                         <tr *ngFor="let doc of enfermedades">
                           <td>{{ doc.nombre }}</td>
                           <td>{{ doc.observaciones }}</td>
-                          <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarEnfermedad(doc)">Eliminar</button></td>
+                          <td><button class="btn-xs btn btn-primary" type="button" (click)="modificarEnfermedad(doc)">Modificar</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -274,12 +275,12 @@
               <div class="row">
                   <div class ="form-group col-md-5">
                     <form id="enfermedadesFamiliares" #enfermedadesFamiliaresForm="ngForm" (ngSubmit)="addArrayEnfermedadesFamiliares(enfermedadesFamiliaresForm.value)" >
-                    <label for="nombre">Nombre de la Alergia</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Enfermdad" ngModel [disabled]=""/>
+                    <label for="nombre">Nombre de la Enfermedad Familiar</label>
+                    <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Enfermdad" ngModel [(ngModel)]='otraEnfermedadFamiliar.nombre' [disabled]=""/>
                     <label for="nombre">Persona que la padece</label>
-                    <textarea class="form-control" [disabled]="" ngModel name="quien_padece" placeholder="Personas que la padecen"></textarea>
+                    <textarea class="form-control" [disabled]="" ngModel name="quien_padece" placeholder="Personas que la padecen" [(ngModel)]='otraEnfermedadFamiliar.quien_padece'></textarea>
                     <label for="observacionesAlergia">Observaciones de la Enfermdad</label>
-                    <textarea class="form-control" [disabled]="" ngModel name="observaciones" placeholder="Observaciones"></textarea>
+                    <textarea class="form-control" [disabled]="" ngModel [(ngModel)]='otraEnfermedadFamiliar.observaciones' name="observaciones" placeholder="Observaciones"></textarea>
                     <button type="submit" class="btn btn-primary mt-3">Agregar</button>
                   </form>
                   </div>
@@ -299,7 +300,7 @@
                             <td>{{ doc.nombre }}</td>
                             <td>{{ doc.quien_padece }}</td>
                             <td>{{ doc.observaciones }}</td>
-                            <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarEnfermedadFamiliar(doc)">Eliminar</button></td>
+                            <td><button class="btn-xs btn btn-primary" type="button" (click)="modificarEnfermedadFamiliar(doc)">Modificar</button></td>
                           </tr>
                         </tbody>
                       </table>
@@ -314,13 +315,13 @@
           <div class ="form-group col-md-5">
                 <form id="cirugiasForm" #cirugiasFom="ngForm" (ngSubmit)="addArrayCirugias(cirugiasFom.value)" >
                 <label for="nombre">Nombre de la Cirugía</label>
-                <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Cirugía" ngModel [disabled]=""/>
+                <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Cirugía" ngModel [(ngModel)]='cirugia.nombre' [disabled]=""/>
                 <label for="nombre">Cuando se realizo la Cirugía</label>
-                <input type="text" class="form-control" name="cuando" placeholder="Cuando se realizo la Cirugía" ngModel [disabled]=""/>
+                <input type="text" class="form-control" name="cuando" placeholder="Cuando se realizo la Cirugía" ngModel [(ngModel)]='cirugia.cuando' [disabled]=""/>
                 <label for="nombre">Donde se realizo la Cirugía</label>
-                <input type="text" class="form-control" name="donde" placeholder="Donde se realizo la Cirugía" ngModel [disabled]=""/>
+                <input type="text" class="form-control" name="donde" placeholder="Donde se realizo la Cirugía" ngModel [(ngModel)]='cirugia.donde' [disabled]=""/>
                 <label for="observacionesAlergia">Descripción de la Cirugía</label>
-                <textarea class="form-control" [disabled]="" ngModel name="descripcion" placeholder="Descripción de la Cirugía"></textarea>
+                <textarea class="form-control" [disabled]="" ngModel [(ngModel)]='cirugia.descripcion' name="descripcion" placeholder="Descripción de la Cirugía"></textarea>
                 <button type="submit" class="btn btn-primary mt-3">Agregar</button>
               </form>
               </div>
@@ -340,7 +341,7 @@
                           <td>{{ doc.nombre }}</td>
                           <td>{{ doc.cuando }}</td>
                           <td>{{ doc.donde }}</td>
-                          <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarCirugias(doc)">Eliminar</button></td>
+                          <td><button class="btn-xs btn btn-primary" type="button" (click)="modificarCirugias(doc)">Modificar</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -355,9 +356,9 @@
                 <div class ="form-group col-md-5">
                       <form id="medicamentosForm" #medicamentosFom="ngForm" (ngSubmit)="addArrayMedicamentos(medicamentosFom.value)" >
                       <label for="nombre">Nombre del Medicamento</label>
-                      <input type="text" class="form-control" name="nombre" placeholder="Nombre del Medicamento" ngModel [disabled]=""/>
+                      <input type="text" class="form-control" name="nombre" placeholder="Nombre del Medicamento" ngModel [(ngModel)]='medicamento.nombre' [disabled]=""/>
                       <label for="nombre">Descripción del Medicamento</label>
-                      <textarea class="form-control" [disabled]="" ngModel name="descripcion" placeholder="Descripción del Medicamento"></textarea>
+                      <textarea class="form-control" [disabled]="" ngModel [(ngModel)]='medicamento.descripcion' name="descripcion" placeholder="Descripción del Medicamento"></textarea>
                       <button type="submit" class="btn btn-primary mt-3">Agregar</button>
                     </form>
                     </div>
@@ -375,7 +376,7 @@
                               <tr *ngFor="let med of medicamentos">
                                 <td>{{ med.nombre }}</td>
                                 <td>{{ med.descripcion }}</td>
-                                <td><button class="btn-xs btn btn-primary" type="button" (click)="eliminarMedicamentos(med)">Eliminar</button></td>
+                                <td><button class="btn-xs btn btn-primary" type="button" (click)="modificarMedicamentos(med)">Modificar</button></td>
                               </tr>
                             </tbody>
                           </table>

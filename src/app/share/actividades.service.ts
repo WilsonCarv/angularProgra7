@@ -55,4 +55,23 @@ export class ActividadesService {
       )
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
+
+  updateActividad(act: ActividadfisicaEntidad): Observable<Actividadfisica> {
+    let headers = new HttpHeaders();
+    if (act.id != null) {
+      headers = headers.append(
+        "Authorization",
+        "Bearer " + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .patch<ActividadfisicaEntidad>(
+        this.ServerUrl + "expediente/actividadFisica/" + act.id,
+        act,
+        {
+          headers
+        }
+      )
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
 }

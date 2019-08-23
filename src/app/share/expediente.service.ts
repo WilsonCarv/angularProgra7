@@ -53,6 +53,25 @@ export class ExpedienteService {
       })
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
+
+  updateExpediente(exp: ExpedienteEntidad): Observable<Expediente> {
+    let headers = new HttpHeaders();
+    if (exp.id != null) {
+      headers = headers.append(
+        "Authorization",
+        "Bearer " + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .patch<ExpedienteEntidad>(
+        this.ServerUrl + "expediente/expedienteUsuario/" + exp.id,
+        exp,
+        {
+          headers
+        }
+      )
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
   getExpedientes(): Observable<Expediente> {
     return this.http
       .get<Expediente>(this.ServerUrl + "expediente/expedienteUsuario")
