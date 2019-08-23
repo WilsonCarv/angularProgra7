@@ -12,9 +12,6 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" style="color: black">Inicio</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['home/acercade']" routerLinkActive="active" style="color: black">Acerca de</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false" style="color: black" *ngIf="currentUser?.user.role_id == 1">

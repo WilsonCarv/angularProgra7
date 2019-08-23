@@ -241,11 +241,6 @@ export class UpdateexpedienteComponent implements OnInit {
           }
         );
       },
-
-      // console.log(
-      //   "Current Expediente",
-      //   this.currentExpedienteEntidad.identificacion
-      // )
       error => {
         this.error = error;
         this.notificacion.msjError(this.error, "Alergias");
