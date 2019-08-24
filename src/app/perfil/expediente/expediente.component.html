@@ -243,7 +243,7 @@
                 <div class="row">
                 <div class ="form-group col-md-5">
                   <form id="otrasEnfermedades" #otrasEnfermedadesForm="ngForm" (ngSubmit)="addArrayEnfermedades(otrasEnfermedadesForm.value)" >
-                  <label for="nombre">Nombre de la Alergia</label>
+                  <label for="nombre">Nombre de la enfermedad</label>
                   <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Enfermdad" ngModel [disabled]=""/>
                   <label for="observacionesAlergia">Observaciones de la Enfermdad</label>
                   <textarea class="form-control" [disabled]="" ngModel name="observaciones" placeholder="Observaciones"></textarea>
@@ -276,7 +276,7 @@
               <div class="row">
                   <div class ="form-group col-md-5">
                     <form id="enfermedadesFamiliares" #enfermedadesFamiliaresForm="ngForm" (ngSubmit)="addArrayEnfermedadesFamiliares(enfermedadesFamiliaresForm.value)" >
-                    <label for="nombre">Nombre de la Alergia</label>
+                    <label for="nombre">Nombre de la enfermedad</label>
                     <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Enfermdad" ngModel [disabled]=""/>
                     <label for="nombre">Persona que la padece</label>
                     <textarea class="form-control" [disabled]="" ngModel name="quien_padece" placeholder="Personas que la padecen"></textarea>
@@ -387,7 +387,6 @@
                   <hr>
             <button type="submit" class="btn btn-primary float-md-right">Submit</button>
         </div>
-        {{ form.value | json }}
       </form>
     </div>
   </div>

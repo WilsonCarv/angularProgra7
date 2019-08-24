@@ -19,7 +19,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" [routerLink]="['doctor/list']" routerLinkActive="active" style="color: black"
-              *ngIf="currentUser?.user.role_id== 1">Registro de medicos</a>
+              *ngIf="currentUser?.user.role_id == 1">Registro de medicos</a>
             <a class="dropdown-item" [routerLink]="['listaEnfermedades']" routerLinkActive="active" style="color:  black"
               *ngIf="currentUser?.user.role_id != 2">Lista de Enfermedades</a>
             <a class="dropdown-item" [routerLink]="['listaActividadesFisicas']" routerLinkActive="active"
@@ -31,7 +31,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false" style="color:  white" *ngIf="currentUser?.user.role_id == 1">
+            aria-haspopup="true" aria-expanded="false" style="color:  white" *ngIf="currentUser?.user">
             Expedientes
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
