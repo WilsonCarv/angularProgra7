@@ -56,13 +56,13 @@
           <div class=row>
               <div class="form-group col-md-6 form-group">
                   <label for="identificacion">Identificación</label>
-                  <input type="text" class="form-control" name="identificacion" placeholder="Identificación" ngModel  [(ngModel)]="currentExpediente?.expediente[0]['identificacion']"/>
+                  <input type="text" class="form-control" name="identificacion" placeholder="Identificación" ngModel  [(ngModel)]="currentExpediente?.expediente[0]['identificacion']" readonly/>
                   <label for="nombre">Nombre</label>
-                  <input type="text" class="form-control" name="nombre" placeholder="Nombre" ngModel [(ngModel)]="currentExpediente?.expediente[0]['nombre']" />
+                  <input type="text" class="form-control" name="nombre" placeholder="Nombre" ngModel [(ngModel)]="currentExpediente?.expediente[0]['nombre']" readonly />
                   <label for="PrimerApellido">Primer Apellido</label>
-                  <input type="text" class="form-control" name="primer_apellido" ngModel  [(ngModel)]="currentExpediente?.expediente[0]['primer_apellido']" placeholder="Primer Apellido" />
+                  <input type="text" class="form-control" name="primer_apellido" ngModel  [(ngModel)]="currentExpediente?.expediente[0]['primer_apellido']" placeholder="Primer Apellido" readonly/>
                   <label for="SegundoApellido">Segundo Apellido</label>
-                  <input type="text" class="form-control" name="segundo_apellido" ngModel [(ngModel)]="currentExpediente?.expediente[0]['segundo_apellido']" placeholder="Segundo Apellido" />
+                  <input type="text" class="form-control" name="segundo_apellido" ngModel [(ngModel)]="currentExpediente?.expediente[0]['segundo_apellido']" placeholder="Segundo Apellido" readonly />
                   <label for="roles">Género</label>
                   <select class="form-control" name="sexo" ngModel [(ngModel)]="currentExpediente?.expediente[0]['sexo']" required>
                     <option>Masculino</option>
