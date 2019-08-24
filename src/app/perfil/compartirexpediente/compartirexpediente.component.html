@@ -1,22 +1,11 @@
 <div class="container">
-      <div class="table-responsive">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Primer apellido</th>
-              <th>Segundo apellido</th>
-              <th>Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let doc of datos?.usuarios">
-              <td>{{ doc.name }}</td>
-              <td>{{ doc.primer_apellido }}</td>
-              <td>{{ doc.segundo_apellido }}</td>
-              <td>{{doc.role['nombre']}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+  <label for="actividades_id">Lista de Usuarios</label>
+  <select style="height:200;" multiple  [(ngModel)]="selectedUsers" ngModel class="form-control" name="users_id">
+    <option *ngFor="let a of datos?.usuarios" [value]="a.id">
+      {{a.name}} / {{a.role['nombre']}}</option>
+  </select>
+  <hr>
+    <button type="submit" class="btn btn-primary float-md-right">Submit</button>
+</form>
+</div>
